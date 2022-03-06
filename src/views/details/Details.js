@@ -1,52 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import {
+  ParallaxProvider,
+  ParallaxBanner,
+  Parallax,
+} from 'react-scroll-parallax';
 
-import DetailsImages from './DetailsImages';
+import DetailsMedia from './DetailsMedia';
+import DetailsMeta from './DetailsMeta';
+import DetailsStoryline from './DetailsStoryline';
 
-const Details = ({
-  synopsis,
-  release_year,
-  imdb_score,
-  imdb_popularity,
-  duration,
-  rottentomatoes,
-}) => {
+const Details = ({ synopsis, wallpapers, heroIndex }) => {
+  const [showGallery, setShowGallery] = useState(true);
+  const [bgImage, setBgImage] = useState();
+
+  useEffect(() => {
+    if (!bgImage && wallpapers.length) {
+      let backgroundIndex = heroIndex;
+      while (backgroundIndex === heroIndex) {
+        backgroundIndex = Math.floor(Math.random() * wallpapers.length);
+      }
+      let background = wallpapers ? wallpapers[backgroundIndex] : '';
+      setBgImage(background);
+    }
+  }, []);
+
   if (!synopsis) return <div />;
   return (
     <React.Fragment>
       <article className="details">
-        <div className="details-meta">
-          <div className="details-meta--imdb">{imdb_score}/10</div>
-          <div
-            className={`details-meta--rottentomatos-tom ${
-              rottentomatoes.certified ? ' certified' : ''
-            } ${rottentomatoes.tomatometer < 60 ? 'low' : ''} ${
-              rottentomatoes.tomatometer === 0 ? 'none' : ''
-            }`}
-          >
-            {rottentomatoes.tomatometer}%
+        <div className="details-container">
+          <DetailsMeta />
+          <div className="details-content">
+            <DetailsMedia />
+            <DetailsStoryline />
           </div>
-          <div
-            className={`details-meta--rottentomatos-aud ${
-              rottentomatoes.audience < 60 ? 'low' : ''
-            } ${rottentomatoes.audience === 0 ? 'none' : ''}`}
-          >
-            {rottentomatoes.audience}%
-          </div>
-          <div className="details-meta--runtime">{duration}</div>
+          <aside className="details-sidebar">
+            <p>Something needs to go here</p>
+          </aside>
         </div>
-        <div className="details-content">
-          <div className="details-synopsis">
-            <h2>Synopsis</h2>
-            <div
-              className="details-synopsis--content"
-              dangerouslySetInnerHTML={{ __html: synopsis[0] }}
-            />
-          </div>
+        <div className="details-watch">
+          <ParallaxProvider
+            className="details-watch--wrapper"
+            scrollContainer={document.getElementsByClassName('site-content')[0]}
+          >
+            <ParallaxBanner layers={[{ image: bgImage, speed: -25 }]} />
+          </ParallaxProvider>
         </div>
-        <aside className="details-sidebar">
-          <p>Something needs to go here</p>
-        </aside>
       </article>
     </React.Fragment>
   );
@@ -54,19 +54,11 @@ const Details = ({
 
 const mapStateToProps = ({
   Details: {
-    details: {
-      synopsis,
-      meta: { release_year, imdb_score, imdb_popularity, duration },
-      rottentomatoes,
-    },
+    details: { synopsis, wallpapers },
   },
 }) => ({
   synopsis,
-  release_year,
-  imdb_score,
-  imdb_popularity,
-  duration,
-  rottentomatoes,
+  wallpapers,
 });
 
 export default connect(mapStateToProps)(Details);

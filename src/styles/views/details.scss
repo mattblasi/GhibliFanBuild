@@ -7,7 +7,7 @@
 
   .details-hero {
     background: #000;
-    background-image: url('https://wallpaperaccess.com/full/42615.jpg');
+    //background-image: url('https://wallpaperaccess.com/full/42615.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,6 +16,13 @@
     height: 700px;
     position: relative;
     width: 100%;
+    z-index: 2;
+
+    > div:first-of-type {
+      height: 700px;
+      position: absolute !important;
+      top: 0;
+    }
 
     &:before {
       background: rgba(0, 0, 0, 0.5);
@@ -89,6 +96,7 @@
     max-width: 250px;
     position: absolute;
     width: 30%;
+    z-index: 100;
   }
 
   .details-storyline {
@@ -132,7 +140,7 @@
     width: 100%;
   }
 
-  .details {
+  .details-container {
     border-top: 1px solid #eee;
     display: flex;
     flex-direction: row-reverse;
@@ -143,6 +151,7 @@
     padding: 0;
     position: relative;
     width: 100%;
+    z-index: 1;
 
     .details-content {
       display: block;
@@ -223,11 +232,50 @@
     }
   }
 
+  .details-media {
+    display: flex;
+    margin-bottom: 2.5rem;
+
+    .details-media--trailer {
+      background: #ccc;
+      display: block;
+      height: 320px;
+      position: relative;
+      width: 400px;
+
+      p {
+        background: #222;
+        color: #fff;
+        font-family: Futura, Trebuchet MS, Arial, sans-serif;
+        letter-spacing: 0.05rem;
+        padding: 0.25rem 3rem;
+        position: absolute;
+        top: 4rem;
+      }
+    }
+
+    .details-media--photos {
+      display: flex;
+      flex-direction: column;
+      padding-left: 1rem;
+      width: calc(100% - 400px);
+      gap: 1rem;
+
+      .details-media--photo {
+        background: #ccc;
+        display: block;
+        height: 100px;
+        width: 100%;
+      }
+    }
+  }
+
   .details-synopsis {
     font-size: 1.6rem;
 
     .details-synopsis--content {
       padding-top: 1rem;
+      transition: all 0.25s;
     }
   }
 
@@ -269,6 +317,31 @@
       width: 30rem;
       right: 0;
       z-index: 1;
+    }
+  }
+
+  .details-watch {
+    background: #ddd;
+    height: 40rem;
+    margin: 5rem 0;
+    overflow: hidden;
+    width: 100%;
+
+    & > div {
+      filter: blur(0.5rem);
+      height: 100%;
+
+      &:before {
+        background: rgba(0, 0, 0, 0.75);
+        content: '';
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+      }
     }
   }
 }

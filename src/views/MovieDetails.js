@@ -15,6 +15,7 @@ const MovieDetails = ({
 }) => {
   const { movie_id } = useParams();
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [heroIndex, setHeroIndex] = useState();
 
   useEffect(() => {
     if (id !== movie_id) {
@@ -23,23 +24,21 @@ const MovieDetails = ({
     }
   }, []);
 
-  console.log('heroLoaded', heroLoaded);
-
   if (isLoading || id !== movie_id) return <div />;
 
   return (
     <div className="full-details">
       {!isLoading && (
         <React.Fragment>
-          <DetailsHero isLoaded={setHeroLoaded} />
+          <DetailsHero isLoaded={setHeroLoaded} setHeroIndex={setHeroIndex} />
           <CSSTransition
-            in={heroLoaded}
-            timeout={3000}
+            in={heroLoaded && heroIndex >= 0}
+            timeout={300}
             classNames="page"
             unmountOnExit
           >
             <React.Fragment>
-              <Details />
+              <Details heroIndex={heroIndex} />
             </React.Fragment>
           </CSSTransition>
         </React.Fragment>
@@ -51,9 +50,7 @@ const MovieDetails = ({
 const mapStateToProps = ({
   Details: {
     isLoading,
-    details: {
-      id,
-    },
+    details: { id },
   },
 }) => ({
   isLoading,

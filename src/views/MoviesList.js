@@ -4,6 +4,7 @@ import { getAllMovies } from '../actions/movieActions';
 import { CSSTransition } from 'react-transition-group';
 
 import Card from '../components/card/Card';
+import HomeHero from './homepage/HomeHero';
 
 const MoviesList = ({ movies, isLoading, getAllMovies }) => {
   const [showPage, setShowPage] = useState(false);
@@ -16,11 +17,16 @@ const MoviesList = ({ movies, isLoading, getAllMovies }) => {
 
   return (
     <CSSTransition in={showPage} timeout={300} classNames="page" unmountOnExit>
-      <div className="movies-list">
-        {movies.map((movie, index) => {
-          return <Card movie={movie} key={movie.id} index={index} />;
-        })}
-      </div>
+      <React.Fragment>
+        <div className="movies-list">
+          {movies.map((movie, index) => {
+            return <Card movie={movie} key={movie.id} index={index} />;
+          })}
+        </div>
+        <div className="expand">
+          <h3>Merchandise -</h3>
+        </div>
+      </React.Fragment>
     </CSSTransition>
   );
 };
