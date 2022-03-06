@@ -1,0 +1,167 @@
+html,
+body {
+  box-sizing: border-box;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  line-height: 125%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.ghibli {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  height: 100vh;
+  width: 100vw;
+}
+.site-header {
+  background: #fff;
+  //border-bottom: 1px solid #eee;
+  display: flex;
+  grid-area: 'header';
+  width: 100%;
+  z-index: 10;
+
+  span {
+    font-family: Futura, Trebuchet MS, Arial, sans-serif;
+    font-size: 3rem;
+    padding: 1rem;
+  }
+
+  nav {
+    display: flex;
+    margin-left: auto;
+
+    a {
+      border-left: 1px solid #eee;
+      color: #333;
+      display: block;
+      font-size: 1.3rem;
+      height: 100%;
+      letter-spacing: 0.05rem;
+      line-height: 4rem;
+      padding: 1rem 3rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+
+    a:hover {
+      background: #333;
+      border-color: #333;
+      color: #eee;
+    }
+  }
+}
+.site-content {
+  grid-area: 'main';
+  height: 100%;
+  overflow: auto;
+}
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+  grid-area: 'footer';
+  padding: 1.5rem;
+  width: 100%;
+  z-index: 100;
+
+  p {
+    font-size: 1.1rem;
+    //font-style: italic;
+    font-weight: normal;
+    letter-spacing: 0.05rem;
+  }
+}
+
+.movies-list {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  //max-width: 1024px;
+  margin: 0 auto;
+}
+
+.card {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 102%;
+  //border-radius: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex: 0 0 16.6666%;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s;
+
+  &:hover {
+    background-size: 125%;
+  }
+
+  .card-img {
+    max-width: 100%;
+    display: flex;
+    opacity: 0;
+  }
+
+  .card-info {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: -1rem;
+    color: #fff;
+    left: 0;
+    opacity: 0;
+    padding: 1rem;
+    position: absolute;
+    transition: all 0.5s;
+    width: 100%;
+  }
+
+  &:hover .card-info {
+    bottom: 0;
+    opacity: 1;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 450ms;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 450ms;
+}

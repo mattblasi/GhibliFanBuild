@@ -1,0 +1,274 @@
+.full-details {
+  display: block;
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .details-hero {
+    background: #000;
+    background-image: url('https://wallpaperaccess.com/full/42615.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    display: block;
+    height: 700px;
+    position: relative;
+    width: 100%;
+
+    &:before {
+      background: rgba(0, 0, 0, 0.5);
+      content: '';
+      left: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    &:after {
+      background: rgb(0, 0, 0);
+      background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.665703781512605) 100%
+      );
+      content: '';
+      left: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .details-hero--content {
+      height: 100%;
+      margin: 0 auto;
+      max-width: 1000px;
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  .details-header {
+    bottom: 0;
+    padding: 2rem 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+
+    h1 {
+      font-size: 2.5rem;
+      vertical-align: baseline;
+    }
+
+    h1 span {
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: normal;
+      padding-left: 0.5rem;
+      //vertical-align: sub;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 5px 0;
+    }
+  }
+
+  .poster {
+    border: 1rem solid #fff;
+    bottom: -25%;
+    //box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    height: auto;
+    max-width: 250px;
+    position: absolute;
+    width: 30%;
+  }
+
+  .details-storyline {
+    bottom: 125px;
+    position: absolute;
+    right: 0;
+    width: 65%;
+
+    .details-storyline--text {
+      font-family: Futura, Trebuchet MS, Arial, sans-serif;
+      font-size: 3rem;
+      //text-shadow: 2px 2px #000;
+    }
+
+    .details-storyline--dots {
+      display: flex;
+      margin: 15px 0 0;
+      text-align: center;
+    }
+
+    .details-storyline--dot {
+      background-color: #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+      display: block;
+      height: 15px;
+      margin: 0 5px 0 0;
+      position: relative;
+      width: 15px;
+
+      &.active {
+        background-color: #888;
+      }
+    }
+  }
+
+  .movie-info {
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+    width: 100%;
+  }
+
+  .details {
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    .details-content {
+      display: block;
+      padding-top: 2.5rem;
+      width: 65%;
+    }
+
+    .details-sidebar {
+      border: 1rem solid #fff;
+      box-sizing: border-box;
+      display: block;
+      height: 100%;
+      margin-right: auto;
+      max-width: 25rem;
+      padding: 1rem;
+      padding-top: 15rem;
+      width: 30%;
+    }
+  }
+
+  .details-meta {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: row;
+    font-family: Futura, Trebuchet MS, Arial, sans-serif;
+    font-size: 1.6rem;
+    width: 100%;
+
+    div:first-of-type {
+      margin-left: auto;
+    }
+
+    div {
+      padding: 2rem 1.5rem;
+      filter: grayscale(1);
+    }
+
+    .details-meta--imdb,
+    .details-meta--rottentomatos-tom,
+    .details-meta--rottentomatos-aud {
+      background-repeat: no-repeat;
+      background-size: 30px;
+      background-position: 2.5rem 1.5rem;
+      padding-left: 4rem;
+      text-indent: 2rem;
+    }
+    .details-meta--imdb {
+      background-image: url('https://m.media-amazon.com/images/G/01/IMDb/BG_rectangle._CB1509060989_SY230_SX307_AL_.png');
+      background-size: 5.5rem;
+      text-indent: 4.75rem;
+    }
+    .details-meta--rottentomatos-tom {
+      background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-fresh.149b5e8adc3.svg');
+
+      &.certified {
+        background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh.75211285dbb.svg');
+      }
+
+      &.low {
+        background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-rotten.f1ef4f02ce3.svg');
+      }
+
+      &.none {
+        background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/tomatometer-empty.cd930dab34a.svg');
+      }
+    }
+
+    .details-meta--rottentomatos-aud {
+      background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-fresh.6c24d79faaf.svg');
+
+      &.low {
+        background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-rotten.f419e4046b7.svg');
+      }
+
+      &.none {
+        background-image: url('https://www.rottentomatoes.com/assets/pizza-pie/images/icons/audience/aud_score-empty.eb667b7a1c7.svg');
+      }
+    }
+  }
+
+  .details-synopsis {
+    font-size: 1.6rem;
+
+    .details-synopsis--content {
+      padding-top: 1rem;
+    }
+  }
+
+  .detail-images {
+    display: block;
+    height: 50rem;
+    position: relative;
+    padding: 1rem;
+    width: 100%;
+
+    .detail-images--image {
+      background-color: #ccc;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border: 1rem solid #fff;
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+      display: block;
+      position: absolute;
+    }
+
+    .image-1 {
+      height: 25rem;
+      width: 25rem;
+      bottom: 0;
+      z-index: 3;
+    }
+
+    .image-2 {
+      height: 30rem;
+      width: 50rem;
+      top: 15rem;
+      right: 20rem;
+      z-index: 3;
+    }
+
+    .image-3 {
+      height: 50rem;
+      width: 30rem;
+      right: 0;
+      z-index: 1;
+    }
+  }
+}
