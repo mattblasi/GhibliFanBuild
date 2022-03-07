@@ -6,10 +6,13 @@ const DetailsStoryline = ({ synopsis }) => {
 
   return (
     <div className="details-synopsis">
-      <h2>Synopsis</h2>
-      <button onClick={() => setFullSynopsis(!useFullSynopsis)}>
-        {useFullSynopsis ? 'Read Less' : 'Read More'}
-      </button>
+      <h2>
+        Synopsis
+        <button onClick={() => setFullSynopsis(!useFullSynopsis)}>
+          {useFullSynopsis ? 'Read Less' : 'Read More'}
+        </button>
+      </h2>
+
       <div
         className="details-synopsis--content"
         dangerouslySetInnerHTML={{
@@ -18,6 +21,11 @@ const DetailsStoryline = ({ synopsis }) => {
             : synopsis[0].slice(0, 500).concat('...'),
         }}
       />
+      {useFullSynopsis && (
+        <button onClick={() => setFullSynopsis(!useFullSynopsis)}>
+          {useFullSynopsis ? 'Read Less' : 'Read More'}
+        </button>
+      )}
     </div>
   );
 };

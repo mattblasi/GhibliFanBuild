@@ -16,7 +16,7 @@ const DetailsHero = ({
   og_title_jp,
   posters,
   wallpapers,
-  isLoaded,
+  setHeroLoaded,
   setHeroIndex,
 }) => {
   const [bgLoaded, setBgLoaded] = useState(false);
@@ -24,7 +24,7 @@ const DetailsHero = ({
 
   useEffect(() => {
     document.title = `Studio Ghibli : ${title}`;
-    if (bgLoaded) isLoaded(true);
+    if (bgLoaded) setHeroLoaded(true);
   }, [bgLoaded]);
 
   useEffect(() => {
@@ -45,6 +45,7 @@ const DetailsHero = ({
         unmountOnExit
       >
         <div className="details-hero hero">
+          <span className="details-title--ghost">{og_title_jp}</span>
           <ParallaxProvider
             className="details-hero--wrapper"
             scrollContainer={document.getElementsByClassName('site-content')[0]}

@@ -1,28 +1,58 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getMovieDetails, clearMovieDetails } from '../actions/movieActions';
 import { useParams } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
+import {
+  getMovieDetails,
+  getMoviePeople,
+  clearMovieDetails,
+} from '../actions/movieActions';
 
+import DetailsCast from './details/DetailsCast';
+import DetailsCredits from './details/DetailsCredits';
+import DetailsGenres from './details/DetailsGenres';
 import DetailsHero from './details/DetailsHero';
-import Details from './details/Details';
+import DetailsMedia from './details/DetailsMedia';
+import DetailsMeta from './details/DetailsMeta';
+import DetailsSidebar from './details/DetailsSidebar';
+import DetailsStoryline from './details/DetailsStoryline';
+import DetailsVideos from './details/DetailsVideos';
+import DetailsWatch from './details/DetailsWatch';
 
 const MovieDetails = ({
+  show,
   isLoading,
   id,
+  title,
+  people,
+  wallpapers,
   clearMovieDetails,
   getMovieDetails,
+  getMoviePeople,
 }) => {
   const { movie_id } = useParams();
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroIndex, setHeroIndex] = useState();
+  const [bgImage, setBgImage] = useState();
 
   useEffect(() => {
     if (id !== movie_id) {
       clearMovieDetails();
       getMovieDetails(movie_id);
+      getMoviePeople(movie_id);
     }
   }, []);
+
+  useEffect(() => {
+    document.getElementsByClassName('site-content')[0].scrollTop = 0;
+    if (!bgImage && wallpapers?.length && id === movie_id) {
+      let backgroundIndex = heroIndex;
+      while (backgroundIndex === heroIndex) {
+        backgroundIndex = Math.floor(Math.random() * wallpapers.length);
+      }
+      let background = wallpapers ? wallpapers[backgroundIndex] : '';
+      setBgImage(background);
+    }
+  }, [heroIndex]);
 
   if (isLoading || id !== movie_id) return <div />;
 
@@ -30,17 +60,33 @@ const MovieDetails = ({
     <div className="full-details">
       {!isLoading && (
         <React.Fragment>
-          <DetailsHero isLoaded={setHeroLoaded} setHeroIndex={setHeroIndex} />
-          <CSSTransition
-            in={heroLoaded && heroIndex >= 0}
-            timeout={300}
-            classNames="page"
-            unmountOnExit
-          >
-            <React.Fragment>
-              <Details heroIndex={heroIndex} />
-            </React.Fragment>
-          </CSSTransition>
+          <DetailsHero
+            setHeroLoaded={setHeroLoaded}
+            setHeroIndex={setHeroIndex}
+          />
+          <article className="details">
+            <div className="details-container">
+              <DetailsMeta />
+              <DetailsGenres />
+              <div className="details-content">
+                {show === 'default' && <DetailsMedia />}
+                {show === 'credits' && <DetailsCredits people={people} />}
+                {show === 'gallery' && <DetailsMedia />}
+                {show === 'story' && <DetailsMedia />}
+              </div>
+              <DetailsSidebar />
+            </div>
+            {show === 'default' && (
+              <React.Fragment>
+                <DetailsWatch bgImage={bgImage} title={title} />
+                <div className="details-container">
+                  <DetailsCast />
+                  <DetailsVideos />
+                  <DetailsStoryline />
+                </div>
+              </React.Fragment>
+            )}
+          </article>
         </React.Fragment>
       )}
     </div>
@@ -50,15 +96,19 @@ const MovieDetails = ({
 const mapStateToProps = ({
   Details: {
     isLoading,
-    details: { id },
+    details: { id, title, people, wallpapers },
   },
 }) => ({
   isLoading,
   id,
+  title,
+  people,
+  wallpapers,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getMovieDetails: (movie_id) => dispatch(getMovieDetails(movie_id)),
+  getMoviePeople: (movie_id) => dispatch(getMoviePeople(movie_id)),
   clearMovieDetails: () => dispatch(clearMovieDetails()),
 });
 

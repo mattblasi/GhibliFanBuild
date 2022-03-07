@@ -6,7 +6,8 @@ const App = () => {
     <div className="ghibli">
       <header className="site-header">
         <nav>
-          <Link to="/">Ghibli Movies</Link>
+          <Link to="/">News</Link>
+          <Link to="/">Movies</Link>
         </nav>
       </header>
       <main className="site-content">

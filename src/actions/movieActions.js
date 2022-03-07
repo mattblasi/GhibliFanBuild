@@ -1,6 +1,7 @@
 import {
   MOVIES_SET_MOVIES,
   MOVIES_SET_DETAILS,
+  MOVIES_SET_PEOPLE,
   MOVIES_CLEAR_DETAILS,
 } from '../actions/actionTypes';
 import axios from 'axios';
@@ -29,6 +30,17 @@ export const getMovieDetails = (id) => {
 
 const setMovieDetails = (data) => {
   return { type: MOVIES_SET_DETAILS, data: data };
+};
+
+export const getMoviePeople = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`${BASE_URL}/movies/title/${id}/people`);
+    dispatch({ type: MOVIES_SET_PEOPLE, data: response.data });
+  };
+};
+
+const setMoviePeople = () => {
+  return { type: MOVIES_SET_PEOPLE, data: data };
 };
 
 export const clearMovieDetails = () => {

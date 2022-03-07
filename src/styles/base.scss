@@ -16,6 +16,16 @@ h1,
 h2,
 h3,
 h4,
+h5 {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  letter-spacing: -0.05rem;
+  text-transform: capitalize;
+}
+
+h1,
+h2,
+h3,
+h4,
 h5,
 p {
   margin: 0;
@@ -34,7 +44,8 @@ p {
   width: 100vw;
 }
 .site-header {
-  background: #fff;
+  background: #222;
+  color: #fff;
   //border-bottom: 1px solid #eee;
   display: flex;
   grid-area: 'header';
@@ -52,8 +63,8 @@ p {
     margin-left: auto;
 
     a {
-      border-left: 1px solid #eee;
-      color: #333;
+      border-left: 1px solid #343434;
+      color: #fff;
       display: block;
       font-size: 1.3rem;
       height: 100%;

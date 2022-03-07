@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAllMovies } from '../actions/movieActions';
 import { CSSTransition } from 'react-transition-group';
 
-import Card from '../components/card/Card';
+import MovieCard from '../components/MovieCard';
 import HomeHero from './homepage/HomeHero';
 
 const MoviesList = ({ movies, isLoading, getAllMovies }) => {
@@ -20,11 +20,8 @@ const MoviesList = ({ movies, isLoading, getAllMovies }) => {
       <React.Fragment>
         <div className="movies-list">
           {movies.map((movie, index) => {
-            return <Card movie={movie} key={movie.id} index={index} />;
+            return <MovieCard movie={movie} key={movie.id} index={index} />;
           })}
-        </div>
-        <div className="expand">
-          <h3>Merchandise -</h3>
         </div>
       </React.Fragment>
     </CSSTransition>

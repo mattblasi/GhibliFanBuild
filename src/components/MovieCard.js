@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Card = ({ movie: { id, title, posters, og_title_jp, og_title_rm } }) => {
+const MovieCard = ({ movie: { id, title, posters, og_title_jp, og_title_rm } }) => {
   let poster = posters[posters.length - 1];
   return (
     <Link
@@ -19,4 +19,4 @@ const Card = ({ movie: { id, title, posters, og_title_jp, og_title_rm } }) => {
   );
 };
 
-export default Card;
+export default MovieCard;

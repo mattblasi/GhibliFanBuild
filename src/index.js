@@ -19,7 +19,21 @@ const app = (AppComponent) => {
           <Routes>
             <Route path="/" element={<AppComponent />}>
               <Route exact path="" element={<MoviesList />} />
-              <Route exact path=":movie_id" element={<MovieDetails />} />
+              <Route
+                exact
+                path=":movie_id"
+                element={<MovieDetails show="default" />}
+              />
+              <Route
+                exact
+                path=":movie_id/credits"
+                element={<MovieDetails show="credits" />}
+              />
+              <Route
+                exact
+                path=":movie_id/story"
+                element={<MovieDetails show="story" />}
+              />
               <Route path="*" element={<p>There's nothing here!</p>} />
             </Route>
           </Routes>
