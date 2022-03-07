@@ -8,10 +8,15 @@ import HomeHero from './homepage/HomeHero';
 
 const MoviesList = ({ movies, isLoading, getAllMovies }) => {
   const [showPage, setShowPage] = useState(false);
+  let movieSorted;
 
   useEffect(() => {
     document.title = `Studio Ghibli`;
     if (isLoading) getAllMovies();
+    movieSorted = movies.sort(
+      (a, b) => (a.meta.release_year > b.meta.release_year ? 1 : -1) // Sort by release year oldest first
+      // (a, b) =>  (a.meta.imdb_score < b.meta.imdb_score ? 1 : -1) // sort by imdb score highest first
+    );
     setShowPage(true);
   }, [showPage]);
 

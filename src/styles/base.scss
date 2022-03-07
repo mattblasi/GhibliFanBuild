@@ -33,6 +33,10 @@ p {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 .ghibli {
   display: grid;
   grid-template-columns: 1fr;
@@ -232,6 +236,7 @@ p {
   display: block;
   position: relative;
   margin-top: 4rem;
+  margin-bottom: 5rem;
 
   .product-container {
     margin: 0 auto;
@@ -242,9 +247,51 @@ p {
     width: 100%;
   }
 
-  .products {
+  .products-list {
     display: flex;
-    height: 30rem;
+    flex-wrap: wrap;
+    gap: 1%;
+    margin-top: 2rem;
     width: 100%;
+  }
+
+  .product {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 19.2%;
+    margin-bottom: 4rem;
+
+    .product-image {
+      background: #ddd;
+      display: block;
+      height: 17.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .product-info {
+      padding: 0.5rem;
+
+      p {
+        padding: 0.25rem 0;
+      }
+    }
+
+    .product-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .product-store {
+      font-size: 1.2rem;
+    }
+
+    .product-price {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      text-align: right;
+    }
   }
 }
