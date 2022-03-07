@@ -5,6 +5,7 @@ body {
   font-size: 62.5%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -224,5 +225,26 @@ p {
     font-size: 3rem;
     font-family: Futura, Trebuchet MS, Arial, sans-serif;
     padding-bottom: 2.5rem;
+  }
+}
+
+.products {
+  display: block;
+  position: relative;
+  margin-top: 4rem;
+
+  .product-container {
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: 1000px;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+  }
+
+  .products {
+    display: flex;
+    height: 30rem;
+    width: 100%;
   }
 }

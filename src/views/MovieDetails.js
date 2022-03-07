@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import {
   getMovieDetails,
   getMoviePeople,
@@ -17,6 +18,7 @@ import DetailsSidebar from './details/DetailsSidebar';
 import DetailsStoryline from './details/DetailsStoryline';
 import DetailsVideos from './details/DetailsVideos';
 import DetailsWatch from './details/DetailsWatch';
+import MerchList from '../components/MerchList';
 
 const MovieDetails = ({
   show,
@@ -43,7 +45,7 @@ const MovieDetails = ({
   }, []);
 
   useEffect(() => {
-    document.getElementsByClassName('site-content')[0].scrollTop = 0;
+    document.querySelector('#main').scrollTo({ top: 0, behavior: 'smooth' });
     if (!bgImage && wallpapers?.length && id === movie_id) {
       let backgroundIndex = heroIndex;
       while (backgroundIndex === heroIndex) {
@@ -64,29 +66,38 @@ const MovieDetails = ({
             setHeroLoaded={setHeroLoaded}
             setHeroIndex={setHeroIndex}
           />
-          <article className="details">
-            <div className="details-container">
-              <DetailsMeta />
-              <DetailsGenres />
-              <div className="details-content">
-                {show === 'default' && <DetailsMedia />}
-                {show === 'credits' && <DetailsCredits people={people} />}
-                {show === 'gallery' && <DetailsMedia />}
-                {show === 'story' && <DetailsMedia />}
-              </div>
-              <DetailsSidebar />
-            </div>
-            {show === 'default' && (
-              <React.Fragment>
-                <DetailsWatch bgImage={bgImage} title={title} />
-                <div className="details-container">
-                  <DetailsCast />
-                  <DetailsVideos />
-                  <DetailsStoryline />
+
+          <CSSTransition
+            in={heroLoaded}
+            timeout={1000}
+            classNames="page"
+            unmountOnExit
+          >
+            <article className="details">
+              <div className="details-container">
+                <DetailsMeta />
+                <DetailsGenres />
+                <div className="details-content">
+                  {show === 'default' && <DetailsMedia />}
+                  {show === 'credits' && <DetailsCredits people={people} />}
+                  {show === 'gallery' && <DetailsMedia />}
+                  {show === 'story' && <DetailsMedia />}
                 </div>
-              </React.Fragment>
-            )}
-          </article>
+                <DetailsSidebar />
+              </div>
+              {show === 'default' && (
+                <React.Fragment>
+                  <DetailsWatch bgImage={bgImage} title={title} />
+                  <div className="details-container">
+                    <DetailsCast />
+                    <DetailsVideos />
+                    {/* <DetailsStoryline /> */}
+                  </div>
+                </React.Fragment>
+              )}
+              <MerchList movie_id={movie_id} />
+            </article>
+          </CSSTransition>
         </React.Fragment>
       )}
     </div>

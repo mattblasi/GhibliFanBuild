@@ -13,17 +13,15 @@ const MoviesList = ({ movies, isLoading, getAllMovies }) => {
     document.title = `Studio Ghibli`;
     if (isLoading) getAllMovies();
     setShowPage(true);
-  });
+  }, [showPage]);
 
   return (
     <CSSTransition in={showPage} timeout={300} classNames="page" unmountOnExit>
-      <React.Fragment>
-        <div className="movies-list">
-          {movies.map((movie, index) => {
-            return <MovieCard movie={movie} key={movie.id} index={index} />;
-          })}
-        </div>
-      </React.Fragment>
+      <div className="movies-list">
+        {movies.map((movie, index) => {
+          return <MovieCard movie={movie} key={movie.id} index={index} />;
+        })}
+      </div>
     </CSSTransition>
   );
 };

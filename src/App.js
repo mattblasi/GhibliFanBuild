@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) return <div />;
+
   return (
-    <div className="ghibli">
+    <div id="ghibli" className="ghibli">
       <header className="site-header">
         <nav>
           <Link to="/">News</Link>
           <Link to="/">Movies</Link>
         </nav>
       </header>
-      <main className="site-content">
+      <main id="main" className="site-content">
         <Outlet />
       </main>
       <footer className="site-footer">

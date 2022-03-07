@@ -29,7 +29,8 @@ const CastListItem = ({ name }) => (
 const DetailsCredits = React.memo(
   ({ title, people: { writer, cast, director, ...rest } }) => {
     useEffect(() => {
-      document.getElementsByClassName('site-content')[0].scrollTop = 0;
+      document.title = `Studio Ghibli : ${title} Credits`;
+      document.querySelector('#main').scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
     return (

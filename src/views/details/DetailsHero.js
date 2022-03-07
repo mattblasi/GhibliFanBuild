@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import {
-  ParallaxProvider,
-  ParallaxBanner,
-  Parallax,
-} from 'react-scroll-parallax';
+import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax';
 
 import Poster from '../../components/Poster';
 import DetailsSummary from './DetailsSummary';
@@ -28,8 +24,10 @@ const DetailsHero = ({
   }, [bgLoaded]);
 
   useEffect(() => {
-    let imageIndex = Math.floor(Math.random() * wallpapers.length);
-    let background = wallpapers ? wallpapers[imageIndex] : '';
+    let imageIndex = Math.floor(Math.random() * wallpapers?.length);
+    let background = wallpapers
+      ? wallpapers[imageIndex]
+      : 'https://assets.nflxext.com/ffe/siteui/vlv3/1691099b-ff71-4321-bd54-1bba46b0886b/2c85b161-6a67-445b-a029-3861905f047d/US-en-20220228-popsignuptwoweeks-perspective_alpha_website_large.jpg';
     setHeroIndex(imageIndex);
     setBgImage(background);
   }, []);
