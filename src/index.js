@@ -26,13 +26,13 @@ const app = (AppComponent) => {
               />
               <Route
                 exact
-                path=":movie_id/gallery"
-                element={<MovieDetails show="default" />}
+                path=":movie_id/credits"
+                element={<MovieDetails show="credits" />}
               />
               <Route
                 exact
-                path=":movie_id/credits"
-                element={<MovieDetails show="credits" />}
+                path=":movie_id/gallery"
+                element={<MovieDetails show="default" />}
               />
               <Route
                 exact

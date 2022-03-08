@@ -9,7 +9,10 @@ const DetailsGenres = ({ genres }) => {
         Genres:{' '}
         {genres.map((g, i) => (
           <React.Fragment>
-            <a href={`${window.location.origin}/movies/${g.toLowerCase()}`}>
+            <a
+              href={`${window.location.origin}/movies/${g.toLowerCase()}`}
+              key={`genre-${i}`}
+            >
               {g}
             </a>
             {genres.length - 1 === i ? '' : ', '}

@@ -37,11 +37,14 @@ const MovieDetails = ({
   const [bgImage, setBgImage] = useState();
 
   useEffect(() => {
+    console.log('test', id, people);
     if (id !== movie_id) {
       clearMovieDetails();
       getMovieDetails(movie_id);
       getMoviePeople(movie_id);
     }
+
+    getMoviePeople(movie_id);
   }, []);
 
   useEffect(() => {

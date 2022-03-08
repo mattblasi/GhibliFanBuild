@@ -31,18 +31,25 @@ const DetailsMedia = () => {
   const Trailer = ({ click }) => {
     return (
       <div className="trailer">
-        <div class="trailer-controls">
+        <div classN="trailer-controls">
           <button className="trailer-close" onClick={toggleTrailer}>
-            <FontAwesomeIcon icon={['fal', 'faCircleXmark']} />
+            <FontAwesomeIcon
+              //icon={['fal', 'faCircleXmark']}
+              icon={faCircleXmark}
+            />
           </button>
           <button className="trailer-fullscreen" onClick={toggleFullScreen}>
             {!fullScreen && (
               <FontAwesomeIcon
-                icon={['fal', 'faUpRightAndDownLeftFromCenter']}
+                //icon={['fal', 'faUpRightAndDownLeftFromCenter']}
+                icon={faUpRightAndDownLeftFromCenter}
               />
             )}
             {fullScreen && (
-              <FontAwesomeIcon icon={['fal', 'faDownLeftAndUpRightToCenter']} />
+              <FontAwesomeIcon
+                //icon={['fal', 'faDownLeftAndUpRightToCenter']}
+                icon={faDownLeftAndUpRightToCenter}
+              />
             )}
           </button>
         </div>
