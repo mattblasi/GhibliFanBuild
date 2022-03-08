@@ -428,8 +428,7 @@
 
   .details-synopsis {
     font-size: 1.6rem;
-    padding: 1.5rem;
-    padding-top: 3.5rem;
+    padding: 5rem 1rem;
 
     h2 {
       display: flex;
@@ -547,7 +546,7 @@
   }
 
   .details-cast {
-    padding: 0 1rem;
+    padding: 0 1rem 5rem;
     position: relative;
     width: 100%;
 
@@ -621,8 +620,7 @@
   .details-movies {
     display: flex;
     gap: 1.5rem;
-    margin-top: 2.5rem;
-    padding: 1.25rem;
+    padding: 5rem 1rem;
     width: 100%;
 
     .details-link {

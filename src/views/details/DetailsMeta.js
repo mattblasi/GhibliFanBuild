@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 const DetailsMeta = ({
-  release_year,
-  imdb_score,
-  imdb_popularity,
-  duration,
-  rottentomatoes,
+  details: {
+    meta: { release_year, imdb_score, imdb_popularity, duration },
+    rottentomatoes,
+  },
 }) => {
   return (
     <div className="details-meta">
+      <div className="details-meta--year">Released: {release_year}</div>
       <div className="details-meta--imdb">{imdb_score}/10</div>
       <div
         className={`details-meta--rottentomatos-tom ${
@@ -32,19 +31,4 @@ const DetailsMeta = ({
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    details: {
-      meta: { release_year, imdb_score, imdb_popularity, duration },
-      rottentomatoes,
-    },
-  },
-}) => ({
-  release_year,
-  imdb_score,
-  imdb_popularity,
-  duration,
-  rottentomatoes,
-});
-
-export default connect(mapStateToProps)(DetailsMeta);
+export default DetailsMeta;

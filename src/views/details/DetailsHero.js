@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax';
 
@@ -7,11 +6,7 @@ import Poster from '../../components/Poster';
 import DetailsSummary from './DetailsSummary';
 
 const DetailsHero = ({
-  title,
-  og_title_rm,
-  og_title_jp,
-  posters,
-  wallpapers,
+  details: { title, og_title_rm, og_title_jp, posters, wallpapers, summaries },
   setHeroLoaded,
   setHeroIndex,
 }) => {
@@ -27,7 +22,7 @@ const DetailsHero = ({
     let imageIndex = Math.floor(Math.random() * wallpapers?.length);
     let background = wallpapers
       ? wallpapers[imageIndex]
-      : 'https://assets.nflxext.com/ffe/siteui/vlv3/1691099b-ff71-4321-bd54-1bba46b0886b/2c85b161-6a67-445b-a029-3861905f047d/US-en-20220228-popsignuptwoweeks-perspective_alpha_website_large.jpg';
+      : 'https://bit.ly/37c03oN';
     setHeroIndex(imageIndex);
     setBgImage(background);
   }, []);
@@ -51,7 +46,7 @@ const DetailsHero = ({
             <ParallaxBanner layers={[{ image: bgImage, speed: -25 }]} />
             <div className="details-hero--content">
               <Poster src={posters[posters.length - 1]} alt={title} />
-              <DetailsSummary />
+              <DetailsSummary summaries={summaries} />
               <header className="details-header">
                 <h1>
                   {title}
@@ -74,16 +69,4 @@ const DetailsHero = ({
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    details: { title, og_title_rm, og_title_jp, posters, wallpapers },
-  },
-}) => ({
-  title,
-  og_title_rm,
-  og_title_jp,
-  posters,
-  wallpapers,
-});
-
-export default connect(mapStateToProps)(DetailsHero);
+export default DetailsHero;

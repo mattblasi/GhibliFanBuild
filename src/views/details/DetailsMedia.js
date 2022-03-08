@@ -31,7 +31,7 @@ const DetailsMedia = () => {
   const Trailer = ({ click }) => {
     return (
       <div className="trailer">
-        <div classN="trailer-controls">
+        <div className="trailer-controls">
           <button className="trailer-close" onClick={toggleTrailer}>
             <FontAwesomeIcon
               //icon={['fal', 'faCircleXmark']}

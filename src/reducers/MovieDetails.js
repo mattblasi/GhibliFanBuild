@@ -2,6 +2,7 @@ import {
   MOVIES_SET_DETAILS,
   MOVIES_SET_PEOPLE,
   MOVIES_CLEAR_DETAILS,
+  MOVIES_RELOAD_DETAILS,
 } from '../actions/actionTypes';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 
@@ -37,6 +38,12 @@ export default function Details(state = initialState, action) {
         people: {
           ...action.data.people,
         },
+      };
+
+    case MOVIES_RELOAD_DETAILS:
+      return {
+        ...state,
+        isLoading: true,
       };
 
     case MOVIES_CLEAR_DETAILS:

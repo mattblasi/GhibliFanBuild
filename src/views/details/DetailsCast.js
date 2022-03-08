@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const DetailsCast = ({ id, cast }) => {
+const DetailsCast = ({ cast }) => {
   return (
     <div className="details-cast">
       <h2>
@@ -22,18 +21,4 @@ const DetailsCast = ({ id, cast }) => {
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    isLoading,
-    details: {
-      id,
-      people: { cast },
-    },
-  },
-}) => ({
-  isLoading,
-  id,
-  cast,
-});
-
-export default connect(mapStateToProps)(DetailsCast);
+export default DetailsCast;

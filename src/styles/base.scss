@@ -148,6 +148,23 @@ button {
   .search-list {
     background: #fff;
     position: absolute;
+
+    top: 100%;
+    width: 100%;
+    left: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      border: none;
+      color: #333;
+      font-size: 1.3rem;
+      line-height: 125%;
+      padding: 1.5rem;
+      text-transform: capitalize;
+    }
   }
 }
 

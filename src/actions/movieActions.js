@@ -3,6 +3,7 @@ import {
   MOVIES_SET_DETAILS,
   MOVIES_SET_PEOPLE,
   MOVIES_CLEAR_DETAILS,
+  MOVIES_RELOAD_DETAILS,
 } from '../actions/actionTypes';
 import axios from 'axios';
 import { dispatch, getState } from '../store';
@@ -13,23 +14,16 @@ const BASE_URL = `https://ghiblifan.herokuapp.com`;
 export const getAllMovies = () => {
   return async (dispatch) => {
     const response = await axios.get(`${BASE_URL}/movies`);
-    dispatch(setMovies(response.data));
+    console.log(response);
+    dispatch({ type: MOVIES_SET_MOVIES, data: response.data });
   };
-};
-
-const setMovies = (data) => {
-  return { type: MOVIES_SET_MOVIES, data: data };
 };
 
 export const getMovieDetails = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${BASE_URL}/movies/title/${id}`);
-    dispatch(setMovieDetails(response.data));
+    dispatch({ type: MOVIES_SET_DETAILS, data: response.data });
   };
-};
-
-const setMovieDetails = (data) => {
-  return { type: MOVIES_SET_DETAILS, data: data };
 };
 
 export const getMoviePeople = (id) => {
@@ -39,14 +33,10 @@ export const getMoviePeople = (id) => {
   };
 };
 
-const setMoviePeople = () => {
-  return { type: MOVIES_SET_PEOPLE, data: data };
-};
-
 export const clearMovieDetails = () => {
-  return async (dispatch) => dispatch(clearMovie());
+  return async (dispatch) => dispatch({ type: MOVIES_CLEAR_DETAILS });
 };
 
-const clearMovie = () => {
-  return { type: MOVIES_CLEAR_DETAILS };
+export const forceReloadDetails = () => {
+  return async (dispatch) => dispatch({ type: MOVIES_RELOAD_DETAILS });
 };

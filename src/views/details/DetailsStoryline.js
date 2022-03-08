@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 
 const DetailsStoryline = ({ synopsis }) => {
   const [useFullSynopsis, setFullSynopsis] = useState(false);
@@ -30,12 +29,4 @@ const DetailsStoryline = ({ synopsis }) => {
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    details: { synopsis },
-  },
-}) => ({
-  synopsis,
-});
-
-export default connect(mapStateToProps)(DetailsStoryline);
+export default DetailsStoryline;
