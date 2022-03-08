@@ -30,12 +30,13 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
     );
   }, []);
 
+  /**
+   * Handle search terms to check against the title, 
+   * japanese title, genres, and release year. Searches 
+   * within the current images state short form
+   */
   useEffect(() => {
     setResults(
-      /**
-       * Filter to return movie if title, japanese title, release year,
-       * or genres include the search term.
-       */
       movies.filter((m) => {
         let hasGenre = false,
           title = m.title.toLowerCase(),
@@ -56,6 +57,10 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
     );
   }, [searchTerm]);
 
+  /**
+   * Empty out the search and reset the fields
+   * when search form is closed
+   */
   useEffect(() => {
     if (!isSearch) {
       setSearchTerm('');

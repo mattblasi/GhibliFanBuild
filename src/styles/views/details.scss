@@ -665,4 +665,66 @@
   .three-col .credits-list--item {
     flex-basis: 33.33%;
   }
+
+  .page-nav {
+    display: flex;
+    margin-bottom: 2rem;
+    width: 100%;
+
+    .page-link {
+      border: 1px solid #333;
+      background: #444;
+      color: #eee;
+      display: flex;
+      flex-grow: 1;
+      letter-spacing: 0.05rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      &:first-of-type {
+        border-right: none;
+      }
+
+      &.is-active {
+        background: #222;
+        color: #fff;
+      }
+
+      .page-link--icon {
+        border-right: 1px solid #333;
+        padding: 2rem;
+      }
+
+      .page-link--text {
+        flex-grow: 1;
+        padding: 2rem;
+      }
+    }
+  }
+
+  .back-button {
+    display: block;
+    margin-bottom: 3rem;
+    width: auto;
+
+    .page-link {
+      color: #333;
+      display: flex;
+      flex-grow: 1;
+      letter-spacing: 0.05rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      .page-link--icon,
+      .page-link--text {
+        padding: 1rem;
+      }
+
+      .page-link--text {
+        padding-left: 0;
+      }
+    }
+  }
 }

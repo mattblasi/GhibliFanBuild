@@ -32,7 +32,7 @@ const app = (AppComponent) => {
               <Route
                 exact
                 path=":movie_id/gallery"
-                element={<MovieDetails show="default" />}
+                element={<MovieDetails show="gallery" />}
               />
               <Route
                 exact

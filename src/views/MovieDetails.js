@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import {
   getMovieDetails,
   getMoviePeople,
   clearMovieDetails,
 } from '../actions/movieActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBook,
+  faSkull,
+  faImages,
+  faAngleLeft,
+} from '@fortawesome/free-solid-svg-icons';
 
 import DetailsCast from './details/DetailsCast';
 import DetailsCredits from './details/DetailsCredits';
@@ -38,6 +45,7 @@ const MovieDetails = ({
 
   useEffect(() => {
     if (id !== movie_id) {
+      // If movie has changed then reupdate data
       clearMovieDetails();
       getMovieDetails(movie_id);
       setBgImage(null);
@@ -45,7 +53,7 @@ const MovieDetails = ({
       setHeroIndex(null);
       setHeroLoaded(false);
     }
-    getMoviePeople(movie_id);
+    getMoviePeople(movie_id); // always refetch people
   }, [movie_id]);
 
   useEffect(() => {
@@ -61,6 +69,31 @@ const MovieDetails = ({
   }, [heroIndex, movie_id]);
 
   if (isLoading || id !== movie_id) return <div>Loading...</div>;
+
+  const PageLink = ({ page }) => {
+    return (
+      <Link
+        to={
+          show !== page && page !== 'default'
+            ? `/${movie_id}/${page}`
+            : `/${movie_id}`
+        }
+        className={`page-link${show === page ? ' is-active' : ''}`}
+      >
+        <span className="page-link--icon">
+          {page === 'credits' && <FontAwesomeIcon icon={faSkull} />}
+          {page === 'story' && <FontAwesomeIcon icon={faBook} />}
+          {page === 'gallery' && <FontAwesomeIcon icon={faImages} />}
+          {page !== show && page === 'default' && (
+            <FontAwesomeIcon icon={faAngleLeft} />
+          )}
+        </span>
+        <span className="page-link--text">
+          {page !== 'default' ? page : 'back'}
+        </span>
+      </Link>
+    );
+  };
 
   return (
     <div className="full-details">
@@ -81,6 +114,16 @@ const MovieDetails = ({
             <DetailsMeta details={details} />
             <DetailsGenres />
             <div className="details-content">
+              <nav id="page-nav" className="page-nav">
+                <PageLink page="story" />
+                <PageLink page="gallery" />
+                <PageLink page="credits" />
+              </nav>
+              {show !== 'default' && (
+                <div className="back-button">
+                  <PageLink page="default" />
+                </div>
+              )}
               {show === 'default' && <DetailsMedia />}
               {show === 'credits' && <DetailsCredits people={people} />}
               {show === 'gallery' && <DetailsMedia />}
