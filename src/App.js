@@ -25,7 +25,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   useEffect(() => {
     if (isLoading) getAllMovies();
     movies = movies.sort(
-      /(a, b) => (a.meta.release_year > b.meta.release_year ? 1 : -1) // Sort by release year oldest first
+      (a, b) => (a.meta.release_year > b.meta.release_year ? 1 : -1) // Sort by release year oldest first
       //(a, b) => (a.meta.imdb_score < b.meta.imdb_score ? 1 : -1) // sort by imdb score highest first
     );
   }, []);
@@ -96,6 +96,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
           </a>
           <Link to="/">News</Link>
           <Link to="/">Movies</Link>
+          <Link to="/">GhibliFest 2022</Link>
         </nav>
       </header>
       <main id="main" className="site-content">

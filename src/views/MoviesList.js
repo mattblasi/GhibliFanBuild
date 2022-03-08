@@ -15,11 +15,14 @@ const MoviesList = ({ movies, isLoading }) => {
 
   return (
     <CSSTransition in={showPage} timeout={300} classNames="page" unmountOnExit>
-      <div className="movies-list">
-        {movies.map((movie, index) => {
-          return <MovieCard movie={movie} key={movie.id} index={index} />;
-        })}
-      </div>
+      <React.Fragment>
+        {/* <HomeHero /> */}
+        <div className="movies-list">
+          {movies.map((movie, index) => {
+            return <MovieCard movie={movie} key={movie.id} index={index} />;
+          })}
+        </div>
+      </React.Fragment>
     </CSSTransition>
   );
 };
