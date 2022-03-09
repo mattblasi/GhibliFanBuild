@@ -31,8 +31,8 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   }, []);
 
   /**
-   * Handle search terms to check against the title, 
-   * japanese title, genres, and release year. Searches 
+   * Handle search terms to check against the title,
+   * japanese title, genres, and release year. Searches
    * within the current images state short form
    */
   useEffect(() => {
@@ -62,6 +62,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
    * when search form is closed
    */
   useEffect(() => {
+    if (isSearch) document.getElementById('ghibli-search').focus();
     if (!isSearch) {
       setSearchTerm('');
       setResults(null);
@@ -108,6 +109,17 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
         <Outlet />
       </main>
       <footer className="site-footer">
+        <nav className="footer-nav">
+          <Link className="footer-link" to="/about">
+            About
+          </Link>
+          <Link className="footer-link" to="/api">
+            API
+          </Link>
+          <Link className="footer-link" to="/terms">
+            Terms
+          </Link>
+        </nav>
         <p>Made by Me ~ Matt Blasi &copy; {new Date().getFullYear()}</p>
       </footer>
     </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleXmark,
@@ -33,23 +32,14 @@ const DetailsMedia = () => {
       <div className="trailer">
         <div className="trailer-controls">
           <button className="trailer-close" onClick={toggleTrailer}>
-            <FontAwesomeIcon
-              //icon={['fal', 'faCircleXmark']}
-              icon={faCircleXmark}
-            />
+            <FontAwesomeIcon icon={faCircleXmark} />
           </button>
           <button className="trailer-fullscreen" onClick={toggleFullScreen}>
             {!fullScreen && (
-              <FontAwesomeIcon
-                //icon={['fal', 'faUpRightAndDownLeftFromCenter']}
-                icon={faUpRightAndDownLeftFromCenter}
-              />
+              <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
             )}
             {fullScreen && (
-              <FontAwesomeIcon
-                //icon={['fal', 'faDownLeftAndUpRightToCenter']}
-                icon={faDownLeftAndUpRightToCenter}
-              />
+              <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} />
             )}
           </button>
         </div>
@@ -66,16 +56,9 @@ const DetailsMedia = () => {
       {playTrailer && <Trailer />}
 
       {!playTrailer && (
-        <React.Fragment>
-          <button className="details-media--trailer" onClick={toggleTrailer}>
-            <p>trailer</p>
-          </button>
-          <div className="details-media--photos">
-            <Link to="./gallery" className="details-media--photo"></Link>
-            <Link to="./gallery" className="details-media--photo"></Link>
-            <Link to="./gallery" className="details-media--photo"></Link>
-          </div>
-        </React.Fragment>
+        <button className="details-media--trailer" onClick={toggleTrailer}>
+          <p>trailer</p>
+        </button>
       )}
     </div>
   );

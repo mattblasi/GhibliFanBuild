@@ -353,3 +353,17 @@ button {
     }
   }
 }
+
+.footer-nav {
+  display: block;
+  margin-bottom: 0.75rem;
+
+  .footer-link {
+    color: #333;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    margin-right: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}

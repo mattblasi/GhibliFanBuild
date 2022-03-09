@@ -30,12 +30,14 @@ const DetailsCredits = React.memo(
   ({ title, people: { writer, cast, director, ...rest } }) => {
     useEffect(() => {
       document.title = `Studio Ghibli : ${title} Credits`;
-      document.querySelector('#main').scrollTo({ top: 0, behavior: 'smooth' });
+      document
+        .querySelector('#page-nav')
+        .scrollTo({ top: 60, behavior: 'smooth' });
     }, []);
 
     return (
       <div className="details-credits">
-        <h2>{title} Credits</h2>
+        {/* <h2>{title} Credits</h2> */}
         <CastList list={director} type="director" title="Director" />
         <CastList list={writer} type="writer" title="Writer" />
         <CastList list={cast} type="cast" title="Cast" />

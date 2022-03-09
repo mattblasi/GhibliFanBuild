@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DetailsMeta = ({
   details: {
-    meta: { release_year, imdb_score, imdb_popularity, duration },
+    meta: { release_year, imdb_score, imdb_popularity, duration, certificates },
     rottentomatoes,
   },
 }) => {
+  const [cert, setCert] = useState();
+
+  useEffect(() => {
+    if (certificates.length) {
+      let certs = certificates.filter((c) => c.country === 'United States');
+      setCert(certs);
+    }
+  }, [certificates]);
+
   return (
     <div className="details-meta">
-      <div className="details-meta--year">Released: {release_year}</div>
+      {cert && (
+        <div className="details-meta--cert">
+          <span>{cert[0].cert}</span>
+        </div>
+      )}
+
+      {/* <div className="details-meta--year">Released: {release_year}</div> */}
       <div className="details-meta--imdb">{imdb_score}/10</div>
       <div
         className={`details-meta--rottentomatos-tom ${

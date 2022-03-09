@@ -19,9 +19,9 @@ import DetailsCast from './details/DetailsCast';
 import DetailsCredits from './details/DetailsCredits';
 import DetailsGenres from './details/DetailsGenres';
 import DetailsHero from './details/DetailsHero';
+import DetailsImages from './details/DetailsImages';
 import DetailsMedia from './details/DetailsMedia';
 import DetailsMeta from './details/DetailsMeta';
-import DetailsSidebar from './details/DetailsSidebar';
 import DetailsStoryline from './details/DetailsStoryline';
 import DetailsVideos from './details/DetailsVideos';
 import DetailsWatch from './details/DetailsWatch';
@@ -80,14 +80,14 @@ const MovieDetails = ({
         }
         className={`page-link${show === page ? ' is-active' : ''}`}
       >
-        <span className="page-link--icon">
+        {/* <span className="page-link--icon">
           {page === 'credits' && <FontAwesomeIcon icon={faSkull} />}
           {page === 'story' && <FontAwesomeIcon icon={faBook} />}
           {page === 'gallery' && <FontAwesomeIcon icon={faImages} />}
           {page !== show && page === 'default' && (
             <FontAwesomeIcon icon={faAngleLeft} />
           )}
-        </span>
+        </span> */}
         <span className="page-link--text">
           {page !== 'default' ? page : 'back'}
         </span>
@@ -101,6 +101,7 @@ const MovieDetails = ({
         details={details}
         setHeroLoaded={setHeroLoaded}
         setHeroIndex={setHeroIndex}
+        show={show}
       />
 
       <CSSTransition
@@ -114,33 +115,32 @@ const MovieDetails = ({
             <DetailsMeta details={details} />
             <DetailsGenres />
             <div className="details-content">
-              <nav id="page-nav" className="page-nav">
-                <PageLink page="story" />
-                <PageLink page="gallery" />
-                <PageLink page="credits" />
-              </nav>
-              {show !== 'default' && (
-                <div className="back-button">
-                  <PageLink page="default" />
-                </div>
-              )}
-              {show === 'default' && <DetailsMedia />}
-              {show === 'credits' && <DetailsCredits people={people} />}
-              {show === 'gallery' && <DetailsMedia />}
-              {show === 'story' && <DetailsMedia />}
+              <DetailsMedia />
             </div>
-            <DetailsSidebar />
           </div>
-          {show === 'default' && (
-            <React.Fragment>
-              <DetailsWatch bgImage={bgImage} title={title} />
-              <div className="details-container">
+          <DetailsWatch bgImage={bgImage} title={title} />
+          <nav id="page-nav" className="page-nav">
+            <div className="details-container">
+              <PageLink page="story" />
+              <PageLink page="gallery" />
+              <PageLink page="credits" />
+            </div>
+          </nav>
+          <div className="details-container">
+            {show === 'story' && (
+              <React.Fragment>
+                <DetailsStoryline synopsis={details.synopsis} />
+              </React.Fragment>
+            )}
+            {show === 'credits' && <DetailsCredits people={people} />}
+            {show === 'gallery' && <DetailsImages />}
+            {show === 'default' && (
+              <React.Fragment>
                 <DetailsCast cast={details.people.cast} />
                 <DetailsVideos />
-                <DetailsStoryline synopsis={details.synopsis} />
-              </div>
-            </React.Fragment>
-          )}
+              </React.Fragment>
+            )}
+          </div>
           <MerchList movie_id={movie_id} />
         </article>
       </CSSTransition>
