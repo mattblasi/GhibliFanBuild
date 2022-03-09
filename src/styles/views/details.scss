@@ -243,7 +243,7 @@
       }
     }
 
-    .details-meta--cert  {
+    .details-meta--cert span {
       border: 2px solid #333;
       border-radius: 5px;
       height: auto;
@@ -328,7 +328,9 @@
     }
 
     .details-media--trailer {
-      background: #ccc;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
       border: none;
       cursor: pointer;
       display: block;
@@ -462,9 +464,9 @@
       background: #eee;
       border: 1px solid #ccc;
       display: block;
-      height: 17.5rem;
+      height: 25rem;
       margin-bottom: 1rem;
-      width: 19.2%;
+      width: 24.2%;
     }
   }
 

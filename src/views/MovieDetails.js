@@ -115,7 +115,7 @@ const MovieDetails = ({
             <DetailsMeta details={details} />
             <DetailsGenres />
             <div className="details-content">
-              <DetailsMedia />
+              <DetailsMedia details={details} />
             </div>
           </div>
           <DetailsWatch bgImage={bgImage} title={title} />

@@ -7,9 +7,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import ReactPlayer from 'react-player';
 
-const DetailsMedia = () => {
+const DetailsMedia = ({ details: { trailer } }) => {
   const [playTrailer, setPlayTrailer] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
+  const [videoId, setVideoId] = useState();
 
   const movieBlock = document.querySelector('.full-details .details-media');
 
@@ -17,6 +18,7 @@ const DetailsMedia = () => {
   const toggleFullScreen = () => setFullScreen(!fullScreen);
 
   useEffect(() => {
+    if (playTrailer) document.getElementById('ghibli-trailer').focus();
     if (fullScreen) toggleFullScreen();
   }, [playTrailer]);
 
@@ -26,6 +28,17 @@ const DetailsMedia = () => {
       if (!fullScreen) movieBlock.classList.remove('full-screen');
     }
   }, [fullScreen]);
+
+  useEffect(() => {
+    let video_id = trailer.split('v=')[1];
+    let ampersandPosition = video_id.indexOf('&');
+    if (ampersandPosition != -1) {
+      video_id = video_id.substring(0, ampersandPosition);
+    }
+    setVideoId(video_id);
+  }, [trailer]);
+
+  console.log('trailer', trailer);
 
   const Trailer = ({ click }) => {
     return (
@@ -44,8 +57,13 @@ const DetailsMedia = () => {
           </button>
         </div>
         <ReactPlayer
+          id="ghiblitrailer"
           className="trailer-wrapper"
-          url="https://www.youtube.com/watch?v=awEC-aLDzjs"
+          url={trailer}
+          playsinline={true}
+          playing={true}
+          width="100%"
+          height="100%"
         />
       </div>
     );
@@ -56,7 +74,14 @@ const DetailsMedia = () => {
       {playTrailer && <Trailer />}
 
       {!playTrailer && (
-        <button className="details-media--trailer" onClick={toggleTrailer}>
+        <button
+          className="details-media--trailer"
+          onClick={toggleTrailer}
+          style={{
+            backgroundImage: `url(https://img.youtube.com/vi/${videoId}/mqdefault.jpg)`,
+          }}
+        >
+          {/* data-src="https://img.youtube.com/vi/pkWWWKKA8jY/mqdefault.jpg" */}
           <p>trailer</p>
         </button>
       )}

@@ -29,6 +29,20 @@ const DetailsHero = ({
     setBgImage(background);
   }, []);
 
+  const HeaderButton = ({ icon, title, action }) => {
+    console.log(icon, title);
+
+    // play trailer
+    // where to watch
+
+    return (
+      <button className="button" onClick={action}>
+        <span className="button-icon">{icon}</span>
+        <span className="button-title">{title}</span>
+      </button>
+    );
+  };
+
   if (!title) return <div />;
 
   return (
