@@ -9,8 +9,8 @@ const DetailsCast = ({ cast }) => {
         <Link to="./credits">View Full Credits</Link>
       </h2>
       <ul className="details-cast--list">
-        {cast.map((c) => (
-          <li className="details-cast--listitem">
+        {cast.map((c, i) => (
+          <li className="details-cast--listitem" key={`cast-${i}`}>
             <div className="cast-image"></div>
             <p>{c.name}</p>
             <span>{c.role}</span>

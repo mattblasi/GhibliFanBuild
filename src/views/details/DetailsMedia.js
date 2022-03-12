@@ -38,8 +38,6 @@ const DetailsMedia = ({ details: { trailer } }) => {
     setVideoId(video_id);
   }, [trailer]);
 
-  console.log('trailer', trailer);
-
   const Trailer = ({ click }) => {
     return (
       <div className="trailer">
@@ -81,7 +79,6 @@ const DetailsMedia = ({ details: { trailer } }) => {
             backgroundImage: `url(https://img.youtube.com/vi/${videoId}/mqdefault.jpg)`,
           }}
         >
-          {/* data-src="https://img.youtube.com/vi/pkWWWKKA8jY/mqdefault.jpg" */}
           <p>trailer</p>
         </button>
       )}

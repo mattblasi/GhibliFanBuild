@@ -461,7 +461,9 @@
     width: 100%;
 
     .detail-images--image {
-      background: #eee;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
       border: 1px solid #ccc;
       display: block;
       height: 25rem;

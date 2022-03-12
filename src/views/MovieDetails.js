@@ -5,15 +5,9 @@ import { CSSTransition } from 'react-transition-group';
 import {
   getMovieDetails,
   getMoviePeople,
+  getMoviePhotos,
   clearMovieDetails,
 } from '../actions/movieActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBook,
-  faSkull,
-  faImages,
-  faAngleLeft,
-} from '@fortawesome/free-solid-svg-icons';
 
 import DetailsCast from './details/DetailsCast';
 import DetailsCredits from './details/DetailsCredits';
@@ -32,9 +26,11 @@ const MovieDetails = ({
   isLoading,
   details,
   people,
+  photos,
   clearMovieDetails,
   getMovieDetails,
   getMoviePeople,
+  getMoviePhotos,
 }) => {
   const { id, title, wallpapers } = details;
   const { movie_id } = useParams();
@@ -54,6 +50,7 @@ const MovieDetails = ({
       setHeroLoaded(false);
     }
     getMoviePeople(movie_id); // always refetch people
+    getMoviePhotos(movie_id); // always refetch photos
   }, [movie_id]);
 
   useEffect(() => {
@@ -133,7 +130,7 @@ const MovieDetails = ({
               </React.Fragment>
             )}
             {show === 'credits' && <DetailsCredits people={people} />}
-            {show === 'gallery' && <DetailsImages />}
+            {show === 'gallery' && <DetailsImages photos={photos} />}
             {show === 'default' && (
               <React.Fragment>
                 <DetailsCast cast={details.people.cast} />
@@ -155,15 +152,19 @@ const MovieDetails = ({
   );
 };
 
-const mapStateToProps = ({ Details: { isLoading, details, people } }) => ({
+const mapStateToProps = ({
+  Details: { isLoading, details, people, photos },
+}) => ({
   isLoading,
   details,
   people,
+  photos,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getMovieDetails: (movie_id) => dispatch(getMovieDetails(movie_id)),
   getMoviePeople: (movie_id) => dispatch(getMoviePeople(movie_id)),
+  getMoviePhotos: (movie_id) => dispatch(getMoviePhotos(movie_id)),
   clearMovieDetails: () => dispatch(clearMovieDetails()),
 });
 

@@ -6,14 +6,14 @@ const DetailsSidebar = ({ director, writer }) => {
     <aside className="details-sidebar">
       <p>Director{director.length > 1 ? 's' : ''}</p>
       <ul>
-        {director.map((d) => (
-          <li>{d.name}</li>
+        {director.map((d, i) => (
+          <li key={`director-${i}`}>{d.name}</li>
         ))}
       </ul>
       <p>Writer{writer.length > 1 ? 's' : ''}</p>
       <ul>
-        {writer.map((w) => (
-          <li>{w.name}</li>
+        {writer.map((w, i) => (
+          <li key={`writer-${i}`}>{w.name}</li>
         ))}
       </ul>
     </aside>

@@ -8,7 +8,7 @@ const DetailsGenres = ({ genres }) => {
       <p>
         Genres:{' '}
         {genres.map((g, i) => (
-          <React.Fragment>
+          <React.Fragment key={`fragment-${i}`}>
             <a
               href={`${window.location.origin}/movies/${g.toLowerCase()}`}
               key={`genre-${i}`}
