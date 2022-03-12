@@ -7,21 +7,21 @@ import {
   getMoviePeople,
   getMoviePhotos,
   clearMovieDetails,
-} from '../actions/movieActions';
+} from '../../actions/movieActions';
 
-import DetailsCast from './details/DetailsCast';
-import DetailsCredits from './details/DetailsCredits';
-import DetailsGenres from './details/DetailsGenres';
-import DetailsHero from './details/DetailsHero';
-import DetailsImages from './details/DetailsImages';
-import DetailsMedia from './details/DetailsMedia';
-import DetailsMeta from './details/DetailsMeta';
-import DetailsStoryline from './details/DetailsStoryline';
-import DetailsVideos from './details/DetailsVideos';
-import DetailsWatch from './details/DetailsWatch';
-import MerchList from '../components/MerchList';
+import DetailsCast from './DetailsCast';
+import DetailsCredits from './DetailsCredits';
+import DetailsGenres from './DetailsGenres';
+import DetailsHero from './DetailsHero';
+import DetailsImages from './DetailsImages';
+import DetailsMedia from './DetailsMedia';
+import DetailsMeta from './DetailsMeta';
+import DetailsStoryline from './DetailsStoryline';
+import DetailsVideos from './DetailsVideos';
+import DetailsWatch from './DetailsWatch';
+import MerchList from '../../components/MerchList';
 
-const MovieDetails = ({
+const Details = ({
   show,
   isLoading,
   details,
@@ -168,4 +168,4 @@ const mapDispatchToProps = (dispatch) => ({
   clearMovieDetails: () => dispatch(clearMovieDetails()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(Details);
