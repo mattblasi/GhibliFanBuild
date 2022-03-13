@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import Admin from './Admin';
+import Details from './Details';
 import Movies from './Movies';
 import Site from './Site';
 

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Prompt } from 'react-router';
 
-const AdminEdit = ({ movie: [movie] }) => {
+import { getMovieToEdit } from '../../actions/adminActions';
+
+const AdminEdit = ({ movie: [movie], getMovieDetails }) => {
   const [mov, setMov] = useState();
   const [hasChange, setChange] = useState(false);
   const formInputs = ['title', 'og_title_rm', 'og_title_jp', 'poster'];
@@ -16,15 +19,16 @@ const AdminEdit = ({ movie: [movie] }) => {
       document.getElementById(`field-${field}`).classList.add('edited');
     }
     setChange(document.querySelectorAll('.edited').length > 0);
-  } 
+  }
 
   useEffect(() => {
+    getMovieToEdit(movie);
     setMov(movie);
   }, [movie]);
 
   return (
-    <div className="admin-edit"  data-id={movie.id}>
-      <p>EDIT MODE {hasChange && ( <span> - [CHANGED]</span> )}</p>
+    <div className="admin-edit" data-id={movie.id}>
+      <p>EDIT MODE {hasChange && <span> - [CHANGED]</span>}</p>
       <h2>
         {movie.title}
         <span>{movie.id}</span>
@@ -33,8 +37,7 @@ const AdminEdit = ({ movie: [movie] }) => {
       {mov && (
         <React.Fragment>
           <div className="admin-edit--form">
-            {formInputs.map(item => {
-
+            {formInputs.map((item) => {
               return (
                 <div className="row" id={`field-${item}`} key={`field-${item}`}>
                   <label htmlFor={item}>Field: {item}</label>
@@ -55,4 +58,8 @@ const AdminEdit = ({ movie: [movie] }) => {
   );
 };
 
-export default AdminEdit;
+const mapDispatchToProps = (dispatch) => ({
+  getMovieDetails: (movie_id) => dispatch(getMovieToEdit(movie_id)),
+});
+
+export default connect(null, mapDispatchToProps)(AdminEdit);

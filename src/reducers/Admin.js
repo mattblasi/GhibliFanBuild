@@ -4,7 +4,7 @@ import {
   ADMIN_RELOAD_DETAILS,
   ADMIN_SET_PHOTOS,
   ADMIN_SET_PEOPLE,
-  ADMIN_SET_DETAILS
+  ADMIN_SET_DETAILS,
 } from '../actions/actionTypes';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 
@@ -32,7 +32,9 @@ export default function Details(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        details: { ...action.data },
+        details: { ...action.data.details },
+        people: { ...action.data.people },
+        photos: { ...action.data.photos },
       };
 
     case ADMIN_SET_PEOPLE:
