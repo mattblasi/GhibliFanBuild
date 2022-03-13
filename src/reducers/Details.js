@@ -43,7 +43,6 @@ export default function Details(state = initialState, action) {
       };
 
     case MOVIES_SET_PHOTOS:
-      console.log('set photos', action.data.images);
       return {
         ...state,
         photos: [...action.data.images],

@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
+import Admin from './Admin';
 import Movies from './Movies';
-import Details from './MovieDetails';
 import Site from './Site';
 
 const appReducer = combineReducers({
+  Admin,
   Details,
   Movies,
   Site,

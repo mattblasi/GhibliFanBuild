@@ -10,3 +10,11 @@ export const MOVIES_RELOAD_DETAILS = 'MOVIES_RELOAD_DETAILS';
 
 // page actions
 export const PAGE_RELOAD = 'PAGE_RELOAD';
+
+// admin actions
+export const ADMIN_EDIT = 'ADMIN_EDIT';
+export const ADMIN_CLEAR_DETAILS = 'ADMIN_CLEAR_DETAILS';
+export const ADMIN_RELOAD_DETAILS = 'ADMIN_RELOAD_DETAILS';
+export const ADMIN_SET_PHOTOS = 'ADMIN_SET_PHOTOS';
+export const ADMIN_SET_PEOPLE = 'ADMIN_SET_PEOPLE';
+export const ADMIN_SET_DETAILS = 'ADMIN_SET_DETAILS';
