@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { getMovieToEdit } from '../../actions/adminActions';
+
 import AdminEdit from './AdminEdit';
 
 const Admin = ({ movies, getMovieToEdit }) => {
   const [isEdit, setEdit] = useState(false);
   const [selectedMovie, setMovie] = useState();
 
-  const editMovie = (movie) => {
-    setMovie(movies.filter((m) => m.id === movie));
+  const editMovie = (movie) => setMovie(movie);
+
+  useEffect(() => {
+    getMovieToEdit(selectedMovie);
     setEdit(true);
-  };
+  }, [selectedMovie]);
+
   const toggleEdit = () => setEdit(!isEdit);
 
   const MoviesList = () => {
@@ -42,7 +47,7 @@ const Admin = ({ movies, getMovieToEdit }) => {
   return (
     <div className="admin">
       {movies.length > 0 && <MoviesList />}
-      {isEdit && <AdminEdit movie={selectedMovie} />}
+      {isEdit && <AdminEdit />}
     </div>
   );
 };
@@ -51,4 +56,8 @@ const mapStateToProps = ({ Movies: { movies } }) => ({
   movies,
 });
 
-export default connect(mapStateToProps)(Admin);
+const mapDispatchToProps = (dispatch) => ({
+  getMovieToEdit: (movie_id) => dispatch(getMovieToEdit(movie_id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);
