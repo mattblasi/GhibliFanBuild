@@ -12,14 +12,11 @@ const Admin = ({ movies }) => {
   const [isEdit, setEdit] = useState(false);
   const [selectedMovie, setMovie] = useState();
 
-  function editMovie(movie) {
+  const editMovie = (movie) => {
     setMovie(movies.filter((m) => m.id === movie));
     setEdit(true);
   }
-
-  function toggleEdit() {
-    setEdit(!isEdit);
-  }
+  const toggleEdit = () => setEdit(!isEdit);
 
   const MoviesList = () => {
     return (
