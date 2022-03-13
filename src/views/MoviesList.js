@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
 import MovieCard from '../components/MovieCard';
-import HomeHero from './homepage/HomeHero';
+import HomeHero from './Homepage/HomeHero';
 
 const MoviesList = ({ movies, isLoading }) => {
   const [showPage, setShowPage] = useState(false);

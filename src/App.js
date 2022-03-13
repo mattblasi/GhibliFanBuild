@@ -103,6 +103,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
           <Link to="/">News</Link>
           <Link to="/">Movies</Link>
           <Link to="/">GhibliFest 2022</Link>
+          <Link to="/admin">Admin</Link>
         </nav>
       </header>
       <main id="main" className="site-content">

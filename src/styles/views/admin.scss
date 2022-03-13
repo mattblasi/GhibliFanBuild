@@ -1,0 +1,36 @@
+.admin {
+  padding: 1rem;
+
+  .movies {
+    margin: 1rem 0;
+
+    .movies-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .movie-item {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+
+      .movie-item--container {
+        display: flex;
+        width: 30rem;
+      }
+
+      .movie-poster {
+        flex-basis: 35%;
+        width: 35%;
+      }
+
+      .movie-info {
+        padding-left: 1rem;
+      }
+    }
+  }
+}

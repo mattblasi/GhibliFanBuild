@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import App from './App';
 import MoviesList from './views/MoviesList';
 import Details from './views/Details/Details';
+import Admin from './views/Admin/Admin';
 
 import './styles/styles.scss';
 
@@ -39,6 +40,7 @@ const app = (AppComponent) => {
                 path=":movie_id/story"
                 element={<Details show="story" />}
               />
+              <Route exact path="/admin" element={<Admin />} />
               <Route path="*" element={<p>There's nothing here!</p>} />
             </Route>
           </Routes>
