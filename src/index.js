@@ -40,7 +40,12 @@ const app = (AppComponent) => {
                 path=":movie_id/story"
                 element={<Details show="story" />}
               />
-              <Route exact path="/admin" element={<Admin />} />
+              <Route
+                exact
+                path="/admin"
+                onLeave={() => console.log('bye')}
+                element={<Admin />}
+              />
               <Route path="*" element={<p>There's nothing here!</p>} />
             </Route>
           </Routes>

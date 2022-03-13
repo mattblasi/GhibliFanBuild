@@ -11,6 +11,10 @@ body {
 * {
   box-sizing: border-box;
   line-height: 125%;
+
+  &:focus {
+    //outline-color: rgb(235, 25, 25);
+  }
 }
 
 h1,

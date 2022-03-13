@@ -8,7 +8,7 @@ import DetailsSidebar from './DetailsSidebar';
 
 const DetailsHero = ({
   show,
-  details: { title, og_title_rm, og_title_jp, posters, wallpapers, summaries },
+  details: { title, og_title_rm, og_title_jp, poster, wallpapers, summaries },
   setHeroLoaded,
   setHeroIndex,
 }) => {
@@ -62,7 +62,7 @@ const DetailsHero = ({
             <ParallaxBanner layers={[{ image: bgImage, speed: -25 }]} />
             <div className="details-hero--content">
               <div className="details-hero--sidebar">
-                <Poster src={posters[posters.length - 1]} alt={title} />
+                <Poster src={poster} alt={title} />
                 <DetailsSidebar />
               </div>
               <DetailsSummary summaries={summaries} />

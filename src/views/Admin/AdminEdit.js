@@ -1,37 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Prompt } from 'react-router';
 
 const AdminEdit = ({ movie: [movie] }) => {
   const [mov, setMov] = useState();
-  console.log('set movie: ', movie);
+  const [hasChange, setChange] = useState(false);
+  const formInputs = ['title', 'og_title_rm', 'og_title_jp', 'poster'];
 
-  // functions to build form returned by useForm() hook
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setValue,
-    getValues,
-    errors,
-    formState,
-  } = useForm();
-
-  function onSubmit(data) {}
-
-  function createUser(data) {}
-
-  function updateUser(id, data) {}
+  function handleValueChange(field, val) {
+    let newMov = { ...mov };
+    newMov[field] = val;
+    setMov({ ...newMov });
+    if (newMov[field] === movie[field]) {
+      document.getElementById(`field-${field}`).classList.remove('edited');
+    } else {
+      document.getElementById(`field-${field}`).classList.add('edited');
+    }
+    setChange(document.querySelectorAll('.edited').length > 0);
+  } 
 
   useEffect(() => {
-    console.log('use effect');
-
-  }, []);
+    setMov(movie);
+  }, [movie]);
 
   return (
-    <div className="admin-edit" data-id={movie.id}>
-      <p>EDIT MODE</p>
-      <h2>{movie.title}</h2>
-      <form onSubmit={handleSubmit(onSubmit)} onReset={reset}></form>
+    <div className="admin-edit"  data-id={movie.id}>
+      <p>EDIT MODE {hasChange && ( <span> - [CHANGED]</span> )}</p>
+      <h2>
+        {movie.title}
+        <span>{movie.id}</span>
+      </h2>
+
+      {mov && (
+        <React.Fragment>
+          <div className="admin-edit--form">
+            {formInputs.map(item => {
+
+              return (
+                <div className="row" id={`field-${item}`} key={`field-${item}`}>
+                  <label htmlFor={item}>Field: {item}</label>
+                  <input
+                    id={item}
+                    name={item}
+                    type="text"
+                    value={mov[item]}
+                    onChange={(e) => handleValueChange(item, e.target.value)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </React.Fragment>
+      )}
     </div>
   );
 };

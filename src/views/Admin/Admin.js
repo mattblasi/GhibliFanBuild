@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import {
+  getMovieDetails,
+  getMoviePeople,
+  getMoviePhotos,
+} from '../../actions/movieActions';
 
 import AdminEdit from './AdminEdit';
 
@@ -25,7 +30,7 @@ const Admin = ({ movies }) => {
               <div className="movie-item--container">
                 <img
                   className="movie-poster"
-                  src={m.posters[m.posters.length - 1]}
+                  src={m.poster}
                 />
                 <div className="movie-info">
                   <h2 className="movie-title">{m.title}</h2>

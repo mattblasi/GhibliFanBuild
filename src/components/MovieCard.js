@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MovieCard = ({ movie: { id, title, posters, og_title_jp, og_title_rm } }) => {
-  let poster = posters[posters.length - 1];
+const MovieCard = ({
+  movie: { id, title, poster, og_title_jp, og_title_rm },
+}) => {
   return (
     <Link
       to={id}

@@ -18,7 +18,7 @@ const DetailsMedia = ({ details: { trailer } }) => {
   const toggleFullScreen = () => setFullScreen(!fullScreen);
 
   useEffect(() => {
-    if (playTrailer) document.getElementById('ghibli-trailer').focus();
+    //if (playTrailer) document.getElementById('ghibli-trailer').focus();
     if (fullScreen) toggleFullScreen();
   }, [playTrailer]);
 
