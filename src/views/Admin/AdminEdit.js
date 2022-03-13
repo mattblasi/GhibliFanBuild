@@ -4,7 +4,7 @@ import { Prompt } from 'react-router';
 
 import { getMovieToEdit } from '../../actions/adminActions';
 
-const AdminEdit = ({ movie: [movie], getMovieDetails }) => {
+const AdminEdit = ({ Admin, movie: [movie], getMovieToEdit }) => {
   const [mov, setMov] = useState();
   const [hasChange, setChange] = useState(false);
   const formInputs = ['title', 'og_title_rm', 'og_title_jp', 'poster'];
@@ -22,9 +22,11 @@ const AdminEdit = ({ movie: [movie], getMovieDetails }) => {
   }
 
   useEffect(() => {
-    getMovieToEdit(movie);
-    setMov(movie);
+    getMovieToEdit(movie.id);
+    setMov(Admin);
   }, [movie]);
+
+  console.log('mov', mov);
 
   return (
     <div className="admin-edit" data-id={movie.id}>
@@ -45,11 +47,16 @@ const AdminEdit = ({ movie: [movie], getMovieDetails }) => {
                     id={item}
                     name={item}
                     type="text"
-                    value={mov[item]}
+                    value={mov.details[item]}
                     onChange={(e) => handleValueChange(item, e.target.value)}
                   />
                 </div>
               );
+            })}
+          </div>
+          <div>
+            {mov.photos.map(p => {
+              <
             })}
           </div>
         </React.Fragment>
@@ -58,8 +65,12 @@ const AdminEdit = ({ movie: [movie], getMovieDetails }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getMovieDetails: (movie_id) => dispatch(getMovieToEdit(movie_id)),
+const mapStateToProps = ({ Admin }) => ({
+  Admin,
 });
 
-export default connect(null, mapDispatchToProps)(AdminEdit);
+const mapDispatchToProps = (dispatch) => ({
+  getMovieToEdit: (movie_id) => dispatch(getMovieToEdit(movie_id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminEdit);
