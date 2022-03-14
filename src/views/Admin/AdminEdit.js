@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 
 const AdminEdit = ({ Admin: { details, people, photos } }) => {
-  const [isLoading, setLoading] = useState(true);
   const [hasChange, setChange] = useState(false);
   const [photoList, addPhotos] = useState([]);
   const [mov, setMov] = useState();
@@ -42,20 +40,12 @@ const AdminEdit = ({ Admin: { details, people, photos } }) => {
       photos: [...photos],
     });
     addPhotos([]);
-    setLoading(false);
     let removals = document.querySelectorAll('.gallery-image.remove');
     removals.forEach(img => img.classList.remove('remove'));
   }, [details, people, photos]);
 
   return (
     <div className="admin-edit" data-id={details.id}>
-      <CSSTransition
-        in={!isLoading && mov}
-        timeout={1000}
-        classNames="page"
-        unmountOnExit
-      >
-        <React.Fragment>
           <p>EDIT MODE {hasChange && <span> - [CHANGED]</span>}</p>
           <h2>
             {details.title} <span>{details.id}</span>
@@ -123,8 +113,6 @@ const AdminEdit = ({ Admin: { details, people, photos } }) => {
               </div>
             </React.Fragment>
           )}
-        </React.Fragment>
-      </CSSTransition>
     </div>
   );
 };
