@@ -1,11 +1,4 @@
-import {
-  ADMIN_EDIT,
-  ADMIN_SET_DETAILS,
-  ADMIN_SET_PEOPLE,
-  ADMIN_SET_PHOTOS,
-  ADMIN_CLEAR_DETAILS,
-  ADMIN_RELOAD_DETAILS,
-} from '../actions/actionTypes';
+import { ADMIN_SET_DETAILS } from '../actions/actionTypes';
 import axios from 'axios';
 import { dispatch, getState } from '../store';
 

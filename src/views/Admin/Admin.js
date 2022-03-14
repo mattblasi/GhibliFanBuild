@@ -13,7 +13,7 @@ const Admin = ({ movies, getMovieToEdit }) => {
 
   useEffect(() => {
     getMovieToEdit(selectedMovie);
-    setEdit(true);
+    if (selectedMovie) setEdit(true);
   }, [selectedMovie]);
 
   const toggleEdit = () => setEdit(!isEdit);

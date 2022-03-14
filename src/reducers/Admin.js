@@ -29,6 +29,7 @@ export default function Details(state = initialState, action) {
       }
 
     case ADMIN_SET_DETAILS:
+      console.log(action.data);
       return {
         ...state,
         isLoading: false,
