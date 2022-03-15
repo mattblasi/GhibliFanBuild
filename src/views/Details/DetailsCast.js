@@ -11,7 +11,13 @@ const DetailsCast = ({ cast }) => {
       <ul className="details-cast--list">
         {cast.map((c, i) => (
           <li className="details-cast--listitem" key={`cast-${i}`}>
-            <div className="cast-image"></div>
+            <div className="cast-image">
+              <img
+                src={c.photo_url}
+                alt={c.name}
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
             <p>{c.name}</p>
             <span>{c.role}</span>
           </li>

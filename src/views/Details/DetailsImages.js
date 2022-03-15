@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
-const DetailsImages = ({ photos }) => {
+const DetailsImages = ({ photos, show, title }) => {
+  const [photosList, setPhotosList] = useState([]);
   const [photosLoaded, setPhotosLoaded] = useState(false);
   const [loadedCount, setLoadedCount] = useState(0);
 
   const handleImageLoaded = () => {
     let count = loadedCount + 1;
     setLoadedCount(count);
-    if (loadedCount === photos.length - 1) setPhotosLoaded(true);
+    if (loadedCount === photosList.length - 1) setPhotosLoaded(true);
   };
+
+  useEffect(() => {
+    if (photos.length) setPhotosList(show ? photos.slice(0, show) : photos);
+  }, [photos]);
 
   return (
     <React.Fragment>
@@ -20,7 +26,13 @@ const DetailsImages = ({ photos }) => {
         unmountOnExit
       >
         <div className="detail-images">
-          {photos.map((p, i) => (
+          {title && (
+            <h2>
+              <span>{title}</span>
+              <Link to="./gallery">View Full Gallery</Link>
+            </h2>
+          )}
+          {photosList.map((p, i) => (
             <div
               className="detail-images--image"
               key={`images-${i}`}
@@ -28,13 +40,13 @@ const DetailsImages = ({ photos }) => {
                 backgroundImage: `url(${p})`,
               }}
             >
-              ...
+              <img style={{ display: 'none' }} src={p} />
             </div>
           ))}
         </div>
       </CSSTransition>
       {!photosLoaded &&
-        photos.map((p, i) => (
+        photosList.map((p, i) => (
           <img
             style={{ display: 'none' }}
             src={p}

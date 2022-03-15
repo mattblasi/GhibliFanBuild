@@ -7,6 +7,8 @@ import { getAllMovies, forceReloadDetails } from './actions/movieActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+import Recents from './components/Recents';
+
 const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -108,6 +110,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
       </header>
       <main id="main" className="site-content">
         <Outlet />
+        <Recents />
       </main>
       <footer className="site-footer">
         <nav className="footer-nav">

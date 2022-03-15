@@ -9,6 +9,8 @@ import {
   clearMovieDetails,
 } from '../../actions/movieActions';
 
+import { updateRecents } from '../../actions/siteActions';
+
 import DetailsCast from './DetailsCast';
 import DetailsCredits from './DetailsCredits';
 import DetailsGenres from './DetailsGenres';
@@ -31,6 +33,7 @@ const Details = ({
   getMovieDetails,
   getMoviePeople,
   getMoviePhotos,
+  updateRecents,
 }) => {
   const { id, title, wallpapers } = details;
   const { movie_id } = useParams();
@@ -40,7 +43,7 @@ const Details = ({
   const [bgImage, setBgImage] = useState();
 
   useEffect(() => {
-    if (id !== movie_id) {
+    if (id !== movie_id || details.length <= 0) {
       // If movie has changed then reupdate data
       clearMovieDetails();
       getMovieDetails(movie_id);
@@ -48,6 +51,7 @@ const Details = ({
       setBgLoaded(false);
       setHeroIndex(null);
       setHeroLoaded(false);
+      updateRecents(movie_id);
     }
     getMoviePeople(movie_id); // always refetch people
     getMoviePhotos(movie_id); // always refetch photos
@@ -77,14 +81,6 @@ const Details = ({
         }
         className={`page-link${show === page ? ' is-active' : ''}`}
       >
-        {/* <span className="page-link--icon">
-          {page === 'credits' && <FontAwesomeIcon icon={faSkull} />}
-          {page === 'story' && <FontAwesomeIcon icon={faBook} />}
-          {page === 'gallery' && <FontAwesomeIcon icon={faImages} />}
-          {page !== show && page === 'default' && (
-            <FontAwesomeIcon icon={faAngleLeft} />
-          )}
-        </span> */}
         <span className="page-link--text">
           {page !== 'default' ? page : 'back'}
         </span>
@@ -135,6 +131,7 @@ const Details = ({
               <React.Fragment>
                 <DetailsCast cast={details.people.cast} />
                 <DetailsVideos />
+                <DetailsImages photos={photos} show={8} title="Photos" />
               </React.Fragment>
             )}
           </div>
@@ -162,6 +159,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  updateRecents: (movie_id) => dispatch(updateRecents(movie_id)),
   getMovieDetails: (movie_id) => dispatch(getMovieDetails(movie_id)),
   getMoviePeople: (movie_id) => dispatch(getMoviePeople(movie_id)),
   getMoviePhotos: (movie_id) => dispatch(getMoviePhotos(movie_id)),
