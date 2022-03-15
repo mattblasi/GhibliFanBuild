@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { getMovieToEdit } from '../../actions/adminActions';
 
-import AdminEdit from './AdminEdit';
+// import AdminEdit from './AdminEdit';
+import Edit from './Edit';
 
 const Admin = ({ movies, getMovieToEdit }) => {
   const [isEdit, setEdit] = useState(false);
@@ -47,7 +48,7 @@ const Admin = ({ movies, getMovieToEdit }) => {
   return (
     <div className="admin">
       {movies.length > 0 && <MoviesList />}
-      {isEdit && <AdminEdit />}
+      {isEdit && <Edit />}
     </div>
   );
 };
