@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import logo from '../images/Studio_Ghibli_logo.svg';
-
 const Recents = ({ recentlyViewed, movies }) => {
   const [recents, setRecents] = useState([]);
-  const [order, setOrder] = useState([]);
 
   useEffect(() => {
     if (recentlyViewed) {
@@ -14,9 +11,7 @@ const Recents = ({ recentlyViewed, movies }) => {
       recentlyViewed.forEach((key) => {
         sorted.push(movies.filter((m) => m.id === key)[0]);
       });
-      console.log('sorted', sorted);
       setRecents(sorted);
-      setOrder(recentlyViewed);
     }
   }, [recentlyViewed]);
 
@@ -35,7 +30,6 @@ const Recents = ({ recentlyViewed, movies }) => {
             </Link>
           ))}
       </div>
-      <img src={logo} className="recents-logo" />
     </div>
   );
 };

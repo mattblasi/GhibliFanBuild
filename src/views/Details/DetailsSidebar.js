@@ -20,15 +20,4 @@ const DetailsSidebar = ({ director, writer }) => {
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    details: {
-      people: { director, writer },
-    },
-  },
-}) => ({
-  director,
-  writer,
-});
-
-export default connect(mapStateToProps)(DetailsSidebar);
+export default DetailsSidebar;

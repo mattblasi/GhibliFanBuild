@@ -9,6 +9,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import Recents from './components/Recents';
 
+import logo from './images/Studio_Ghibli_logo.svg';
+
 const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -113,18 +115,23 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
         <Recents />
       </main>
       <footer className="site-footer">
-        <nav className="footer-nav">
-          <Link className="footer-link" to="/about">
-            About
-          </Link>
-          <Link className="footer-link" to="/api">
-            API
-          </Link>
-          <Link className="footer-link" to="/terms">
-            Terms
-          </Link>
-        </nav>
-        <p>Made by Me ~ Matt Blasi &copy; {new Date().getFullYear()}</p>
+        <div className="site-footer--left">
+          <nav className="footer-nav">
+            <Link className="footer-link" to="/about">
+              About
+            </Link>
+            <Link className="footer-link" to="/api">
+              API
+            </Link>
+            <Link className="footer-link" to="/terms">
+              Terms
+            </Link>
+          </nav>
+          <p>Made by Me ~ Matt Blasi &copy; {new Date().getFullYear()}</p>
+        </div>
+        <div className="site-footer--right">
+          <img src={logo} className="recents-logo" />
+        </div>
       </footer>
     </div>
   );

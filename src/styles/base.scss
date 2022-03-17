@@ -101,9 +101,9 @@ button {
 .site-footer {
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
   font-size: 1.3rem;
   grid-area: 'footer';
-  padding: 1.5rem;
   width: 100%;
   z-index: 100;
 
@@ -112,6 +112,23 @@ button {
     //font-style: italic;
     font-weight: normal;
     letter-spacing: 0.05rem;
+  }
+
+  .site-footer--left {
+    flex-basis: 80%;
+    padding: 1.5rem;
+  }
+
+  .site-footer--right {
+    flex-basis: 20%;
+    position: relative;
+
+    img {
+      bottom: 1rem;
+      height: 50px;
+      position: absolute;
+      right: 1rem;
+    }
   }
 }
 

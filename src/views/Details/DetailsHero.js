@@ -8,7 +8,15 @@ import DetailsSidebar from './DetailsSidebar';
 
 const DetailsHero = ({
   show,
-  details: { title, og_title_rm, og_title_jp, poster, wallpapers, summaries },
+  details: {
+    title,
+    og_title_rm,
+    og_title_jp,
+    poster,
+    wallpapers,
+    summaries,
+    people: { director, writer },
+  },
   setHeroLoaded,
   setHeroIndex,
 }) => {
@@ -63,7 +71,7 @@ const DetailsHero = ({
             <div className="details-hero--content">
               <div className="details-hero--sidebar">
                 <Poster src={poster} alt={title} />
-                <DetailsSidebar />
+                <DetailsSidebar director={director} writer={writer} />
               </div>
               <DetailsSummary summaries={summaries} />
               <header className="details-header">
