@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 
+import Dialog from '../../components/Dialog';
+
 const DetailsImages = ({ photos, show, title }) => {
   const [photosList, setPhotosList] = useState([]);
   const [photosLoaded, setPhotosLoaded] = useState(false);

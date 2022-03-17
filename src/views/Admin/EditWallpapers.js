@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-const EditWallpapers = ({ wallpapers }) => {
+import { updateWallpapers } from '../../actions/adminActions';
+
+const EditWallpapers = ({ id, wallpapers, updateWallpapers }) => {
   const [wallpaperList, setWallpapers] = useState();
   const [removalList, updateRemovalList] = useState([]);
 
@@ -24,7 +26,20 @@ const EditWallpapers = ({ wallpapers }) => {
 
   return (
     <div className="edit--wallpapers">
-      <h3>Wallpapers</h3>
+      <h3>
+        <span>Wallpapers</span>
+        <button
+          className=""
+          onClick={() => {
+            let updatedList = wallpaperList.filter(
+              (w) => !removalList.includes(w)
+            );
+            updateWallpapers(id, updatedList);
+          }}
+        >
+          Update Wallpapers
+        </button>
+      </h3>
 
       {wallpaperList &&
         wallpaperList.map((w, i) => (
@@ -46,4 +61,9 @@ const EditWallpapers = ({ wallpapers }) => {
   );
 };
 
-export default EditWallpapers;
+const mapDispatchToProps = (dispatch) => ({
+  updateWallpapers: (id, wallpapers) =>
+    dispatch(updateWallpapers(id, wallpapers)),
+});
+
+export default connect(null, mapDispatchToProps)(EditWallpapers);

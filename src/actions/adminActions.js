@@ -22,3 +22,19 @@ export const getMovieToEdit = (id) => {
     });
   };
 };
+
+export const updateWallpapers = (id, updatedList,) => {
+  return async (dispatch) => {
+    fetch(`${BASE_URL}/update/${id}/${type}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: id, list: updatedList }),
+    }).then((res) => {
+      console.log(res);
+      getMovieToEdit(id);
+    });
+  };
+};

@@ -15,14 +15,16 @@ const Recents = ({ recentlyViewed, movies }) => {
     }
   }, [recentlyViewed]);
 
+  if (recents.length < 1) return <span />;
   return (
     <div className="recents">
       <div className="recents-content">
         <h2>Recently Viewed</h2>
         {recents &&
-          recents.map((r) => (
+          recents.map((r, i) => (
             <Link
               to={r.id}
+              key={`recently-viewed-movies-${i}`}
               className="recent-item"
               style={{ backgroundImage: `url(${r.poster})` }}
             >

@@ -20,6 +20,7 @@ const EditPhotos = ({ photos }) => {
       updateRemovalList([...list, p]);
       elem.parentElement.classList.add('remove');
     }
+    console.log('current photo list: ', removalList);
   }
 
   return (

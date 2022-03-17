@@ -31,7 +31,9 @@ const Edit = ({ Admin: { details, people, photos } }) => {
         ))}
       </ul>
       {tab === 'details' && <EditDetails details={details} />}
-      {tab === 'images' && <EditWallpapers wallpapers={details.wallpapers} />}
+      {tab === 'images' && (
+        <EditWallpapers id={details.id} wallpapers={details.wallpapers} />
+      )}
       {tab === 'images' && <EditPhotos photos={photos} />}
     </div>
   );
