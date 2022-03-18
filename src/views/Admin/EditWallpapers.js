@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { updateWallpapers } from '../../actions/adminActions';
+import { updateData } from '../../actions/adminActions';
 
-const EditWallpapers = ({ id, wallpapers, updateWallpapers }) => {
+const EditWallpapers = ({ id, wallpapers, updateData }) => {
   const [wallpaperList, setWallpapers] = useState();
   const [removalList, updateRemovalList] = useState([]);
 
@@ -34,7 +34,7 @@ const EditWallpapers = ({ id, wallpapers, updateWallpapers }) => {
             let updatedList = wallpaperList.filter(
               (w) => !removalList.includes(w)
             );
-            updateWallpapers(id, updatedList);
+            updateData(id, updatedList, 'wallpaper');
           }}
         >
           Update Wallpapers
@@ -62,8 +62,7 @@ const EditWallpapers = ({ id, wallpapers, updateWallpapers }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateWallpapers: (id, wallpapers) =>
-    dispatch(updateWallpapers(id, wallpapers)),
+  updateData: (id, list, type) => dispatch(updateData(id, list, type)),
 });
 
 export default connect(null, mapDispatchToProps)(EditWallpapers);
