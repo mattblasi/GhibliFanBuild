@@ -24,21 +24,13 @@ const Admin = ({ movies, getMovieToEdit }) => {
       <div className="movies">
         <div className="movies-container">
           {movies.map((m, i) => (
-            <div className="movie-item" key={`movie-${i}`}>
-              <div className="movie-item--container">
-                <img className="movie-poster" src={m.poster} />
-                <div className="movie-info">
-                  <h2 className="movie-title">{m.title}</h2>
-                  <p className="movie-subtitle">{m.og_title_rm}</p>
-                  <button
-                    className="movie-button"
-                    onClick={() => editMovie(m.id)}
-                  >
-                    Edit
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button
+              className="movie-item"
+              key={`movie-${i}`}
+              onClick={() => editMovie(m.id)}
+            >
+              <img className="movie-poster" src={m.poster} />
+            </button>
           ))}
         </div>
       </div>

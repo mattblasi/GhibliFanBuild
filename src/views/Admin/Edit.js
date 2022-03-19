@@ -10,7 +10,13 @@ const Edit = ({ Admin: { details, people, photos } }) => {
   const [tab, setTab] = useState();
   const [mov, setMov] = useState();
 
-  const formSections = ['details', 'synopsis', 'summaries', 'images'];
+  const formSections = [
+    'details',
+    'synopsis',
+    'summaries',
+    'wallpapers',
+    'images',
+  ];
 
   const handleTabClick = (t) => setTab(t);
   const TabLink = ({ val }) => {
@@ -24,17 +30,17 @@ const Edit = ({ Admin: { details, people, photos } }) => {
 
   return (
     <div className="admin-edit">
-      <span>Edit Movie</span>
+      <h2>Edit Movie</h2>
       <ul className="tabs">
         {formSections.map((s, i) => (
           <TabLink val={s} key={`tab-${i}`} />
         ))}
       </ul>
       {tab === 'details' && <EditDetails details={details} />}
-      {tab === 'images' && (
+      {tab === 'wallpapers' && (
         <EditWallpapers id={details.id} wallpapers={details.wallpapers} />
       )}
-      {tab === 'images' && <EditPhotos photos={photos} />}
+      {tab === 'images' && <EditPhotos id={details.id} photos={photos} />}
     </div>
   );
 };

@@ -25,7 +25,7 @@ export const getMovieToEdit = (id) => {
 
 export const updateData = (id, list, type) => {
   return async (dispatch) => {
-    console.log('test', id, list, type);
+    //console.log('test', id, list, type);
     fetch(`${BASE_URL}/update/${id}/${type}`, {
       method: 'POST',
       headers: {
@@ -34,7 +34,6 @@ export const updateData = (id, list, type) => {
       },
       body: JSON.stringify({ id: id, list: list }),
     }).then((res) => {
-      console.log(res);
       getMovieToEdit(id);
     });
   };

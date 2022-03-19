@@ -39,6 +39,7 @@ p {
 
 button {
   cursor: pointer;
+  padding: .5rem .75rem;
 }
 
 .ghibli {
@@ -383,9 +384,13 @@ button {
     color: #333;
     font-size: 1.3rem;
     letter-spacing: 0.05rem;
-    margin-right: 0.75rem;
+    margin: 0 .75rem;
     text-decoration: none;
     text-transform: uppercase;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
   }
 }
 

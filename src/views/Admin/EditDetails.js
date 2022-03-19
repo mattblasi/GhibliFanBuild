@@ -48,7 +48,7 @@ const EditDetails = ({ details }) => {
 
   return (
     <div className="edit--details">
-      <h2>DETAILS</h2>
+      <h3>Details</h3>
       {textInputs.map((item, i) => (
         <TextInput item={item} key={`input-${i}`} />
       ))}

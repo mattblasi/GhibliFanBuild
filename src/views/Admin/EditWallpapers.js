@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 
 import { updateData } from '../../actions/adminActions';
 
+import Header from './EditHeader';
+
 const EditWallpapers = ({ id, wallpapers, updateData }) => {
   const [wallpaperList, setWallpapers] = useState();
   const [removalList, updateRemovalList] = useState([]);
+  const title = 'Wallpapers';
 
   useEffect(() => {
     if (wallpapers) setWallpapers([...wallpapers]);
@@ -24,23 +27,29 @@ const EditWallpapers = ({ id, wallpapers, updateData }) => {
     }
   }
 
+  function handleUpdate() {
+    let updatedList = wallpaperList.filter((w) => !removalList.includes(w));
+    updateData(id, updatedList, 'wallpapers');
+  }
+
+  function handleAdd() {
+    console.log('add photo');
+  }
+
+  const buttons = [
+    {
+      title: 'Update',
+      click: () => handleUpdate(),
+    },
+    {
+      title: 'Add',
+      click: () => handleAdd(),
+    },
+  ];
+
   return (
     <div className="edit--wallpapers">
-      <h3>
-        <span>Wallpapers</span>
-        <button
-          className=""
-          onClick={() => {
-            let updatedList = wallpaperList.filter(
-              (w) => !removalList.includes(w)
-            );
-            updateData(id, updatedList, 'wallpaper');
-          }}
-        >
-          Update Wallpapers
-        </button>
-      </h3>
-
+      <Header title="Wallpapers" buttons={buttons} />
       {wallpaperList &&
         wallpaperList.map((w, i) => (
           <div
@@ -51,9 +60,7 @@ const EditWallpapers = ({ id, wallpapers, updateData }) => {
             <button onClick={(e) => toggleRemoval(w, e.target)}></button>
           </div>
         ))}
-      <button
-        className="wallpaper wallpaper-add"
-        onClick={() => console.log('add')}
+      <button className="wallpaper wallpaper-add" onClick={() => handleAdd()}
       >
         <span>Add Wallpaper</span>
       </button>
