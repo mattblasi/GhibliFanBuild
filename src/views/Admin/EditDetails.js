@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 
+import Header from './EditHeader';
 import EditGenres from './EditGenres';
 
 const EditDetails = ({ details }) => {
@@ -46,9 +47,20 @@ const EditDetails = ({ details }) => {
     );
   };
 
+  const buttons = [
+    {
+      title: 'Save',
+      click: () => console.log('save'),
+    },
+    {
+      title: 'Reset',
+      click: () => console.log('save'),
+    },
+  ];
+
   return (
     <div className="edit--details">
-      <h3>Details</h3>
+      <Header title="Movie Details" buttons={buttons} />
       {textInputs.map((item, i) => (
         <TextInput item={item} key={`input-${i}`} />
       ))}

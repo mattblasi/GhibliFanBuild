@@ -8,7 +8,6 @@ import Header from './EditHeader';
 const EditWallpapers = ({ id, wallpapers, updateData }) => {
   const [wallpaperList, setWallpapers] = useState();
   const [removalList, updateRemovalList] = useState([]);
-  const title = 'Wallpapers';
 
   useEffect(() => {
     if (wallpapers) setWallpapers([...wallpapers]);
@@ -38,7 +37,7 @@ const EditWallpapers = ({ id, wallpapers, updateData }) => {
 
   const buttons = [
     {
-      title: 'Update',
+      title: 'Remove Selected',
       click: () => handleUpdate(),
     },
     {
@@ -49,7 +48,12 @@ const EditWallpapers = ({ id, wallpapers, updateData }) => {
 
   return (
     <div className="edit--wallpapers">
-      <Header title="Wallpapers" buttons={buttons} />
+      <Header
+        title="Wallpapers"
+        buttons={buttons}
+        count={removalList?.length}
+        total={wallpaperList?.length}
+      />
       {wallpaperList &&
         wallpaperList.map((w, i) => (
           <div
@@ -60,8 +64,7 @@ const EditWallpapers = ({ id, wallpapers, updateData }) => {
             <button onClick={(e) => toggleRemoval(w, e.target)}></button>
           </div>
         ))}
-      <button className="wallpaper wallpaper-add" onClick={() => handleAdd()}
-      >
+      <button className="wallpaper wallpaper-add" onClick={() => handleAdd()}>
         <span>Add Wallpaper</span>
       </button>
     </div>

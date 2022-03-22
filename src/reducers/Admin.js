@@ -34,7 +34,7 @@ export default function Details(state = initialState, action) {
         isLoading: false,
         details: { ...action.data.details },
         people: { ...action.data.people },
-        photos: action.data.photos || [],
+        photos: new Set(action.data.photos) || [],
       };
 
     case ADMIN_SET_PEOPLE:
@@ -48,7 +48,7 @@ export default function Details(state = initialState, action) {
     case ADMIN_SET_PHOTOS:
       return {
         ...state,
-        photos: [...action.data.images],
+        photos: new Set([...action.data.images]),
       };
 
     case ADMIN_RELOAD_DETAILS:

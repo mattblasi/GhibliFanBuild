@@ -13,6 +13,7 @@ const EditPhotos = ({ id, photos, updateData }) => {
     if (photos) setPhotos([...photos]);
     let removals = document.querySelectorAll('.photo.remove');
     removals.forEach((img) => img.classList.remove('remove'));
+    updateRemovalList([]);
   }, [photos]);
 
   function toggleRemoval(p, elem) {
@@ -38,7 +39,7 @@ const EditPhotos = ({ id, photos, updateData }) => {
 
   const buttons = [
     {
-      title: 'Update',
+      title: 'Remove Selected',
       click: () => handleUpdate(),
     },
     {
@@ -49,7 +50,12 @@ const EditPhotos = ({ id, photos, updateData }) => {
 
   return (
     <div className="edit--photos">
-      <Header title="Photos" buttons={buttons} />
+      <Header
+        title="Photos"
+        buttons={buttons}
+        count={removalList?.length}
+        total={photoList?.length}
+      />
       {photoList &&
         photoList.map((p, i) => (
           <div

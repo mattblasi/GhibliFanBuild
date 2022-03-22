@@ -11,13 +11,12 @@ const Admin = ({ movies, getMovieToEdit }) => {
   const [selectedMovie, setMovie] = useState();
 
   const editMovie = (movie) => setMovie(movie);
+  const toggleEdit = () => setEdit(!isEdit);
 
   useEffect(() => {
     getMovieToEdit(selectedMovie);
     if (selectedMovie) setEdit(true);
   }, [selectedMovie]);
-
-  const toggleEdit = () => setEdit(!isEdit);
 
   const MoviesList = () => {
     return (

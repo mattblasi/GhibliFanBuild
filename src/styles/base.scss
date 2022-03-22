@@ -42,6 +42,13 @@ button {
   padding: .5rem .75rem;
 }
 
+button.scroll-top {
+  bottom: 10rem;
+  position: absolute;
+  right: 10rem;
+  z-index: 1000;
+}
+
 .ghibli {
   display: grid;
   grid-template-columns: 1fr;

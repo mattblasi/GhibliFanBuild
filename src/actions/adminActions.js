@@ -15,8 +15,8 @@ export const getMovieToEdit = (id) => {
         type: ADMIN_SET_DETAILS,
         data: {
           details: res[0].data,
-          people: res[1].data.people,
-          photos: res[2].data.images,
+          people:  res[1].data.people,
+          photos:  res[2].data.images,
         },
       });
     });
@@ -34,7 +34,7 @@ export const updateData = (id, list, type) => {
       },
       body: JSON.stringify({ id: id, list: list }),
     }).then((res) => {
-      getMovieToEdit(id);
+      dispatch(getMovieToEdit(id));
     });
   };
 };

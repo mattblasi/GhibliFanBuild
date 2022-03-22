@@ -7,6 +7,7 @@ import { getAllMovies, forceReloadDetails } from './actions/movieActions';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Recents from './components/Recents';
+import ScrollTop from './components/ScrollTop';
 
 const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   const [isSearch, setIsSearch] = useState(false);
@@ -41,6 +42,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
       <main id="main" className="site-content">
         <Outlet />
         <Recents />
+        <ScrollTop />
       </main>
       <Footer />
     </div>
