@@ -3,10 +3,24 @@
 
   h2 {
     background-color: #fff;
+    display: flex;
     font-size: 2.2rem;
-    padding: 1rem 0;
+    margin: 0;
+    padding: 2.5rem 0;
     position: sticky;
-    top: -1px;
+    top: 4.8rem;
+    vertical-align: middle;
+
+    a {
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 1.2rem;
+      font-weight: normal;
+      letter-spacing: 0.025rem;
+      margin-left: auto;
+      padding: 0.75rem 0;
+      text-align: right;
+      text-decoration: none;
+    }
   }
 
   /*
@@ -465,21 +479,7 @@
     width: 100%;
 
     h2 {
-      display: flex;
-      margin-bottom: 1.5rem;
-      vertical-align: middle;
       width: 100%;
-
-      a {
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 1.2rem;
-        font-weight: normal;
-        letter-spacing: 0.025rem;
-        margin-left: auto;
-        padding: 0.75rem 0;
-        text-align: right;
-        text-decoration: none;
-      }
     }
 
     .detail-images--image {
@@ -657,15 +657,15 @@
     margin: 0 0 7.5rem;
     padding: 0;
     width: 100%;
-  }
 
-  .credits-list--item {
-    display: block;
-    font-size: 1.9rem;
-    flex-basis: 100%;
-    //flex-grow: 1;
-    padding: 1rem;
-    text-align: center;
+    .credits-list--item {
+      display: block;
+      font-size: 1.9rem;
+      flex-basis: 100%;
+      //flex-grow: 1;
+      padding: 1rem;
+      text-align: center;
+    }
   }
 
   .two-col .credits-list--item {
@@ -684,10 +684,14 @@
 
   .page-nav {
     //background: rgb(73, 1, 139);
+    background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     margin-bottom: 7.5rem;
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 1000;
 
     .details-container {
       flex-direction: row;

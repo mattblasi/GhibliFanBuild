@@ -60,10 +60,11 @@ const Header = ({ movies }) => {
 
   return (
     <header className="site-header">
-      <nav>
-        <div
-          className={`search ${isSearch ? 'search-open' : 'search-hidden'}`}
-        >
+      <div className="site-search">
+        <a className="search-toggle" onClick={() => toggleSearch()}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </a>
+        <div className={`search ${isSearch ? 'search-open' : 'search-hidden'}`}>
           <input
             id="ghibli-search"
             type="text"
@@ -83,16 +84,15 @@ const Header = ({ movies }) => {
             </ul>
           )}
         </div>
-        <a onClick={() => toggleSearch()}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </a>
+      </div>
+      <p>Ghibli Fan</p>
+      <nav className="site-nav">
         <Link to="/">News</Link>
         <Link to="/">Movies</Link>
         <Link to="/">GhibliFest 2022</Link>
-        <Link to="/admin">Admin</Link>
       </nav>
     </header>
-    )
-}
+  );
+};
 
 export default Header;

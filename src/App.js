@@ -4,9 +4,9 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { getAllMovies, forceReloadDetails } from './actions/movieActions';
 
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Recents from './components/Recents';
+import Footer from './views/Partials/Footer';
+import Header from './views/Partials/Header';
+import Recents from './views/Partials/Recents';
 import ScrollTop from './components/ScrollTop';
 
 const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
@@ -20,7 +20,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   };
 
   const handleClickedSearch = () => {
-    forceReloadDetails();
+    //forceReloadDetails();
     toggleSearch();
   };
 

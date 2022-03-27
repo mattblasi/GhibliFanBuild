@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getMovieToEdit } from '../../actions/adminActions';
 
@@ -21,6 +22,8 @@ const Admin = ({ movies, getMovieToEdit }) => {
   const MoviesList = () => {
     return (
       <div className="movies">
+        <Link to="/products">Products</Link>
+        <Link to="/products/unsorted">Unsorted</Link>
         <div className="movies-container">
           {movies.map((m, i) => (
             <button

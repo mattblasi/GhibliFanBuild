@@ -1,0 +1,42 @@
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  font-size: 1.3rem;
+
+  .site-footer--left {
+    flex-basis: 80%;
+    padding: 1.5rem;
+  }
+
+  .site-footer--right {
+    flex-basis: 20%;
+    position: relative;
+
+    img {
+      bottom: 1rem;
+      height: 50px;
+      position: absolute;
+      right: 1rem;
+    }
+  }
+}
+
+// Footer Nav
+.footer-nav {
+  display: block;
+  margin-bottom: 0.75rem;
+
+  .footer-link {
+    color: #333;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    margin: 0 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

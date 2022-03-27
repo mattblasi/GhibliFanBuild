@@ -9,6 +9,8 @@ import App from './App';
 import MoviesList from './views/MoviesList';
 import Details from './views/Details/Details';
 import Admin from './views/Admin/Admin';
+import Products from './views/Products/Products';
+import ProductsUnsorted from './views/Products/ProductsUnsorted';
 
 import './styles/styles.scss';
 
@@ -45,6 +47,18 @@ const app = (AppComponent) => {
                 path="/admin"
                 onLeave={() => console.log('bye')}
                 element={<Admin />}
+              />
+              <Route
+                exact
+                path="/products"
+                onLeave={() => console.log('bye')}
+                element={<Products />}
+              />
+              <Route
+                exact
+                path="/products/unsorted"
+                onLeave={() => console.log('bye')}
+                element={<ProductsUnsorted />}
               />
               <Route path="*" element={<p>There's nothing here!</p>} />
             </Route>

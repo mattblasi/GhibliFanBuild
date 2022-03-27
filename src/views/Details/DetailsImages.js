@@ -41,6 +41,7 @@ const DetailsImages = ({ photos, show, title }) => {
               style={{
                 backgroundImage: `url(${p})`,
               }}
+              onClick={() => console.log('click: ', i, p)}
             >
               <img style={{ display: 'none' }} src={p} />
             </div>

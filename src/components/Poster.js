@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Poster = (props) => {
-  const { src, alt } = props;
+const Poster = ({ src, alt }) => {
   return <img src={src} alt={alt} className="poster" />;
 };
 

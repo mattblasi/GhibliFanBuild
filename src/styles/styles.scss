@@ -1,6 +1,13 @@
+@import 'variables.scss';
 @import 'base.scss';
 
+@import './components/cards.scss';
 @import './components/mouse.scss';
 
 @import './views/admin.scss';
 @import './views/details.scss';
+@import './views/footer.scss';
+@import './views/header.scss';
+@import './views/movieslist.scss';
+@import './views/products.scss';
+@import './views/recents.scss';

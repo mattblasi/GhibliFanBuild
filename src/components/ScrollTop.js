@@ -3,13 +3,6 @@ import React, { useEffect } from 'react';
 const ScrollTop = () => {
   let content, scroll;
 
-  useEffect(() => {
-    content = document.getElementById('main');
-    scroll = document.getElementById('scroll-top');
-  }, []);
-
-  if (content)
-
   function scrollHandler() {
     content.scroll(function () {
       if (scroll.scrollTop() > 100) {
@@ -19,6 +12,19 @@ const ScrollTop = () => {
       }
     });
   }
+
+  useEffect(() => {
+    content = document.getElementById('main');
+    scroll = document.getElementById('scroll-top');
+
+    content.addEventListener('scroll', () => {
+      if (content.scrollTop > 100) {
+        scroll.classList.add('is-visible');
+      } else {
+        scroll.classList.remove('is-visible');
+      }
+    });
+  }, []);
 
   const handleClick = () => {
     content.scrollTo({

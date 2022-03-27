@@ -1,0 +1,76 @@
+// Cards Styles
+
+// Base Card
+.card {
+  transition: all 0.5s;
+
+  & > a {
+    transition: all 0.5s;
+  }
+}
+
+// Movie Card
+.card.movie,
+.card.recent {
+  cursor: pointer;
+  flex: 0 0 16.6666%;
+  overflow: hidden;
+  position: relative;
+
+  & > a {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 102%;
+    display: block;
+
+    &:hover {
+      background-size: 125%;
+    }
+  }
+
+  .card-img {
+    display: flex;
+    max-width: 100%;
+    opacity: 0;
+  }
+
+  .card-info {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: -1rem;
+    color: #fff;
+    left: 0;
+    opacity: 0;
+    padding: 1rem;
+    position: absolute;
+    transition: all 0.5s;
+    width: 100%;
+  }
+
+  &:hover .card-info {
+    bottom: 0;
+    opacity: 1;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+// Recents Card
+.card.recent {
+  width: 19.2%;
+
+  & > a,
+  & > a:hover {
+    background-size: cover;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
