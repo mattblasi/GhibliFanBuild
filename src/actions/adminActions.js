@@ -40,10 +40,7 @@ export const updateData = (id, list, type) => {
     //console.log('test', id, list, type);
     fetch(`${BASE_URL}/update/${id}/${type}`, {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: HEADERS,
       body: JSON.stringify({ id: id, list: list }),
     }).then((res) => {
       dispatch(getMovieToEdit(id));
@@ -52,9 +49,17 @@ export const updateData = (id, list, type) => {
 };
 
 // Scrape Products
-export const getProducts = (searchTerm, store = 'amazon') => {
+export const getProducts = (term, store = 'amazon') => {
   return async (dispatch) => {
-    if (store === 'amazon') dispatch(getProductsAmazon(searchTerm));
+    console.log('getProducts...', term, store);
+    fetch(`${BASE_URL}/scrape/products`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify({ term: term, store: store }),
+    }).then((res) => {
+      console.log(res);
+    });
+    // if (store === 'amazon') dispatch(getProductsAmazon(searchTerm));
   };
 };
 

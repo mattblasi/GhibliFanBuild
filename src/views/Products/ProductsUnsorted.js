@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getUnsortedProducts } from '../../actions/adminActions';
 
+import Card from '../../components/Cards/Card';
+
 const ProductsUnsorted = ({ unsorted, getUnsortedProducts }) => {
   const [unsortedList, setUnsorted] = useState([]);
 
@@ -21,12 +23,10 @@ const ProductsUnsorted = ({ unsorted, getUnsortedProducts }) => {
           Get Unsorted
         </button>
       </nav>
-      {unsorted &&
-        unsorted.map((p, i) => (
-          <div className="product" key={`product-${i}`}>
-            Product
-          </div>
-        ))}
+      <div className="card-list">
+        {unsorted &&
+          unsorted.map((p, i) => <Card product={p} key={`product-${i}`} />)}
+      </div>
     </React.Fragment>
   );
 };

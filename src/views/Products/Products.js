@@ -8,6 +8,8 @@ import {
   addProduct,
 } from '../../actions/adminActions';
 
+import Card from '../../components/Cards/Card';
+
 const Products = ({
   curPage,
   products,

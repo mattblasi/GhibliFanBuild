@@ -13,7 +13,7 @@
 .card.movie,
 .card.recent {
   cursor: pointer;
-  flex: 0 0 16.6666%;
+  flex: 0 0 14.285%;
   overflow: hidden;
   position: relative;
 
@@ -72,5 +72,46 @@
   img {
     height: auto;
     width: 100%;
+  }
+}
+
+// Product .card
+.card-list {
+  border: 0.1rem solid #ddd;
+  margin: 0 auto;
+  max-width: 120rem;
+}
+.card.product {
+  .card-list & {
+    border-bottom: 0.1rem solid #ddd;
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+
+    .card-img {
+      max-width: 15rem;
+      height: auto;
+    }
+
+    .card-info {
+      width: 50%;
+    }
+
+    .card-actions {
+      flex-grow: 1;
+      margin-left: auto;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.02rem;
+    }
+  }
+}
+
+.form {
+  .form-text {
+    font-weight: bold;
   }
 }

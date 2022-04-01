@@ -15,7 +15,6 @@ const BASE_URL = `https://ghiblifan.herokuapp.com`;
 export const getAllMovies = () => {
   return async (dispatch) => {
     const response = await axios.get(`${BASE_URL}/movies`);
-    console.log(response);
     dispatch({ type: MOVIES_SET_MOVIES, data: response.data });
   };
 };
