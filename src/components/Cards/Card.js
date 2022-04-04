@@ -3,6 +3,7 @@ import { addProduct } from '../../actions/adminActions';
 
 import MovieCard from './CardMovie';
 import ProductCard from './CardProduct';
+import MerchCard from './CardMerch';
 
 const Card = ({ props }) => {
   let classes = `card `;
@@ -10,6 +11,7 @@ const Card = ({ props }) => {
   if (props?.movie) classes += 'movie';
   if (props?.recent) classes += 'recent';
   if (props?.product) classes += 'product';
+  if (props?.merch) classes += 'merch';
 
   return (
     <div className={classes}>
@@ -22,6 +24,8 @@ const Card = ({ props }) => {
           action={props?.submit}
         />
       )}
+      {props?.merch && <MerchCard merch={props?.merch}/>}
+
     </div>
   );
 };

@@ -157,7 +157,7 @@
   }
 }
 
-// Product .card
+// Product Card
 .card.product {
   h3 {
     font-size: 2rem;
@@ -165,6 +165,71 @@
     letter-spacing: 0.02rem;
   }
 }
+
+// Merch Card
+
+.products-list {
+  width: 100%;
+}
+
+.card.merch {
+  aspect-ratio: 1 / 1;
+  padding: 0;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    top: 0;
+  }
+
+  & > a {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 180%;
+    display: block;
+    position: relative;
+
+    &:hover {
+      background-size: 250%;
+    }
+  }
+
+  .card-img {
+    display: flex;
+    height: 100%;
+    max-width: 100%;
+    opacity: 0;
+  }
+
+  .card-info {
+    align-items: flex-start;
+    bottom: 0;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    // top: 1.5rem;
+    z-index: 2;
+
+    p {
+      background-color: #333;
+      margin: 0;
+      padding: 1.2rem;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-size: 2rem;
+    }
+  }
+}
+
 
 .form {
   .form-text {

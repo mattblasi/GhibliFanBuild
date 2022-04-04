@@ -182,9 +182,8 @@ export const updateProduct = (product) => {
       headers: HEADERS,
       body: JSON.stringify(product),
     }).then((res) => {
-      console.log('added product', res);
+      //dispatch({ type: ADMIN_FILTER_UNSORTED, data: product.id });
       siteSetting(); // update site settings
-      dispatch({ type: ADMIN_FILTER_UNSORTED, data: product.id });
     });
   };
 };

@@ -66,11 +66,13 @@ button {
     height: 100%;
     overflow: auto;
     width: 100vw;
+    max-width: 100%;
   }
 
   .site-footer {
     grid-area: footer;
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
     z-index: var(--z-index-top);
   }
 }

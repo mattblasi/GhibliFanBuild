@@ -67,7 +67,6 @@ export default function Details(state = initialState, action) {
       };
 
     case ADMIN_SCRAPE_PRODUCTS:
-      console.log(action.data);
       products = {};
       products[action.data.curPage] = [...action.data.products];
       return {
@@ -78,7 +77,6 @@ export default function Details(state = initialState, action) {
       };
 
     case ADMIN_SCRAPE_PRODUCTS_PAGE:
-      console.log(action.data);
       products = { ...state.products };
       products[action.data.curPage] = [...action.data.products];
       return {
@@ -100,6 +98,7 @@ export default function Details(state = initialState, action) {
       };
 
     case ADMIN_FILTER_UNSORTED:
+      console.log(action.data);
       return {
         ...state,
         unsorted: state.unsorted.filter((p) => {

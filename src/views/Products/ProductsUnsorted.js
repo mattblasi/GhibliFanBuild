@@ -8,8 +8,11 @@ const ProductsUnsorted = ({ unsorted, getUnsortedProducts }) => {
   const [unsortedList, setUnsorted] = useState([]);
 
   useEffect(() => {
+    console.log(unsorted.length);
     if (unsorted.length > 0) {
       setUnsorted(new Set([...unsorted]));
+    } else {
+      getUnsortedProducts();
     }
   }, [unsorted]);
 

@@ -12,7 +12,7 @@ const MerchList = ({ movie_id, products }) => {
         <div className="products-list card-grid">
           {products &&
             products.map((p, i) => (
-              <Card props={{ product: p }} key={`product-${i}`} />
+              <Card props={{ merch: p }} key={`merch-${i}`} />
             ))}
         </div>
       </div>
