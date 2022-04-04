@@ -15,18 +15,22 @@ const ProductsUnsorted = ({ unsorted, getUnsortedProducts }) => {
 
   return (
     <React.Fragment>
-      <nav>
+      {!unsorted.length && (
         <button
           className="button unsorted-get"
           onClick={() => getUnsortedProducts()}
         >
           Get Unsorted
         </button>
-      </nav>
-      <div className="card-list">
-        {unsorted &&
-          unsorted.map((p, i) => <Card product={p} key={`product-${i}`} />)}
-      </div>
+      )}
+
+      {unsorted.length > 0 && (
+        <div className="card-list">
+          {unsorted.map((p, i) => (
+            <Card props={{ product: p, form: 'update' }} key={`product-${i}`} />
+          ))}
+        </div>
+      )}
     </React.Fragment>
   );
 };

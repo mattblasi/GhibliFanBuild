@@ -22,7 +22,7 @@ const Recents = ({ recentlyViewed, movies }) => {
     <div className="recents">
       <div className="recents-content">
         <h2>Recently Viewed</h2>
-        {recents && recents.map((r, i) => <Card recent={r} />)}
+        {recents && recents.map((r, i) => <Card props={{ recent: r }} />)}
       </div>
     </div>
   );

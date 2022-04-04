@@ -20,21 +20,25 @@ const Products = ({
   getProductsPage,
   updateCurPage,
   addProduct,
+  settings,
 }) => {
   const [productList, setProducts] = useState([]);
   const [pageList, setPages] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [visible, setVisible] = useState(false);
-  const [movieList, setMovies] = useState([]);
   const [fetchList, setFetchList] = useState([]);
   const [page, setPage] = useState(curPage);
   const [selectedStore, setSelectedStore] = useState();
 
-  const stores = [
-    { value: 'amazon', label: 'amazon' },
-    { value: 'etsy', label: 'etsy' },
-  ];
-  const categories = [];
+  const movieList = movies.map((m) => {
+    return { value: m.id, label: m.title };
+  });
+  const stores = settings.stores.map((s) => {
+    return { value: s, label: s };
+  });
+  const categories = settings.categories.map((c) => {
+    return { value: c, label: c };
+  });
 
   function handleChange(event) {
     setSearchTerm(event.target.value);
@@ -51,19 +55,6 @@ const Products = ({
       getProductsPage(url, page);
     }
   }
-
-  useEffect(() => {
-    if (movies.length > 0) {
-      let selectVals = [];
-      movies.forEach((m) => {
-        selectVals.push({
-          value: m.id,
-          label: m.title,
-        });
-      });
-      setMovies([...selectVals]);
-    }
-  }, [movies]);
 
   useEffect(() => {
     if (curPage) setPage(curPage);
@@ -93,6 +84,14 @@ const Products = ({
               onChange={handleChange}
             />
             <Select
+              id="product-movies"
+              options={movieList}
+              onChange={(e) => {
+                console.log(e);
+                setSearchTerm(e.label);
+              }}
+            />
+            <Select
               id="product-stores"
               options={stores}
               onChange={(e) => setSelectedStore(e.value)}
@@ -116,22 +115,16 @@ const Products = ({
                 </button>
               ))}
           </div>
-          <div className="product-list">
+          <div className="product-list card-grid">
             {productList.length > 0 &&
-              productList.map((p, i) => (
-                <div className="product" key={`product-${i}`}>
-                  <div className="product-image">
-                    <img src={p.image} />
-                  </div>
-                  <div className="product-info">
-                    <h3>{p.name}</h3>
-                    <p>Price: {p.price_string}</p>
-                    <button onClick={() => handleAddProduct(p, i)}>
-                      Add Product
-                    </button>
-                  </div>
-                </div>
-              ))}
+              productList.map((p, i) => {
+                const props = {
+                  product: p,
+                  form: 'add',
+                  submit: () => handleAddProduct(p, i),
+                };
+                return <Card key={`product-${i}`} props={props} />;
+              })}
           </div>
         </div>
       </div>
@@ -140,9 +133,11 @@ const Products = ({
 };
 
 const mapStateToProps = ({
+  Site: { settings },
   Admin: { curPage, products, pages, unsorted },
   Movies: { movies },
 }) => ({
+  settings,
   curPage,
   products,
   pages,

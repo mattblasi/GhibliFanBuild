@@ -1,100 +1,19 @@
 import React from 'react';
 
-const MerchList = ({ movie_id }) => {
+import Card from './Cards/Card';
+
+const MerchList = ({ movie_id, products }) => {
+  console.log('merchList', products);
   return (
     <div className="products">
       <div className="product-container">
         <h2>Merchandise</h2>
 
-        <div className="products-list">
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
-
-          <div className="product">
-            <span className="product-image"></span>
-            <div className="product-info">
-              <p className="product-title">Product Title</p>
-              <p className="product-store">Store: Amazon</p>
-              <p className="product-price">$70.99</p>
-            </div>
-          </div>
+        <div className="products-list card-grid">
+          {products &&
+            products.map((p, i) => (
+              <Card props={{ product: p }} key={`product-${i}`} />
+            ))}
         </div>
       </div>
     </div>

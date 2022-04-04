@@ -1,3 +1,24 @@
+.unsorted-get {
+  background-color: #efefef;
+  border: 0.1rem dashed #aaa;
+  color: #aaa;
+  cursor: pointer;
+  // font-weight: bold;
+  height: 50%;
+  letter-spacing: 0.05rem;
+  line-height: 2.5rem;
+  margin: auto;
+  position: relative;
+  text-transform: uppercase;
+  transition: all 0.25s;
+  width: 50%;
+
+  &:hover {
+    background: #333;
+    color: #eee;
+  }
+}
+
 .products-details {
   margin: 0;
   padding: 0;

@@ -33,6 +33,11 @@ h6 {
 button {
   cursor: pointer;
   padding: 0.5rem 0.75rem;
+
+  &.active {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 // SITE LAYOUT
@@ -54,9 +59,13 @@ button {
   }
 
   .site-content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
     grid-area: main;
     height: 100%;
     overflow: auto;
+    width: 100vw;
   }
 
   .site-footer {

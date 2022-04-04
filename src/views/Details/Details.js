@@ -6,6 +6,7 @@ import {
   getMovieDetails,
   getMoviePeople,
   getMoviePhotos,
+  getMovieProducts,
   clearMovieDetails,
 } from '../../actions/movieActions';
 
@@ -29,10 +30,12 @@ const Details = ({
   details,
   people,
   photos,
+  products,
   clearMovieDetails,
   getMovieDetails,
   getMoviePeople,
   getMoviePhotos,
+  getMovieProducts,
   updateRecents,
 }) => {
   const { id, title, wallpapers } = details;
@@ -55,6 +58,7 @@ const Details = ({
     }
     getMoviePeople(movie_id); // always refetch people
     getMoviePhotos(movie_id); // always refetch photos
+    getMovieProducts(movie_id);
   }, [movie_id]);
 
   useEffect(() => {
@@ -135,7 +139,7 @@ const Details = ({
               </React.Fragment>
             )}
           </div>
-          <MerchList movie_id={movie_id} />
+          <MerchList movie_id={movie_id} products={products} />
         </article>
       </CSSTransition>
       {!bgLoaded && bgImage?.length && (
@@ -150,12 +154,13 @@ const Details = ({
 };
 
 const mapStateToProps = ({
-  Details: { isLoading, details, people, photos },
+  Details: { isLoading, details, people, photos, products },
 }) => ({
   isLoading,
   details,
   people,
   photos,
+  products,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -163,6 +168,7 @@ const mapDispatchToProps = (dispatch) => ({
   getMovieDetails: (movie_id) => dispatch(getMovieDetails(movie_id)),
   getMoviePeople: (movie_id) => dispatch(getMoviePeople(movie_id)),
   getMoviePhotos: (movie_id) => dispatch(getMoviePhotos(movie_id)),
+  getMovieProducts: (movie_id) => dispatch(getMovieProducts(movie_id)),
   clearMovieDetails: () => dispatch(clearMovieDetails()),
 });
 

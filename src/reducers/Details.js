@@ -2,6 +2,7 @@ import {
   MOVIES_SET_DETAILS,
   MOVIES_SET_PEOPLE,
   MOVIES_SET_PHOTOS,
+  MOVIES_SET_PRODUCTS,
   MOVIES_CLEAR_DETAILS,
   MOVIES_RELOAD_DETAILS,
 } from '../actions/actionTypes';
@@ -11,7 +12,8 @@ const initialState = {
   isLoading: true,
   details: {},
   people: {},
-  photos: {},
+  photos: [],
+  products: [],
 };
 
 export default function Details(state = initialState, action) {
@@ -46,6 +48,13 @@ export default function Details(state = initialState, action) {
       return {
         ...state,
         photos: [...action.data.images],
+      };
+
+    case MOVIES_SET_PRODUCTS:
+      console.log('prods', action.data);
+      return {
+        ...state,
+        products: [...action.data],
       };
 
     case MOVIES_RELOAD_DETAILS:

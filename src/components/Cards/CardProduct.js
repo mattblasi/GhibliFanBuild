@@ -1,33 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { connect } from 'react-redux';
+import { useForm, Controller } from 'react-hook-form';
+import Select, { ActionMeta, OnChangeValue } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 
-const ProductCard = ({ product }) => {
-  // create form to manage add and call add function
-  // add function should remove product when success
-  // add should disable product while waiting for success/ failure
-  const { register, handleSubmit } = useForm();
-  const { main_image, name } = product;
+import ProductUpdate from '../Forms/ProductUpdate';
+
+const ProductCard = ({ product, form, action }) => {
+  const [showImages, setShowImages] = useState(false);
+  const { control, handleSubmit, register } = useForm();
+  const {
+    ASIN,
+    
+    main_image,
+    images,
+    title,
+    name,
+    price,
+    small_description,
+    url,
+  } = product;
 
   return (
     <React.Fragment>
-      <img className="card-img" src={main_image} alt={name} />
+      <img
+        className="card-img"
+        src={product?.image ? product.image : main_image}
+        alt={name}
+      />
       <div className="card-info">
-        <h3>{name}</h3>
+        <h3>
+          <a href={affiliate_url ? affiliate_url : url} target="_blank">
+            {title ? title : name}
+          </a>
+        </h3>
+        {small_description && <p>{small_description}</p>}
+        {price && <p>Price: ${parseFloat(price).toFixed(2)}</p>}
+        {ASIN && <p>ASIN: {ASIN}</p>}
+        {form === 'add' && <button onClick={action}>Add Product</button>}
       </div>
-      <form
-        className="card-actions form"
-        onSubmit={handleSubmit((data) => {
-          console.log({
-            ...product,
-            ...data,
-          });
-          // call up
-        })}
-      >
-        <p className="form-text">Set Options for Product:</p>
-        <input {...register('title')} />
-        <input type="submit" />
-      </form>
+      {form === 'update' && <ProductUpdate product={product} />}
+      {images && showImages && (
+        <div className="card-images">
+          {images.map((i, index) => (
+            <img src={i} key={`image-${ASIN}-${index}`} />
+          ))}
+        </div>
+      )}
     </React.Fragment>
   );
 };

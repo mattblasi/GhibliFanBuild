@@ -3,6 +3,7 @@ import {
   MOVIES_SET_DETAILS,
   MOVIES_SET_PEOPLE,
   MOVIES_SET_PHOTOS,
+  MOVIES_SET_PRODUCTS,
   MOVIES_CLEAR_DETAILS,
   MOVIES_RELOAD_DETAILS,
 } from '../actions/actionTypes';
@@ -39,6 +40,13 @@ export const getMoviePhotos = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${BASE_URL}/movies/title/${id}/photos`);
     dispatch({ type: MOVIES_SET_PHOTOS, data: response.data });
+  };
+};
+
+export const getMovieProducts = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`${BASE_URL}/movies/title/${id}/products`);
+    dispatch({ type: MOVIES_SET_PRODUCTS, data: response.data });
   };
 };
 

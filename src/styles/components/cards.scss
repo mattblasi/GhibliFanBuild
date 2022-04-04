@@ -2,10 +2,92 @@
 
 // Base Card
 .card {
+  display: flex;
+  flex-wrap: wrap;
   transition: all 0.5s;
 
   & > a {
     transition: all 0.5s;
+  }
+
+  .card-img {
+  }
+
+  .card-info {
+    p {
+      margin: 1rem 0;
+    }
+  }
+
+  .card-images {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    img {
+      width: 25%;
+      height: auto;
+    }
+  }
+}
+
+// Card List
+.card-list {
+  border: 0.1rem solid #ddd;
+  margin: 2.5rem auto;
+  max-width: 120rem;
+  width: 100%;
+
+  .card {
+    align-items: flex-start;
+    border-bottom: 0.1rem solid #ddd;
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .card:last-of-type {
+    border-bottom: none;
+  }
+
+  .card-img {
+    height: auto;
+    object-fit: contain;
+    width: 20%;
+  }
+
+  .card-info {
+    flex-grow: 1;
+    width: 50%;
+  }
+
+  .card-actions {
+    flex-grow: 1;
+    margin-left: auto;
+    width: 20%;
+  }
+}
+
+// Card Grid
+.card-grid {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5%;
+  width: 100%;
+
+  .card {
+    flex-basis: 19.6%;
+    padding: 1.5rem;
+  }
+
+  .card-img {
+    max-width: 100%;
+  }
+
+  .card-info {
   }
 }
 
@@ -76,42 +158,36 @@
 }
 
 // Product .card
-.card-list {
-  border: 0.1rem solid #ddd;
-  margin: 0 auto;
-  max-width: 120rem;
-}
 .card.product {
-  .card-list & {
-    border-bottom: 0.1rem solid #ddd;
-    display: flex;
-    gap: 2rem;
-    padding: 1.5rem;
-
-    .card-img {
-      max-width: 15rem;
-      height: auto;
-    }
-
-    .card-info {
-      width: 50%;
-    }
-
-    .card-actions {
-      flex-grow: 1;
-      margin-left: auto;
-    }
-
-    h3 {
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: 0.02rem;
-    }
+  h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.02rem;
   }
 }
 
 .form {
   .form-text {
     font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    border-color: hsl(0, 0%, 80%);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
   }
 }

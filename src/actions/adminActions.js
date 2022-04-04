@@ -4,9 +4,12 @@ import {
   ADMIN_SCRAPE_PRODUCTS_PAGE,
   ADMIN_UPDATE_PAGE,
   ADMIN_ADD_UNSORTED,
+  ADMIN_FILTER_UNSORTED,
 } from '../actions/actionTypes';
 import axios from 'axios';
 import { dispatch, getState } from '../store';
+
+import { siteSetting } from './siteActions';
 
 const BASE_URL = `https://ghiblifan.herokuapp.com`;
 const SCRAPER_API_KEY = `4f6063d8bd8f350d17dff0c30a127859`;
@@ -18,7 +21,7 @@ const HEADERS = {
 
 export const getMovieToEdit = (id) => {
   return async (dispatch) => {
-    const response = Promise.all([
+    Promise.all([
       axios.get(`${BASE_URL}/movies/title/${id}`),
       axios.get(`${BASE_URL}/movies/title/${id}/people`),
       axios.get(`${BASE_URL}/movies/title/${id}/photos`),
@@ -37,7 +40,7 @@ export const getMovieToEdit = (id) => {
 
 export const updateData = (id, list, type) => {
   return async (dispatch) => {
-    //console.log('test', id, list, type);
+    // console.log('test', id, list, type);
     fetch(`${BASE_URL}/update/${id}/${type}`, {
       method: 'POST',
       headers: HEADERS,
@@ -51,20 +54,20 @@ export const updateData = (id, list, type) => {
 // Scrape Products
 export const getProducts = (term, store = 'amazon') => {
   return async (dispatch) => {
-    console.log('getProducts...', term, store);
-    fetch(`${BASE_URL}/scrape/products`, {
-      method: 'POST',
-      headers: HEADERS,
-      body: JSON.stringify({ term: term, store: store }),
-    }).then((res) => {
-      console.log(res);
-    });
-    // if (store === 'amazon') dispatch(getProductsAmazon(searchTerm));
+    // Scrapping from Heroku to Amazon is blocked...
+    // fetch(`${BASE_URL}/scrape/products`, {
+    //   method: 'POST',
+    //   headers: HEADERS,
+    //   body: JSON.stringify({ term: term, store: store }),
+    // }).then((res) => {
+    //   console.log(res);
+    // });
+    if (store === 'amazon') dispatch(getProductsAmazon(term));
   };
 };
 
 export const getProductsAmazon = (searchTerm) => {
-  console.log('get amazon products: ', searchTerm);
+  // console.log('get amazon products: ', searchTerm);
   return async (dispatch) => {
     let pages = [],
       term = searchTerm.replace(/ /g, '+'),
@@ -104,7 +107,7 @@ export const updateCurPage = (page) => {
   };
 };
 
-// Add products to Firestore
+// Add products to Firebase Cloud Firestore
 export const addProduct = (product) => {
   return async (dispatch) => {
     const { url } = product;
@@ -112,6 +115,7 @@ export const addProduct = (product) => {
       await axios.get(`${SCRAPER_URL}&url=${url}`),
       url
     );
+
     sendProduct(prod);
 
     async function getVariant(url) {
@@ -130,7 +134,6 @@ export const addProduct = (product) => {
 
 async function buildProduct({ data }, url) {
   // structure the product with only the items we need
-  // console.log('prod data: ', data);
   return (({
     name,
     images,
@@ -154,7 +157,6 @@ async function buildProduct({ data }, url) {
 
 async function sendProduct(product) {
   // send product to endpoint for firestore
-  // console.log('Product: ', product);
   fetch(`${BASE_URL}/product/add`, {
     method: 'POST',
     headers: HEADERS,
@@ -169,5 +171,20 @@ export const getUnsortedProducts = () => {
   return async (dispatch) => {
     const unsorted = await axios.get(`${BASE_URL}/products/unsorted`);
     dispatch({ type: ADMIN_ADD_UNSORTED, data: unsorted.data });
+  };
+};
+
+// Update and Sort Product
+export const updateProduct = (product) => {
+  return async (dispatch) => {
+    fetch(`${BASE_URL}/product/update/${product.id}`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(product),
+    }).then((res) => {
+      console.log('added product', res);
+      siteSetting(); // update site settings
+      dispatch({ type: ADMIN_FILTER_UNSORTED, data: product.id });
+    });
   };
 };

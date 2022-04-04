@@ -2,6 +2,7 @@ import {
   MOVIES_SET_DETAILS,
   PAGE_RELOAD,
   SITE_UPDATE_RECENTS,
+  SITE_SETTINGS
 } from '../actions/actionTypes';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 
@@ -9,6 +10,7 @@ const initialState = {
   pageLoaded: false,
   detailsId: null,
   recentlyViewed: [],
+  settings: {}
 };
 
 export default function Site(state = initialState, action) {
@@ -36,6 +38,12 @@ export default function Site(state = initialState, action) {
         ...state,
         recentlyViewed: [...recents.slice(0, 5)],
       };
+
+    case SITE_SETTINGS:
+      return {
+        ...state,
+        settings: { ...action.data }
+      }
 
     default:
       return state;

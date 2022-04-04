@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Outlet, Link } from 'react-router-dom';
 
 import { getAllMovies, forceReloadDetails } from './actions/movieActions';
+import { siteSetting } from './actions/siteActions';
 
 import Footer from './views/Partials/Footer';
 import Header from './views/Partials/Header';
 import Recents from './views/Partials/Recents';
 import ScrollTop from './components/ScrollTop';
 
-const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
+const App = ({ movies, isLoading, getAllMovies, forceReloadDetails, siteSetting }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setResults] = useState();
@@ -25,6 +26,7 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails }) => {
   };
 
   useEffect(() => {
+    siteSetting();
     if (isLoading) getAllMovies();
     movies = movies.sort(
       // Sort by release year oldest first
@@ -57,6 +59,7 @@ const mapStateToProps = ({ Movies: { isLoading, movies } }) => ({
 const mapDispatchToProps = (dispatch) => ({
   getAllMovies: () => dispatch(getAllMovies()),
   forceReloadDetails: () => dispatch(forceReloadDetails()),
+  siteSetting: () => dispatch(siteSetting())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

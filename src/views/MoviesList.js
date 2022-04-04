@@ -11,7 +11,7 @@ const MoviesList = ({ movies, isLoading }) => {
   return (
     <div className="movies-list">
       {movies.map((m) => (
-        <Card movie={m} key={m.id} />
+        <Card props={{ movie: m }} key={m.id} />
       ))}
     </div>
   );

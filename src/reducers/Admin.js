@@ -9,6 +9,7 @@ import {
   ADMIN_SCRAPE_PRODUCTS_PAGE,
   ADMIN_UPDATE_PAGE,
   ADMIN_ADD_UNSORTED,
+  ADMIN_FILTER_UNSORTED,
 } from '../actions/actionTypes';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 
@@ -96,6 +97,14 @@ export default function Details(state = initialState, action) {
       return {
         ...state,
         unsorted: action.data,
+      };
+
+    case ADMIN_FILTER_UNSORTED:
+      return {
+        ...state,
+        unsorted: state.unsorted.filter((p) => {
+          p.id !== action.data;
+        }),
       };
 
     case ADMIN_CLEAR_DETAILS:
