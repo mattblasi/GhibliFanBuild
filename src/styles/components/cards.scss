@@ -95,7 +95,9 @@
 .card.movie,
 .card.recent {
   cursor: pointer;
-  flex: 0 0 14.285%;
+  // flex: 0 0 14.285%;
+  flex: 0 0 20%;
+  // flex: 0 0 25%;
   overflow: hidden;
   position: relative;
 
@@ -144,7 +146,7 @@
 
 // Recents Card
 .card.recent {
-  width: 19.2%;
+  flex: 0 0 19.2%;
 
   & > a,
   & > a:hover {
@@ -177,7 +179,7 @@
   padding: 0;
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     padding-bottom: 100%;
     top: 0;
@@ -220,7 +222,7 @@
 
     .title {
       font-size: 1.4rem;
-      letter-spacing: .1rem;
+      letter-spacing: 0.1rem;
       text-transform: uppercase;
     }
 
@@ -229,7 +231,6 @@
     }
   }
 }
-
 
 .form {
   .form-text {

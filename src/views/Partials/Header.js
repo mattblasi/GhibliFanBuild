@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+import logo from '../../images/Studio_Ghibli_logo.svg';
+
 const Header = ({ movies }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setResults] = useState();
+  let content, header;
 
   const toggleSearch = () => setIsSearch(!isSearch);
   const handleChange = (event) => {
@@ -18,6 +21,23 @@ const Header = ({ movies }) => {
     forceReloadDetails();
     toggleSearch();
   };
+
+  /**
+   * Handle the header background showing on scroll
+   */
+  useEffect(() => {
+    content = document.getElementById('main');
+    header = document.getElementById('site-header');
+
+    content.addEventListener('scroll', () => {
+      if (content.scrollTop > 250) {
+        header.classList.add('is-visible');
+      } else {
+        header.classList.remove('is-visible');
+      }
+      setIsSearch(false);
+    });
+  }, []);
 
   /**
    * Handle search terms to check against the title,
@@ -59,36 +79,45 @@ const Header = ({ movies }) => {
   }, [isSearch]);
 
   return (
-    <header className="site-header">
+    <header id="site-header" className="site-header">
       <div className="site-search">
-        <a className="search-toggle" onClick={() => toggleSearch()}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </a>
-        <div className={`search ${isSearch ? 'search-open' : 'search-hidden'}`}>
-          <input
-            id="ghibli-search"
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleChange}
-          />
-          {searchResults && searchResults?.length !== movies.length && (
-            <ul className="search-list">
-              {searchResults.map((m, i) => (
-                <li key={`link-${i}`}>
-                  <Link to={`/${m.id}`} onClick={handleClickedSearch}>
-                    {m.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
+        <div
+          className={`site-search--wrapper ${
+            isSearch ? 'search-open' : 'search-hidden'
+          }`}
+        >
+          <a className="search-toggle" onClick={() => toggleSearch()}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </a>
+          <div className="search">
+            <input
+              id="ghibli-search"
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleChange}
+            />
+            {searchResults && searchResults?.length !== movies.length && (
+              <ul className="search-list">
+                {searchResults.map((m, i) => (
+                  <li key={`link-${i}`}>
+                    <Link to={`/${m.id}`} onClick={handleClickedSearch}>
+                      {m.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
-      <p>Ghibli Fan</p>
+      <span className="site-logo">
+        {/* <img src={logo} className="recents-logo" /> */}
+      </span>
       <nav className="site-nav">
         <Link to="/">News</Link>
         <Link to="/">Movies</Link>
+        <Link to="/">Merch</Link>
         <Link to="/">GhibliFest 2022</Link>
       </nav>
     </header>

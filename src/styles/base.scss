@@ -7,6 +7,10 @@
   //transition: all 0.5s;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 html {
   font-family: var(--font-primary);
   font-size: 62.5%;
@@ -42,37 +46,31 @@ button {
 
 // SITE LAYOUT
 .ghibli {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
 
   .site-header {
-    grid-area: header;
     width: 100%;
     z-index: var(--z-index-top);
+    position: absolute;
+    top: 0;
   }
 
   .site-content {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    grid-area: main;
     height: 100%;
+    max-width: 100%;
     overflow: auto;
     width: 100vw;
-    max-width: 100%;
   }
 
   .site-footer {
-    grid-area: footer;
-    width: 100vw;
     max-width: 100%;
+    width: 100vw;
     z-index: var(--z-index-top);
   }
 }

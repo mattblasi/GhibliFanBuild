@@ -10,6 +10,7 @@ const ProductCard = ({ product, form, action }) => {
   const [showImages, setShowImages] = useState(false);
   const { control, handleSubmit, register } = useForm();
   const {
+    affiliate_url,
     ASIN = '',
     main_image,
     images,

@@ -20,6 +20,7 @@ const DetailsHero = ({
   setHeroLoaded,
   setHeroIndex,
 }) => {
+  const [scroll, setScroll] = useState();
   const [bgLoaded, setBgLoaded] = useState(false);
   const [bgImage, setBgImage] = useState('');
 
@@ -35,6 +36,7 @@ const DetailsHero = ({
       : 'https://bit.ly/37c03oN';
     setHeroIndex(imageIndex);
     setBgImage(background);
+    setScroll(document.getElementById('main'));
   }, []);
 
   const HeaderButton = ({ icon, title, action }) => {
@@ -61,11 +63,11 @@ const DetailsHero = ({
         classNames="page"
         unmountOnExit
       >
-        <div className="details-hero hero">
+        <div className="details-hero">
           <span className="details-title--ghost">{og_title_jp}</span>
           <ParallaxProvider
             className="details-hero--wrapper"
-            scrollContainer={document.getElementsByClassName('site-content')[0]}
+            scrollContainer={scroll}
           >
             <ParallaxBanner layers={[{ image: bgImage, speed: -25 }]} />
             <div className="details-hero--content">

@@ -20,6 +20,12 @@
       right: 1rem;
     }
   }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+  }
 }
 
 // Footer Nav
@@ -30,7 +36,7 @@
   .footer-link {
     color: #333;
     font-size: 1.3rem;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.15rem;
     margin: 0 0.75rem;
     text-decoration: none;
     text-transform: uppercase;

@@ -13,19 +13,18 @@ const MerchCard = ({ merch }) => {
     url,
   } = merch;
 
-  console.log(merch);
-
   return (
-    <Link
-      to={affiliate_url ? affiliate_url : url}
+    <a
+      href={affiliate_url ? affiliate_url : url}
       style={{ backgroundImage: `url(${main_image})` }}
+      target="_blank"
     >
       <img className="card-img" src={main_image} />
       <div className="card-info">
         {/* <p className="title">{title}</p> */}
         <p className="price">${price}</p>
       </div>
-    </Link>
+    </a>
   );
 };
 

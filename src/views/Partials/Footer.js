@@ -23,6 +23,10 @@ const Footer = () => {
           <Link className="footer-link" to="/admin">
             Admin
           </Link>
+          &middot;
+          <Link className="footer-link" to="/contribute">
+            Contribute
+          </Link>
         </nav>
         <p>Made by Me ~ Matt Blasi &copy; {new Date().getFullYear()}</p>
       </div>

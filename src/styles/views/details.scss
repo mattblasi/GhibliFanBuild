@@ -9,8 +9,8 @@
     font-size: 2.2rem;
     margin: 0;
     padding: 2.5rem 0;
-    position: sticky;
-    top: 4.8rem;
+    // position: sticky;
+    // top: 4.8rem;
     vertical-align: middle;
 
     a {
@@ -85,7 +85,7 @@
     .details-title--ghost {
       font-size: 15rem;
       left: 2rem;
-      opacity: 0.05;
+      opacity: 0.15;
       position: absolute;
       top: 2rem;
       z-index: 2;
@@ -690,8 +690,8 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     margin-bottom: 7.5rem;
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     width: 100%;
     z-index: 1000;
 
