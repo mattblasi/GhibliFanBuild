@@ -125,19 +125,3 @@
   width: 100vw;
   z-index: 1000;
 }
-
-.product-dialog {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 2rem;
-  position: fixed;
-  width: 50rem;
-  margin: 0 auto;
-  left: 50%;
-  margin-left: -25rem;
-  top: 15rem;
-
-  img {
-    max-width: 100%;
-  }
-}

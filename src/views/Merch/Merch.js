@@ -15,6 +15,7 @@ const Merch = ({ movies, products, getAllProducts }) => {
   useEffect(() => {
     document.title = `Studio Ghibli`;
     setScroll(document.getElementById('main'));
+    console.log('movies', movies);
     getAllProducts(movies);
   }, []);
 
