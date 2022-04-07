@@ -29,3 +29,6 @@ export const ADMIN_FILTER_UNSORTED = 'ADMIN_FILTER_UNSORTED';
 // site actions
 export const SITE_SETTINGS = 'SITE_SETTINGS';
 export const SITE_UPDATE_RECENTS = 'SITE_UPDATE_RECENTS';
+
+// store actions
+export const MERCH_GET_PRODUCT = 'MERCH_GET_PRODUCT';

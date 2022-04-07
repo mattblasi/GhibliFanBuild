@@ -117,7 +117,7 @@ const Header = ({ movies }) => {
       <nav className="site-nav">
         <Link to="/">News</Link>
         <Link to="/">Movies</Link>
-        <Link to="/">Merch</Link>
+        <Link to="/merch">Merch</Link>
         <Link to="/">GhibliFest 2022</Link>
       </nav>
     </header>

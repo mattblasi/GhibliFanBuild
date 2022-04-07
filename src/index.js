@@ -6,9 +6,10 @@ import { store, persistor } from './store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import App from './App';
-import MoviesList from './views/MoviesList';
-import Details from './views/Details/Details';
 import Admin from './views/Admin/Admin';
+import Details from './views/Details/Details';
+import Merch from './views/Merch/Merch';
+import MoviesList from './views/MoviesList';
 import Products from './views/Products/Products';
 import ProductsUnsorted from './views/Products/ProductsUnsorted';
 
@@ -41,6 +42,12 @@ const app = (AppComponent) => {
                 exact
                 path=":movie_id/story"
                 element={<Details show="story" />}
+              />
+              <Route
+                exact
+                path="/merch"
+                onLeave={() => console.log('bye')}
+                element={<Merch />}
               />
               <Route
                 exact
