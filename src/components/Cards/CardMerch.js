@@ -2,16 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MerchCard = ({ merch }) => {
-  const {
-    affiliate_url,
-    main_image,
-    images,
-    title,
-    name,
-    price,
-    small_description,
-    url,
-  } = merch;
+  const { affiliate_url, main_image, name, price, url } = merch;
 
   return (
     <a
@@ -21,7 +12,6 @@ const MerchCard = ({ merch }) => {
     >
       <img className="card-img" src={main_image} />
       <div className="card-info">
-        {/* <p className="title">{title}</p> */}
         <p className="price">${price}</p>
       </div>
     </a>

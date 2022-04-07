@@ -3,7 +3,6 @@ import React from 'react';
 import Card from './Cards/Card';
 
 const MerchList = ({ movie_id, products }) => {
-  console.log('merchList', products);
   return (
     <div className="products">
       <div className="product-container">

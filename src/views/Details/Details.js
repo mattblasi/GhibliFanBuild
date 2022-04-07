@@ -38,7 +38,7 @@ const Details = ({
   getMovieProducts,
   updateRecents,
 }) => {
-  const { id, title, wallpapers } = details;
+  const { id, title, synopsis, wallpapers } = details;
   const { movie_id } = useParams();
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroIndex, setHeroIndex] = useState();
@@ -124,18 +124,14 @@ const Details = ({
             </div>
           </nav>
           <div className="details-container">
-            {show === 'story' && (
-              <React.Fragment>
-                <DetailsStoryline synopsis={details.synopsis} />
-              </React.Fragment>
-            )}
+            {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
             {show === 'credits' && <DetailsCredits people={people} />}
             {show === 'gallery' && <DetailsImages photos={photos} />}
             {show === 'default' && (
               <React.Fragment>
-                <DetailsCast cast={details.people.cast} />
+                <DetailsCast cast={people.cast} />
                 <DetailsVideos />
-                <DetailsImages photos={photos} show={8} title="Photos" />
+                <DetailsImages photos={photos} show={1} title="Photos" />
               </React.Fragment>
             )}
           </div>

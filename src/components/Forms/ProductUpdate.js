@@ -27,16 +27,6 @@ const ProductUpdate = ({ product, settings, movies, updateProduct }) => {
 
   const onError = (errors, e) => console.log('test', errors, e);
   const onSubmit = (data, e) => {
-    console.log({
-      ...product,
-      ...data,
-      title: data.title,
-      categories: data.categories.map((m) => m.value),
-      store: data.store.value,
-      movies: data.movies.map((m) => m.value),
-      sorted: true,
-    });
-
     updateProduct({
       ...product,
       ...data,
@@ -52,7 +42,7 @@ const ProductUpdate = ({ product, settings, movies, updateProduct }) => {
     setStore(stores[0]);
   }, []);
 
-  if (!product) return <div></div>;
+  if (!product) return <div />;
 
   return (
     <form
