@@ -11,8 +11,8 @@
   }
 
   .merch & {
-    height: 30vh;
-    min-height: 30vh;
+    height: 50vh;
+    min-height: 50vh;
   }
 
   &:before {
@@ -97,4 +97,19 @@ h1.title {
   //   grid-row: 2 / 3;
   //   grid-column-end: span 2;
   // }
+}
+
+.merch-content {
+  display: flex;
+  position: relative;
+
+  .products-filter {
+    flex-grow: 1;
+    padding: 1.5rem;
+  }
+
+  .products-list {
+    padding: 1.5rem;
+    flex-basis: 7%;
+  }
 }

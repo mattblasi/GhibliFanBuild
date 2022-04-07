@@ -86,6 +86,10 @@ button.scroll-top {
 
   &.is-visible {
     right: 10rem;
+    opacity: 0.5;
+  }
+
+  &.is-visible:hover {
     opacity: 1;
   }
 }

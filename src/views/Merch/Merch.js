@@ -10,7 +10,7 @@ const Merch = ({ movies, products, getAllProducts }) => {
   const [scroll, setScroll] = useState();
   //const [] = useState();
 
-  const IMAGE1 = 'https://wallpaperaccess.com/full/1542328.jpg';
+  const IMAGE1 = 'https://wallpaperaccess.com/full/81806.jpg';
 
   useEffect(() => {
     document.title = `Studio Ghibli`;
@@ -29,6 +29,9 @@ const Merch = ({ movies, products, getAllProducts }) => {
       </div>
       <div className="merch-content">
         <h1 className="title">Merch</h1>
+        <div className="products-filter">
+          <p>filters here - movie multi select - </p>
+        </div>
         <div className="products-list card-grid">
           {products &&
             products.map((p, i) => (

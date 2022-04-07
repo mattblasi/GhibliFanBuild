@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Card from './Cards/Card';
+import Card from '../../components/Cards/Card';
 
-const MerchList = ({ movie_id, products }) => {
+const DetailsMerch = ({ products }) => {
   return (
     <div className="products">
       <div className="product-container">
@@ -19,4 +19,4 @@ const MerchList = ({ movie_id, products }) => {
   );
 };
 
-export default MerchList;
+export default DetailsMerch;

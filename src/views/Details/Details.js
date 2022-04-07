@@ -18,6 +18,7 @@ import DetailsGenres from './DetailsGenres';
 import DetailsHero from './DetailsHero';
 import DetailsImages from './DetailsImages';
 import DetailsMedia from './DetailsMedia';
+import DetailsMerch from './DetailsMerch';
 import DetailsMeta from './DetailsMeta';
 import DetailsStoryline from './DetailsStoryline';
 import DetailsVideos from './DetailsVideos';
@@ -85,12 +86,12 @@ const Details = ({
         }
         className={`page-link${show === page ? ' is-active' : ''}`}
       >
-        <span className="page-link--text">
-          {page !== 'default' ? page : 'back'}
-        </span>
+        {page !== 'default' ? page : 'back'}
       </Link>
     );
   };
+
+  console.log(people.cast);
 
   return (
     <div className="full-details">
@@ -131,11 +132,11 @@ const Details = ({
               <React.Fragment>
                 <DetailsCast cast={people.cast} />
                 <DetailsVideos />
-                <DetailsImages photos={photos} show={1} title="Photos" />
+                <DetailsImages photos={photos} show={12} title="Photos" />
               </React.Fragment>
             )}
           </div>
-          <MerchList movie_id={movie_id} products={products} />
+          {products.length && <DetailsMerch products={products} />}
         </article>
       </CSSTransition>
       {!bgLoaded && bgImage?.length && (
