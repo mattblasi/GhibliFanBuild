@@ -23,6 +23,12 @@
     flex-grow: 1;
     padding: 1.5rem;
   }
+
+  .products-filter--content {
+    position: sticky;
+    top: 7.5rem;
+    height: auto;
+  }
 }
 
 .products-masonry-grid {

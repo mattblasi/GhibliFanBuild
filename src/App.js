@@ -2,15 +2,16 @@ import React, { Component, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Outlet, Link } from 'react-router-dom';
 
-import { getAllMovies, forceReloadDetails } from './actions/movieActions';
+import { getAllMovies } from './actions/movieActions';
 import { siteSetting } from './actions/siteActions';
 
 import Footer from './views/Partials/Footer';
 import Header from './views/Partials/Header';
 import Recents from './views/Partials/Recents';
+import MobileApp from './views/Partials/MobileApps';
 import ScrollTop from './components/ScrollTop';
 
-const App = ({ movies, isLoading, getAllMovies, forceReloadDetails, siteSetting }) => {
+const App = ({ movies, isLoading, getAllMovies, siteSetting }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setResults] = useState();
@@ -21,7 +22,6 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails, siteSetting 
   };
 
   const handleClickedSearch = () => {
-    //forceReloadDetails();
     toggleSearch();
   };
 
@@ -44,9 +44,10 @@ const App = ({ movies, isLoading, getAllMovies, forceReloadDetails, siteSetting 
       <main id="main" className="site-content">
         <Outlet />
         <Recents />
-        <ScrollTop />
+        <MobileApp />
       </main>
       <Footer />
+      <ScrollTop />
     </div>
   );
 };
@@ -58,7 +59,6 @@ const mapStateToProps = ({ Movies: { isLoading, movies } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllMovies: () => dispatch(getAllMovies()),
-  forceReloadDetails: () => dispatch(forceReloadDetails()),
   siteSetting: () => dispatch(siteSetting())
 });
 

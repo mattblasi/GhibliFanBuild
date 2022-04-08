@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 
 import Dialog from '../../components/Dialog';
+import Gallery from '../../components/Gallery';
 
 const DetailsImages = ({ photos, show, title }) => {
   const [photosList, setPhotosList] = useState([]);
@@ -34,6 +35,7 @@ const DetailsImages = ({ photos, show, title }) => {
               <Link to="./gallery">View Full Gallery</Link>
             </h2>
           )}
+          <Gallery images={photosList} title={} />
           {photosList.map((p, i) => (
             <div
               className="detail-images--image"

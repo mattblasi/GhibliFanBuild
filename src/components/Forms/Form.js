@@ -109,10 +109,7 @@ const Form = (props) => {
   });
 
   return (
-    <form
-      className="form product-filters"
-      onSubmit={handleSubmit(onSubmit, onError)}
-    >
+    <form className="form" onSubmit={handleSubmit(onSubmit, onError)}>
       {items &&
         items.map((item, index) => (
           <div

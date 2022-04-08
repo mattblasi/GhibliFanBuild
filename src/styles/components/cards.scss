@@ -233,6 +233,8 @@
 }
 
 .form {
+  padding-top: 1rem;
+
   .form-text {
     font-weight: bold;
     margin-bottom: 1.5rem;
@@ -245,8 +247,10 @@
   }
 
   label {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.025rem;
+    margin: 0.5rem 0;
+    text-transform: capitalize;
   }
 
   input {

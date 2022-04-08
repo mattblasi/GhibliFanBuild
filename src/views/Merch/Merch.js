@@ -58,8 +58,10 @@ const Merch = ({ movies, products, settings, getAllProducts }) => {
       <div className="merch-content">
         <h1 className="title">Merch</h1>
         <div className="products-filter">
-          <h3>Filter Products</h3>
-          <ProductFilters />
+          <div className="products-filter--content">
+            <h3>Filter Products</h3>
+            <ProductFilters />
+          </div>
         </div>
         <Masonry
           breakpointCols={breakpointColumnsObj}

@@ -18,16 +18,30 @@ const MoviesList = ({ movies, isLoading }) => {
 
   return (
     <React.Fragment>
-      <div className="hero">
+      <div className="hero main-hero">
         <ParallaxProvider className="hero--wrapper" scrollContainer={scroll}>
           <ParallaxBanner
             layers={[
-              { image: IMAGE1, speed: -25 },
               {
-                speed: -50,
+                image: IMAGE1,
+                speed: -45,
+                expanded: false,
+                scale: [1.5, 1.5, 'easeOutCubic'],
+              },
+              {
+                expanded: false,
+                speed: 0,
+                children: <div className="overlay" />,
+              },
+              {
+                translateY: [0, 150],
+                //scale: [0.5, 2, 'easeOutCubic'],
+                shouldAlwaysCompleteAnimation: true,
+                expanded: false,
+                speed: -10,
                 children: (
-                  <div className="title">
-                    <h1>Ghibli Fan</h1>
+                  <div className="site-title">
+                    <h1 className="title">Ghibli Fan</h1>
                   </div>
                 ),
               },
