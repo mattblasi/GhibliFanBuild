@@ -9,6 +9,7 @@ const Gallery = ({ images, title = 'studio ghibli images' }) => {
   }
 
   const handleImageClick = (index) => {
+    console.log(`clicked image: ${index}`);
     setCurImg(index);
     // open dialog
   }
@@ -17,7 +18,7 @@ const Gallery = ({ images, title = 'studio ghibli images' }) => {
 
   return (
     <div className="gallery">
-      {images.map(img, i) => (
+      {images.map((img, i) => (
         <button 
           className={`gallery-image gallery-image--${i}`} 
           key={`gallery-img-${i}`}
@@ -28,7 +29,7 @@ const Gallery = ({ images, title = 'studio ghibli images' }) => {
           >
             <img src={img} style={{ display: 'none' }} alt={`${title} image #${i}`} />
         </button>
-      )}
+      ))}
     </div>
   );
 };

@@ -36,18 +36,6 @@ const DetailsImages = ({ photos, show, title }) => {
             </h2>
           )}
           <Gallery images={photosList} title={} />
-          {photosList.map((p, i) => (
-            <div
-              className="detail-images--image"
-              key={`images-${i}`}
-              style={{
-                backgroundImage: `url(${p})`,
-              }}
-              onClick={() => console.log('click: ', i, p)}
-            >
-              <img style={{ display: 'none' }} src={p} />
-            </div>
-          ))}
         </div>
       </CSSTransition>
       {!photosLoaded &&
