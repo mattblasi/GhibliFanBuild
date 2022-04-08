@@ -49,7 +49,7 @@ const Merch = ({ movies, products, settings, getAllProducts }) => {
   }, []);
 
   return (
-    <div className="merch-">
+    <div className="merch-page">
       <div className="hero">
         <ParallaxProvider className="hero--wrapper" scrollContainer={scroll}>
           <ParallaxBanner layers={[{ image: IMAGE1, speed: -25 }]} />
