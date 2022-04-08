@@ -3,6 +3,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import Select from 'react-select';
 
+/**
+ * Accepted Props:
+ * form: 'string name / headline of form
+ * fields: { name, type, required, label }
+ * actions: { onSubmit(), onError() }
+ */
 
 const Form = (props) => {
   const {

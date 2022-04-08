@@ -21,9 +21,6 @@ const ProductFilters = ({ settings, movies }) => {
     { name: 'movies', type: 'multiselect', options: movieList, required: true },
     { name: 'store', type: 'select', options: stores },
     { name: 'categories', type: 'multiselect', options: categories },
-    // { name: 'test', type: 'text', required: true },
-    // { name: 'textarea', type: 'textarea', label: 'test text area' },
-    // { name: 'checkbox', type: 'checkbox', label: 'this is the checkbox' },
   ];
 
   const actions = {
