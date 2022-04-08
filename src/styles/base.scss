@@ -34,6 +34,10 @@ h6 {
   text-transform: capitalize;
 }
 
+textarea {
+  resize: none;
+}
+
 button {
   cursor: pointer;
   padding: 0.5rem 0.75rem;

@@ -15,10 +15,35 @@
   .products-filter {
     flex-grow: 1;
     padding: 1.5rem;
+    width: 30rem;
+    min-width: 30rem;
   }
 
   .products-list {
+    flex-grow: 1;
     padding: 1.5rem;
-    flex-basis: 7%;
+  }
+}
+
+.products-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -1rem; /* gutter size offset */
+  width: auto;
+}
+.products-masonry-grid_column {
+  padding-left: 1rem; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.products-masonry-grid_column > .card {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 1rem;
+
+  &:after {
+    display: none;
   }
 }

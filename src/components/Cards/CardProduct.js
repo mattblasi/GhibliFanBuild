@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
-import Select, { ActionMeta, OnChangeValue } from 'react-select';
-import CreatableSelect from 'react-select/creatable';
 
 import ProductUpdate from '../Forms/ProductUpdate';
 
 const ProductCard = ({ product, form, action }) => {
   const [showImages, setShowImages] = useState(false);
-  const { control, handleSubmit, register } = useForm();
   const {
     affiliate_url,
     ASIN = '',
