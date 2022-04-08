@@ -34,11 +34,11 @@ const MoviesList = ({ movies, isLoading }) => {
                 children: <div className="overlay" />,
               },
               {
-                translateY: [0, 150],
+                translateY: [0, 50],
                 //scale: [0.5, 2, 'easeOutCubic'],
                 shouldAlwaysCompleteAnimation: true,
                 expanded: false,
-                speed: -10,
+                speed: 0,
                 children: (
                   <div className="site-title">
                     <h1 className="title">Ghibli Fan</h1>

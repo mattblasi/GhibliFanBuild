@@ -1,0 +1,21 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  position: relative;
+  width: 100%;
+
+  .gallery-image {
+    background-repeat: no-repeat;
+    background-size: 160%;
+    background-position: center center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: block;
+    height: 20rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    width: 24.2%;
+  }
+}
