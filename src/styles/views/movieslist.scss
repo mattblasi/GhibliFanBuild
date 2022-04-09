@@ -3,9 +3,20 @@
   font-family: var(--font-secondary);
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 1fr;
+  gap: 1.rem;
   padding: 1.5rem;
   position: relative;
   width: 100%;
+
+  @include rwd(
+    grid-template-columns,
+    repeat(6, 1fr),
+    (
+      $sm: repeat(2, 1fr),
+      $md: repeat(4, 1fr),
+      $lg: repeat(6, 1fr),
+    )
+  );
 }
 
 .merch-content {
