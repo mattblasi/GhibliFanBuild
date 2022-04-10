@@ -1,6 +1,6 @@
-$sm: 400px;
+$sm: 700px;
 $md: 800px;
-$lg: 1200px;
+$lg: 1000px;
 
 @mixin rwd($propertyName, $defaultValue, $mediaQueries: ()) {
   #{$propertyName}: #{$defaultValue};
@@ -9,5 +9,11 @@ $lg: 1200px;
     @media (min-width: #{$breakpoint}) {
       #{$propertyName}: #{$value};
     }
+  }
+}
+
+@mixin mq($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
   }
 }

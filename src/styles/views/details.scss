@@ -9,8 +9,6 @@
     font-size: 2.2rem;
     margin: 0;
     padding: 2.5rem 0;
-    // position: sticky;
-    // top: 4.8rem;
     vertical-align: middle;
 
     a {
@@ -35,15 +33,23 @@
     background-size: cover;
     color: #fff;
     display: block;
-    height: 700px;
+    height: 70rem;
     position: relative;
     width: 100%;
     z-index: 2;
 
+    @include mq($sm) {
+      height: 50rem;
+    }
+
     > div:first-of-type {
-      height: 700px;
       position: absolute !important;
+      height: 70rem;
       top: 0;
+
+      @include mq($sm) {
+        height: 50rem;
+      }
     }
 
     &:before {
@@ -89,15 +95,39 @@
       position: absolute;
       top: 2rem;
       z-index: 2;
+
+      @include mq($sm) {
+        font-size: 5rem;
+        top: 7rem;
+      }
+
+      @include mq($md) {
+        font-size: 1rem;
+        top: 5rem;
+      }
     }
 
     .details-hero--sidebar {
       height: auto;
+      left: 0;
       max-width: 250px;
       position: absolute;
       top: 75%;
       width: 30%;
       z-index: 100;
+
+      @include mq($sm) {
+        background-color: #fff;
+        left: 0;
+        top: 50%;
+        width: 35%;
+      }
+
+      @include mq($md) {
+        left: 2.5rem;
+        top: 70%;
+        width: 23%;
+      }
 
       .poster {
         border: 1rem solid #fff;
@@ -105,6 +135,10 @@
         max-width: 250px;
         position: relative;
         width: 100%;
+
+        @include mq($sm) {
+          border-width: 0.5rem;
+        }
       }
 
       .details-sidebar {
@@ -117,6 +151,10 @@
         max-width: 25rem;
         padding: 1rem;
         width: 100%;
+
+        @include mq($sm) {
+          padding: 0 0.5rem 0.5rem;
+        }
 
         p {
           background: #333;
@@ -165,10 +203,34 @@
     position: absolute;
     right: 0;
     text-align: right;
+    width: 70%;
+
+    @include mq($sm) {
+      right: 2rem;
+      width: 59%;
+    }
+
+    @include mq($md) {
+      right: 2.5rem;
+      width: 67%;
+    }
+
+    @include mq($lg) {
+      right: 0;
+      width: 70%;
+    }
 
     h1 {
       font-size: 2.5rem;
       vertical-align: baseline;
+
+      @include mq($sm) {
+        font-size: 1.7rem;
+      }
+
+      @include mq($md) {
+        font-size: 2.5rem;
+      }
     }
 
     h1 span {
@@ -176,7 +238,14 @@
       font-style: italic;
       font-weight: normal;
       padding-left: 0.5rem;
-      //vertical-align: sub;
+
+      @include mq($sm) {
+        display: block;
+      }
+
+      @include mq($md) {
+        display: inline;
+      }
     }
 
     p {
@@ -189,13 +258,37 @@
   .details-storyline {
     bottom: 125px;
     position: absolute;
-    right: 0;
-    width: 65%;
+
+    @include mq($sm) {
+      right: 2rem;
+      width: 59%;
+    }
+
+    @include mq($md) {
+      right: 2.5rem;
+      width: 67%;
+    }
+
+    @include mq($lg) {
+      right: 0;
+      width: 70%;
+    }
 
     .details-storyline--text {
       font-family: Futura, Trebuchet MS, Arial, sans-serif;
       font-size: 3rem;
-      //text-shadow: 2px 2px #000;
+
+      @include mq($sm) {
+        font-size: 2rem;
+      }
+
+      @include mq($md) {
+        font-size: 2.5rem;
+      }
+
+      @include mq($lg) {
+        font-size: 3rem;
+      }
     }
 
     .details-storyline--dots {
@@ -237,6 +330,21 @@
       padding-top: 2.5rem;
       width: 65%;
       margin-left: auto;
+
+      @include mq($sm) {
+        margin-right: 2rem;
+        width: 59%;
+      }
+
+      @include mq($md) {
+        margin-right: 2.5rem;
+        width: 67%;
+      }
+
+      @include mq($lg) {
+        margin-right: 0;
+        width: 70%;
+      }
     }
   }
 
@@ -248,6 +356,16 @@
     font-size: 1.6rem;
     width: 100%;
 
+    @include mq($sm) {
+      font-size: 1.2rem;
+      padding-right: 1rem;
+    }
+
+    @include mq($md) {
+      font-size: 1.4rem;
+      padding-right: 1.5rem;
+    }
+
     div:first-of-type {
       margin-left: auto;
     }
@@ -257,6 +375,10 @@
       padding: 2rem 1.5rem;
       transition: all 0.25s;
       filter: grayscale(1);
+
+      @include mq($sm) {
+        padding: 1.5rem 1rem;
+      }
 
       &:hover {
         filter: grayscale(0);
@@ -268,21 +390,53 @@
       border-radius: 5px;
       height: auto;
       padding: 0.5rem 1rem;
+
+      @include mq($sm) {
+        padding: 0.25rem 0.5rem;
+      }
     }
 
     .details-meta--imdb,
     .details-meta--rottentomatos-tom,
     .details-meta--rottentomatos-aud {
       background-repeat: no-repeat;
-      background-size: 30px;
+      background-size: 3rem;
       background-position: 2.5rem 1.5rem;
       padding-left: 4rem;
       text-indent: 2rem;
+
+      @include mq($sm) {
+        background-size: 2.25rem;
+        background-position: 0.75rem 1rem;
+        padding-left: 1.15rem;
+        padding-right: 1rem;
+        text-indent: 2.25rem;
+      }
+
+      @include mq($md) {
+        background-size: 2.5rem;
+        background-position: 1.5rem 1.5rem;
+        padding-left: 2.5rem;
+        padding-right: 0.5rem;
+        text-indent: 2rem;
+      }
+
+      @include mq($lg) {
+        background-size: 3rem;
+      }
     }
     .details-meta--imdb {
       background-image: url('https://bit.ly/3hSSN3k');
       background-size: 5.5rem;
       text-indent: 4.75rem;
+
+      @include mq($sm) {
+        background-size: 4.75rem;
+      }
+
+      @include mq($md) {
+        background-size: 5rem;
+      }
     }
     .details-meta--rottentomatos-tom {
       background-image: url('https://bit.ly/3vPsmDH');
@@ -310,6 +464,12 @@
         background-image: url('https://bit.ly/3HT7gqw');
       }
     }
+
+    .details-meta--runtime {
+      @include mq($sm) {
+        display: none;
+      }
+    }
   }
 
   .details-genres {
@@ -320,6 +480,16 @@
     padding: 1.5rem;
     text-align: right;
     width: 100%;
+
+    @include mq($sm) {
+      font-size: 1.4rem;
+      padding-right: 2rem;
+    }
+
+    @include mq($md) {
+      font-size: 1.4rem;
+      padding-right: 2.5rem;
+    }
 
     p {
       letter-spacing: 0.05rem;
@@ -358,6 +528,18 @@
       padding: 0;
       position: relative;
       width: 100%;
+
+      @include mq($sm) {
+        height: 22.6rem;
+      }
+
+      @include mq($md) {
+        height: 33.6rem;
+      }
+
+      @include mq($lg) {
+        height: 36.6rem;
+      }
 
       p {
         background: #222;
@@ -499,6 +681,17 @@
       font-size: 2.5rem;
       padding: 2rem;
       width: auto;
+
+      @include mq($sm) {
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+
+      @include mq($md) {
+        font-size: 2rem;
+        margin-left: 2.5rem;
+        padding: 2rem;
+      }
     }
 
     & > div {
