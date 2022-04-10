@@ -1,22 +1,24 @@
 .movies-list {
   display: grid;
   font-family: var(--font-secondary);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: 1fr;
-  gap: 1.rem;
+  gap: 1rem;
   padding: 1.5rem;
   position: relative;
   width: 100%;
 
-  @include rwd(
-    grid-template-columns,
-    repeat(6, 1fr),
-    (
-      $sm: repeat(2, 1fr),
-      $md: repeat(4, 1fr),
-      $lg: repeat(6, 1fr),
-    )
-  );
+  @include mq($sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq($md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include mq($lg) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 .merch-content {

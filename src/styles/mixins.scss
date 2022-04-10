@@ -1,6 +1,6 @@
 $sm: 700px;
-$md: 800px;
-$lg: 1000px;
+$md: 900px;
+$lg: 1200px;
 
 @mixin rwd($propertyName, $defaultValue, $mediaQueries: ()) {
   #{$propertyName}: #{$defaultValue};

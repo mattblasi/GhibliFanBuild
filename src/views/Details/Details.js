@@ -91,8 +91,6 @@ const Details = ({
     );
   };
 
-  console.log(people.cast);
-
   return (
     <div className="full-details">
       <DetailsHero
@@ -101,51 +99,36 @@ const Details = ({
         setHeroIndex={setHeroIndex}
         show={show}
       />
-
-      <CSSTransition
-        in={heroLoaded && bgLoaded}
-        timeout={1000}
-        classNames="page"
-        unmountOnExit
-      >
-        <article className="details">
-          <div className="details-container">
-            <DetailsMeta details={details} />
-            <DetailsGenres />
-            <div className="details-content">
-              <DetailsMedia details={details} />
-            </div>
+      <article className="details">
+        <div className="details-container">
+          <DetailsMeta details={details} />
+          <DetailsGenres />
+          <div className="details-content">
+            <DetailsMedia details={details} />
           </div>
-          <DetailsWatch bgImage={bgImage} title={title} />
-          <nav id="page-nav" className="page-nav">
-            <div className="details-container">
-              <PageLink page="story" />
-              <PageLink page="gallery" />
-              <PageLink page="credits" />
-            </div>
-          </nav>
+        </div>
+        <DetailsWatch bgImage={bgImage} title={title} />
+        <nav id="page-nav" className="page-nav">
           <div className="details-container">
-            {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
-            {show === 'credits' && <DetailsCredits people={people} />}
-            {show === 'gallery' && <DetailsImages photos={photos} />}
-            {show === 'default' && (
-              <React.Fragment>
-                <DetailsCast cast={people.cast} />
-                <DetailsVideos />
-                <DetailsImages photos={photos} show={12} title="Photos" />
-              </React.Fragment>
-            )}
+            <PageLink page="story" />
+            <PageLink page="gallery" />
+            <PageLink page="credits" />
           </div>
-          {products.length && <DetailsMerch products={products} />}
-        </article>
-      </CSSTransition>
-      {!bgLoaded && bgImage?.length && (
-        <img
-          style={{ display: 'none' }}
-          src={bgImage}
-          onLoad={() => setBgLoaded(true)}
-        />
-      )}
+        </nav>
+        <div className="details-container">
+          {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
+          {show === 'credits' && <DetailsCredits people={people} />}
+          {show === 'gallery' && <DetailsImages photos={photos} />}
+          {show === 'default' && (
+            <React.Fragment>
+              <DetailsCast cast={people.cast} />
+              <DetailsVideos />
+              <DetailsImages photos={photos} show={12} title="Photos" />
+            </React.Fragment>
+          )}
+        </div>
+        {products.length && <DetailsMerch products={products} />}
+      </article>
     </div>
   );
 };

@@ -102,7 +102,7 @@
       }
 
       @include mq($md) {
-        font-size: 1rem;
+        font-size: 17rem;
         top: 5rem;
       }
     }
@@ -201,23 +201,18 @@
     bottom: 0;
     padding: 2rem 0;
     position: absolute;
-    right: 0;
+    right: 1rem;
     text-align: right;
     width: 70%;
 
-    @include mq($sm) {
+    @include mq($md) {
       right: 2rem;
       width: 59%;
     }
 
-    @include mq($md) {
+    @include mq($lg) {
       right: 2.5rem;
       width: 67%;
-    }
-
-    @include mq($lg) {
-      right: 0;
-      width: 70%;
     }
 
     h1 {
@@ -258,20 +253,17 @@
   .details-storyline {
     bottom: 125px;
     position: absolute;
+    right: 1rem;
+    width: 65%;
 
-    @include mq($sm) {
+    @include mq($md) {
       right: 2rem;
       width: 59%;
     }
 
-    @include mq($md) {
+    @include mq($lg) {
       right: 2.5rem;
       width: 67%;
-    }
-
-    @include mq($lg) {
-      right: 0;
-      width: 70%;
     }
 
     .details-storyline--text {
@@ -354,6 +346,7 @@
     flex-direction: row;
     font-family: Futura, Trebuchet MS, Arial, sans-serif;
     font-size: 1.6rem;
+    padding: 0.5rem;
     width: 100%;
 
     @include mq($sm) {
@@ -364,6 +357,10 @@
     @include mq($md) {
       font-size: 1.4rem;
       padding-right: 1.5rem;
+    }
+
+    @include mq($lg) {
+      padding-right: 1rem;
     }
 
     div:first-of-type {
@@ -383,6 +380,10 @@
       &:hover {
         filter: grayscale(0);
       }
+    }
+
+    > div:last-of-type {
+      padding-right: 0.5rem;
     }
 
     .details-meta--cert span {
@@ -478,6 +479,7 @@
     flex-direction: row;
     font-size: 1.6rem;
     padding: 1.5rem;
+    padding-right: 1rem;
     text-align: right;
     width: 100%;
 
@@ -488,6 +490,10 @@
 
     @include mq($md) {
       font-size: 1.4rem;
+      padding-right: 2.5rem;
+    }
+
+    @include mq($lg) {
       padding-right: 2.5rem;
     }
 
@@ -527,14 +533,17 @@
       height: 36.6rem;
       padding: 0;
       position: relative;
+      margin-right: 1rem;
       width: 100%;
 
       @include mq($sm) {
         height: 22.6rem;
+        margin-right: 1.5rem;
       }
 
       @include mq($md) {
         height: 33.6rem;
+        margin-right: 2.5rem;
       }
 
       @include mq($lg) {
