@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const DetailsSummary = ({ summaries }) => {
   const [count, setCount] = useState(0);
   const timeoutRef = React.useRef(null);
-  const delay = 500000;
+  const delay = 5000;
 
   function resetTimeout() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);

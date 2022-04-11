@@ -24,6 +24,9 @@ import DetailsStoryline from './DetailsStoryline';
 import DetailsVideos from './DetailsVideos';
 import DetailsWatch from './DetailsWatch';
 import MerchList from '../../components/MerchList';
+import DetailsSidebar from './DetailsSidebar';
+
+import Poster from '../../components/Poster';
 
 const Details = ({
   show,
@@ -39,7 +42,14 @@ const Details = ({
   getMovieProducts,
   updateRecents,
 }) => {
-  const { id, title, synopsis, wallpapers } = details;
+  const {
+    id,
+    title,
+    synopsis,
+    wallpapers,
+    poster,
+    people: { director, writer },
+  } = details;
   const { movie_id } = useParams();
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroIndex, setHeroIndex] = useState();
@@ -92,22 +102,21 @@ const Details = ({
   };
 
   return (
-    <div className="full-details">
-      <DetailsHero
-        details={details}
-        setHeroLoaded={setHeroLoaded}
-        setHeroIndex={setHeroIndex}
-        show={show}
-      />
-      <article className="details">
-        <div className="details-container">
+    <div className="details">
+      <DetailsHero details={details} setHeroIndex={setHeroIndex} />
+      <section className="details-page page">
+        <div className="details-sidebar">
+          <Poster src={poster} alt={title} />
+          <DetailsSidebar director={director} writer={writer} />
+        </div>
+        <div className="details-content">
           <DetailsMeta details={details} />
           <DetailsGenres />
-          <div className="details-content">
-            <DetailsMedia details={details} />
-          </div>
+          <DetailsMedia details={details} />
         </div>
-        <DetailsWatch bgImage={bgImage} title={title} />
+      </section>
+      <DetailsWatch bgImage={bgImage} title={title} />
+      {/* <section className="details-page page">
         <nav id="page-nav" className="page-nav">
           <div className="details-container">
             <PageLink page="story" />
@@ -115,7 +124,7 @@ const Details = ({
             <PageLink page="credits" />
           </div>
         </nav>
-        <div className="details-container">
+        <div className="details-content">
           {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
           {show === 'credits' && <DetailsCredits people={people} />}
           {show === 'gallery' && <DetailsImages photos={photos} />}
@@ -128,7 +137,7 @@ const Details = ({
           )}
         </div>
         {products.length && <DetailsMerch products={products} />}
-      </article>
+      </section> */}
     </div>
   );
 };

@@ -7,34 +7,35 @@ const DetailsSidebar = ({ director, writer }) => {
 
   useEffect(() => {
     let directors = [];
-    director.map(d => {
+    director.map((d) => {
       directors.push(d.name);
     });
-    setDirector([ ...new Set(directors)]);
+    setDirector([...new Set(directors)]);
 
     let writers = [];
-    writer.map(w => {
+    writer.map((w) => {
       writers.push(w.name);
     });
-    setWriter([ ...new Set(writers)]);
-
-  },[director, writer])
+    setWriter([...new Set(writers)]);
+  }, [director, writer]);
 
   return (
-    <aside className="details-sidebar">
-      <p>Director{director.length > 1 ? 's' : ''}</p>
-      <ul>
-        {directorsList && directorsList.map((d, i) => (
-          <li key={`director-${i}`}>{d}</li>
-        ))}
+    <div className="details-sidebar--content">
+      <p className="title" id="directors">
+        Director{director.length > 1 ? 's' : ''}
+      </p>
+      <ul className="list" aria-labelledby="directors">
+        {directorsList &&
+          directorsList.map((d, i) => <li key={`director-${i}`}>{d}</li>)}
       </ul>
-      <p>Writer{writer.length > 1 ? 's' : ''}</p>
-      <ul>
-        {writerList && writerList.map((w, i) => (
-          <li key={`writer-${i}`}>{w}</li>
-        ))}
+      <p className="title" id="writers">
+        Writer{writer.length > 1 ? 's' : ''}
+      </p>
+      <ul className="list" aria-labelledby="writers">
+        {writerList &&
+          writerList.map((w, i) => <li key={`writer-${i}`}>{w}</li>)}
       </ul>
-    </aside>
+    </div>
   );
 };
 

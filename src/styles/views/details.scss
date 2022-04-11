@@ -197,114 +197,6 @@
     }
   }
 
-  .details-header {
-    bottom: 0;
-    padding: 2rem 0;
-    position: absolute;
-    right: 1rem;
-    text-align: right;
-    width: 70%;
-
-    @include mq($md) {
-      right: 2rem;
-      width: 59%;
-    }
-
-    @include mq($lg) {
-      right: 2.5rem;
-      width: 67%;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      vertical-align: baseline;
-
-      @include mq($sm) {
-        font-size: 1.7rem;
-      }
-
-      @include mq($md) {
-        font-size: 2.5rem;
-      }
-    }
-
-    h1 span {
-      font-size: 1.2rem;
-      font-style: italic;
-      font-weight: normal;
-      padding-left: 0.5rem;
-
-      @include mq($sm) {
-        display: block;
-      }
-
-      @include mq($md) {
-        display: inline;
-      }
-    }
-
-    p {
-      font-size: 1.5rem;
-      font-weight: bold;
-      padding: 5px 0;
-    }
-  }
-
-  .details-storyline {
-    bottom: 125px;
-    position: absolute;
-    right: 1rem;
-    width: 65%;
-
-    @include mq($md) {
-      right: 2rem;
-      width: 59%;
-    }
-
-    @include mq($lg) {
-      right: 2.5rem;
-      width: 67%;
-    }
-
-    .details-storyline--text {
-      font-family: Futura, Trebuchet MS, Arial, sans-serif;
-      font-size: 3rem;
-
-      @include mq($sm) {
-        font-size: 2rem;
-      }
-
-      @include mq($md) {
-        font-size: 2.5rem;
-      }
-
-      @include mq($lg) {
-        font-size: 3rem;
-      }
-    }
-
-    .details-storyline--dots {
-      display: flex;
-      margin: 15px 0 0;
-      text-align: center;
-    }
-
-    .details-storyline--dot {
-      background-color: #ccc;
-      border-radius: 15px;
-      cursor: pointer;
-      display: block;
-      height: 15px;
-      margin: 0 5px 0 0;
-      position: relative;
-      width: 15px;
-
-      &.active {
-        background-color: #888;
-      }
-    }
-  }
-
   .details-container {
     display: flex;
     flex-direction: row-reverse;
@@ -360,7 +252,7 @@
     }
 
     @include mq($lg) {
-      padding-right: 1rem;
+      padding-right: 2rem;
     }
 
     div:first-of-type {

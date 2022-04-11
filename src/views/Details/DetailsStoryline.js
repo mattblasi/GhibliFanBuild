@@ -5,21 +5,7 @@ const DetailsStoryline = ({ synopsis }) => {
 
   return (
     <div className="details-synopsis">
-      <h2>
-        Synopsis
-        {/* <button onClick={() => setFullSynopsis(!useFullSynopsis)}>
-          {useFullSynopsis ? 'Read Less' : 'Read More'}
-        </button> */}
-      </h2>
-
-      {/* <div
-        className="details-synopsis--content"
-        dangerouslySetInnerHTML={{
-          __html: useFullSynopsis
-            ? synopsis[0]
-            : synopsis[0].slice(0, 500).concat('...'),
-        }}
-      /> */}
+      <h2>Synopsis</h2>
       <div
         className="details-synopsis--content"
         dangerouslySetInnerHTML={{

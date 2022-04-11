@@ -68,12 +68,12 @@ const DetailsMedia = ({ details: { trailer } }) => {
   };
 
   return (
-    <div className="details-media">
+    <div className="details-trailer">
       {playTrailer && <Trailer />}
 
       {!playTrailer && (
         <button
-          className="details-media--trailer"
+          className="details-trailer--trailer"
           onClick={toggleTrailer}
           style={{
             backgroundImage: `url(https://img.youtube.com/vi/${videoId}/mqdefault.jpg)`,
