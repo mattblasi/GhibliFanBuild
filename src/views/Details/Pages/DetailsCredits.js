@@ -49,42 +49,28 @@ const CastListItem = ({ name }) => (
   <li className="credits-list--item">{name}</li>
 );
 
-const DetailsCredits = React.memo(
-  ({ title, people: { writer, cast, director, ...rest } }) => {
-    let creditsList = { ...sortKeys(rest) };
-    useEffect(() => {
-      document.title = `Studio Ghibli : ${title} Credits`;
-      document
-        .querySelector('#page-nav')
-        .scrollTo({ top: 60, behavior: 'smooth' });
-    }, []);
+const DetailsCredits = ({ people }) => {
+  const { director, writer, cast, ...rest } = people;
+  let creditsList = { ...sortKeys(rest) };
 
-    return (
-      <div className="details-credits">
-        {/* <h2>{title} Credits</h2> */}
-        <CastList list={director} type="director" title="Director" />
-        <CastList list={writer} type="writer" title="Writer" />
-        <CastList list={cast} type="cast" title="Cast" />
-        {Object.keys(creditsList).map((key) => (
-          <CastList
-            list={creditsList[key]}
-            type={key}
-            title={key.replace(/_/g, ' ')}
-          />
-        ))}
-      </div>
-    );
-  }
-);
+  useEffect(() => {
+    document.title = `Studio Ghibli : ${title} Credits`;
+  }, []);
 
-const mapStateToProps = ({
-  Details: {
-    details: { title },
-    people,
-  },
-}) => ({
-  title,
-  people,
-});
+  return (
+    <div className="details-credits">
+      <CastList list={director} type="director" title="Director" />
+      <CastList list={writer} type="writer" title="Writer" />
+      <CastList list={cast} type="cast" title="Cast" />
+      {Object.keys(creditsList).map((key) => (
+        <CastList
+          list={creditsList[key]}
+          type={key}
+          title={key.replace(/_/g, ' ')}
+        />
+      ))}
+    </div>
+  );
+};
 
-export default connect(mapStateToProps)(DetailsCredits);
+export default DetailsCredits;

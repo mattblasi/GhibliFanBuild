@@ -45,9 +45,7 @@ const Details = ({
   const { id, title, synopsis, wallpapers, poster } = details;
   const { director, cast, writer } = people;
   const { movie_id } = useParams();
-  const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroIndex, setHeroIndex] = useState();
-  const [bgLoaded, setBgLoaded] = useState(false);
   const [bgImage, setBgImage] = useState();
 
   useEffect(() => {
@@ -56,9 +54,7 @@ const Details = ({
       clearMovieDetails();
       getMovieDetails(movie_id);
       setBgImage(null);
-      setBgLoaded(false);
       setHeroIndex(null);
-      setHeroLoaded(false);
       updateRecents(movie_id);
     }
     getMoviePeople(movie_id); // always refetch people
@@ -67,14 +63,12 @@ const Details = ({
   }, [movie_id]);
 
   useEffect(() => {
-    document.querySelector('#main').scrollTo({ top: 0, behavior: 'smooth' });
     if (!bgImage && wallpapers?.length && id === movie_id) {
       let backgroundIndex = heroIndex;
       while (backgroundIndex === heroIndex) {
         backgroundIndex = Math.floor(Math.random() * wallpapers.length);
       }
-      let background = wallpapers ? wallpapers[backgroundIndex] : '';
-      setBgImage(background);
+      setBgImage(wallpapers[backgroundIndex]);
     }
   }, [heroIndex, movie_id]);
 
