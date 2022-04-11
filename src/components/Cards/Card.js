@@ -1,17 +1,19 @@
 import React from 'react';
 import { addProduct } from '../../actions/adminActions';
 
+import CastCard from './CardCast';
 import MovieCard from './CardMovie';
-import ProductCard from './CardProduct';
 import MerchCard from './CardMerch';
+import ProductCard from './CardProduct';
 
 const Card = ({ props }) => {
   let classes = `card `;
 
+  if (props?.cast) classes += 'cast';
+  if (props?.merch) classes += 'merch';
   if (props?.movie) classes += 'movie';
   if (props?.recent) classes += 'recent';
   if (props?.product) classes += 'product';
-  if (props?.merch) classes += 'merch';
 
   return (
     <div className={classes}>
@@ -24,8 +26,8 @@ const Card = ({ props }) => {
           action={props?.submit}
         />
       )}
-      {props?.merch && <MerchCard merch={props?.merch}/>}
-
+      {props?.merch && <MerchCard merch={props?.merch} />}
+      {props?.cast && <CastCard person={props?.cast} />}
     </div>
   );
 };

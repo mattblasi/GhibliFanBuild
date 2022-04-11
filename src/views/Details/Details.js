@@ -22,8 +22,8 @@ import DetailsTrailer from './Partials/DetailsTrailer';
 import DetailsVideos from './Partials/DetailsVideos';
 import DetailsWatch from './Partials/DetailsWatch';
 
-import DetailsCredits from './Pages/DetailsCredits';
 import DetailsImages from './Pages/DetailsImages';
+import DetailsCredits from './Pages/DetailsCredits';
 import DetailsStoryline from './Pages/DetailsStoryline';
 
 import Poster from '../../components/Poster';
@@ -31,7 +31,6 @@ import MerchList from '../../components/MerchList';
 
 const Details = ({
   show,
-  isLoading,
   details,
   people,
   photos,
@@ -43,14 +42,8 @@ const Details = ({
   getMovieProducts,
   updateRecents,
 }) => {
-  const {
-    id,
-    title,
-    synopsis,
-    wallpapers,
-    poster,
-    people: { director, writer },
-  } = details;
+  const { id, title, synopsis, wallpapers, poster } = details;
+  const { director, cast, writer } = people;
   const { movie_id } = useParams();
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [heroIndex, setHeroIndex] = useState();
@@ -87,21 +80,6 @@ const Details = ({
 
   if (isLoading || id !== movie_id) return <div>Loading...</div>;
 
-  const PageLink = ({ page }) => {
-    return (
-      <Link
-        to={
-          show !== page && page !== 'default'
-            ? `/${movie_id}/${page}`
-            : `/${movie_id}`
-        }
-        className={`page-link${show === page ? ' is-active' : ''}`}
-      >
-        {page !== 'default' ? page : 'back'}
-      </Link>
-    );
-  };
-
   return (
     <div className="details">
       <DetailsHero details={details} setHeroIndex={setHeroIndex} />
@@ -130,23 +108,13 @@ const Details = ({
         )}
       </section>
       {products.length && <DetailsMerch products={products} />}
-      {/* <section className="details-page page">
-        <nav id="page-nav" className="page-nav">
-          <div className="details-container">
-            <PageLink page="story" />
-            <PageLink page="gallery" />
-            <PageLink page="credits" />
-          </div>
-        </nav>
-      </section> */}
     </div>
   );
 };
 
 const mapStateToProps = ({
-  Details: { isLoading, details, people, photos, products },
+  Details: { details, people, photos, products },
 }) => ({
-  isLoading,
   details,
   people,
   photos,

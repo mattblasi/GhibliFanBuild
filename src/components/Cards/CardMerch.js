@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const MerchCard = ({ merch }) => {
   const { affiliate_url, main_image, name, price, url } = merch;
