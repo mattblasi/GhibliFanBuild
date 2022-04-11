@@ -1,19 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const DetailsGenres = ({ genres }) => {
+  const url = `${window.location.origin}/movies/`;
   return (
     <div className="details-genres">
-      Genres:{' '}
+      Genres:
       {genres.map((g, i) => (
         <React.Fragment key={`fragment-${i}`}>
-          <a
-            href={`${window.location.origin}/movies/${g.toLowerCase()}`}
-            key={`genre-${i}`}
-          >
-            {g}
-          </a>
+          <a href={`${url}${g.toLowerCase()}`}>{g}</a>
           {genres.length - 1 === i ? '' : ', '}
         </React.Fragment>
       ))}
@@ -21,12 +15,4 @@ const DetailsGenres = ({ genres }) => {
   );
 };
 
-const mapStateToProps = ({
-  Details: {
-    details: { genres },
-  },
-}) => ({
-  genres,
-});
-
-export default connect(mapStateToProps)(DetailsGenres);
+export default DetailsGenres;

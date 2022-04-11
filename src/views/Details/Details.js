@@ -42,7 +42,7 @@ const Details = ({
   getMovieProducts,
   updateRecents,
 }) => {
-  const { id, title, synopsis, wallpapers, poster } = details;
+  const { id, genres, title, synopsis, wallpapers, poster } = details;
   const { director, cast, writer } = people;
   const { movie_id } = useParams();
   const [heroIndex, setHeroIndex] = useState();
@@ -57,8 +57,8 @@ const Details = ({
       setHeroIndex(null);
       updateRecents(movie_id);
     }
-    getMoviePeople(movie_id); // always refetch people
-    getMoviePhotos(movie_id); // always refetch photos
+    getMoviePeople(movie_id);
+    getMoviePhotos(movie_id);
     getMovieProducts(movie_id);
   }, [movie_id]);
 
@@ -72,8 +72,6 @@ const Details = ({
     }
   }, [heroIndex, movie_id]);
 
-  if (isLoading || id !== movie_id) return <div>Loading...</div>;
-
   return (
     <div className="details">
       <DetailsHero details={details} setHeroIndex={setHeroIndex} />
@@ -84,7 +82,7 @@ const Details = ({
         </div>
         <div className="details-content">
           <DetailsMeta details={details} />
-          <DetailsGenres />
+          <DetailsGenres genres={genres} />
           <DetailsTrailer details={details} />
         </div>
       </section>
