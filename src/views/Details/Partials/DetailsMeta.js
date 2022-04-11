@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-const DetailsMeta = ({
-  details: {
-    meta: { release_year, imdb_score, imdb_popularity, duration, certificates },
-    rottentomatoes,
-  },
-}) => {
+const DetailsMeta = ({ details }) => {
   const [cert, setCert] = useState();
+  const {
+    meta: { imdb_score, imdb_popularity, duration, certificates },
+    rottentomatoes,
+  } = details;
 
   useEffect(() => {
     if (certificates.length) {
@@ -22,8 +21,6 @@ const DetailsMeta = ({
           <span>{cert[0].cert}</span>
         </div>
       )}
-
-      {/* <div className="details-meta--year">Released: {release_year}</div> */}
       <div className="details-meta--imdb">{imdb_score}/10</div>
       <div
         className={`details-meta--rottentomatos-tom ${

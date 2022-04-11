@@ -9,24 +9,25 @@ import {
   getMovieProducts,
   clearMovieDetails,
 } from '../../actions/movieActions';
-
 import { updateRecents } from '../../actions/siteActions';
 
-import DetailsCast from './DetailsCast';
-import DetailsCredits from './DetailsCredits';
-import DetailsGenres from './DetailsGenres';
 import DetailsHero from './DetailsHero';
-import DetailsImages from './DetailsImages';
-import DetailsMedia from './DetailsMedia';
-import DetailsMerch from './DetailsMerch';
-import DetailsMeta from './DetailsMeta';
-import DetailsStoryline from './DetailsStoryline';
-import DetailsVideos from './DetailsVideos';
-import DetailsWatch from './DetailsWatch';
-import MerchList from '../../components/MerchList';
-import DetailsSidebar from './DetailsSidebar';
+
+import DetailsCast from './Partials/DetailsCast';
+import DetailsGenres from './Partials/DetailsGenres';
+import DetailsMerch from './Partials/DetailsMerch';
+import DetailsMeta from './Partials/DetailsMeta';
+import DetailsSidebar from './Partials/DetailsSidebar';
+import DetailsTrailer from './Partials/DetailsTrailer';
+import DetailsVideos from './Partials/DetailsVideos';
+import DetailsWatch from './Partials/DetailsWatch';
+
+import DetailsCredits from './Pages/DetailsCredits';
+import DetailsImages from './Pages/DetailsImages';
+import DetailsStoryline from './Pages/DetailsStoryline';
 
 import Poster from '../../components/Poster';
+import MerchList from '../../components/MerchList';
 
 const Details = ({
   show,
@@ -112,10 +113,23 @@ const Details = ({
         <div className="details-content">
           <DetailsMeta details={details} />
           <DetailsGenres />
-          <DetailsMedia details={details} />
+          <DetailsTrailer details={details} />
         </div>
       </section>
       <DetailsWatch bgImage={bgImage} title={title} />
+      <section className="details-page page">
+        {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
+        {show === 'credits' && <DetailsCredits people={people} />}
+        {show === 'gallery' && <DetailsImages photos={photos} />}
+        {show === 'default' && (
+          <React.Fragment>
+            <DetailsCast cast={people.cast} />
+            <DetailsVideos />
+            <DetailsImages photos={photos} show={12} title="Photos" />
+          </React.Fragment>
+        )}
+      </section>
+      {products.length && <DetailsMerch products={products} />}
       {/* <section className="details-page page">
         <nav id="page-nav" className="page-nav">
           <div className="details-container">
@@ -124,19 +138,6 @@ const Details = ({
             <PageLink page="credits" />
           </div>
         </nav>
-        <div className="details-content">
-          {show === 'story' && <DetailsStoryline synopsis={synopsis} />}
-          {show === 'credits' && <DetailsCredits people={people} />}
-          {show === 'gallery' && <DetailsImages photos={photos} />}
-          {show === 'default' && (
-            <React.Fragment>
-              <DetailsCast cast={people.cast} />
-              <DetailsVideos />
-              <DetailsImages photos={photos} show={12} title="Photos" />
-            </React.Fragment>
-          )}
-        </div>
-        {products.length && <DetailsMerch products={products} />}
       </section> */}
     </div>
   );

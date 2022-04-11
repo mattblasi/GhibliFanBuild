@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 
 const DetailsSidebar = ({ director, writer }) => {
   const [directorsList, setDirector] = useState([]);
@@ -7,15 +6,11 @@ const DetailsSidebar = ({ director, writer }) => {
 
   useEffect(() => {
     let directors = [];
-    director.map((d) => {
-      directors.push(d.name);
-    });
+    director.map((d) => directors.push(d.name));
     setDirector([...new Set(directors)]);
 
     let writers = [];
-    writer.map((w) => {
-      writers.push(w.name);
-    });
+    writer.map((w) => writers.push(w.name));
     setWriter([...new Set(writers)]);
   }, [director, writer]);
 

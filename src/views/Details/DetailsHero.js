@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax';
 
-import DetailsSummary from './DetailsSummary';
+import DetailsSummary from './Partials/DetailsSummary';
 
 const DetailsHero = ({
-  details: {
-    title,
-    og_title_rm,
-    og_title_jp,
-    poster,
-    wallpapers,
-    summaries,
-    people: { director, writer },
-  },
+  details: { title, og_title_rm, og_title_jp, wallpapers, summaries },
   setHeroIndex,
 }) => {
   const [scroll, setScroll] = useState();

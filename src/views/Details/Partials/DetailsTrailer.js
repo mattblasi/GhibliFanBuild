@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import ReactPlayer from 'react-player';
 
-const DetailsMedia = ({ details: { trailer } }) => {
+const DetailsTrailer = ({ details: { trailer } }) => {
   const [playTrailer, setPlayTrailer] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const [videoId, setVideoId] = useState();
@@ -86,4 +86,4 @@ const DetailsMedia = ({ details: { trailer } }) => {
   );
 };
 
-export default DetailsMedia;
+export default DetailsTrailer;

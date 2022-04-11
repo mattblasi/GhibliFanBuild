@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 
 const DetailsCast = ({ cast }) => {
   return (
-    <div className="details-cast">
+    <article className="details-cast">
       <h2>
-        <span>Cast</span>
-        <Link to="./credits">View Full Credits</Link>
+        Cast <Link to="./credits">View Full Credits</Link>
       </h2>
       <ul className="details-cast--list">
         {cast.map((c, i) => (
@@ -23,7 +22,7 @@ const DetailsCast = ({ cast }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </article>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 
-import Card from '../../components/Cards/Card';
+import Card from '../../../components/Cards/Card';
 
 const DetailsMerch = ({ products }) => {
   const breakpointColumnsObj = {
