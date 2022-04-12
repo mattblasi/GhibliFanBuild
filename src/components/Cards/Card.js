@@ -1,5 +1,4 @@
 import React from 'react';
-import { addProduct } from '../../actions/adminActions';
 
 import CastCard from './CardCast';
 import MovieCard from './CardMovie';
@@ -17,6 +16,8 @@ const Card = ({ props }) => {
 
   return (
     <div className={classes}>
+      {props?.cast && <CastCard person={props?.cast} />}
+      {props?.merch && <MerchCard merch={props?.merch} />}
       {props?.movie && <MovieCard movie={props?.movie} />}
       {props?.recent && <MovieCard movie={props?.recent} basic={true} />}
       {props?.product && (
@@ -26,8 +27,6 @@ const Card = ({ props }) => {
           action={props?.submit}
         />
       )}
-      {props?.merch && <MerchCard merch={props?.merch} />}
-      {props?.cast && <CastCard person={props?.cast} />}
     </div>
   );
 };

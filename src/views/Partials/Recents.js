@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
 import Card from '../../components/Cards/Card';
 
 const Recents = ({ recentlyViewed, movies }) => {
@@ -22,7 +20,10 @@ const Recents = ({ recentlyViewed, movies }) => {
     <div className="recents">
       <div className="recents-content">
         <h2>Recently Viewed</h2>
-        {recents && recents.map((r, i) => <Card props={{ recent: r }} />)}
+        {recents &&
+          recents.map((r, i) => (
+            <Card props={{ recent: r }} key={`recent-${i}`} />
+          ))}
       </div>
     </div>
   );

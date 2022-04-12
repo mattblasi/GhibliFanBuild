@@ -4,32 +4,43 @@ const DetailsSidebar = ({ director, writer }) => {
   const [directorsList, setDirector] = useState([]);
   const [writerList, setWriter] = useState([]);
 
-  useEffect(() => {
-    let directors = [];
-    director.map((d) => directors.push(d.name));
-    setDirector([...new Set(directors)]);
+  const SidebarList = ({ people, type }) => {
+    let title = people.length > 1 ? `${type}s` : type;
+    return (
+      <React.Fragment>
+        <p className="title" id={type}>
+          {title}
+        </p>
+        <ul className="list" aria-labelledby={type}>
+          {people.ma((p, i) => (
+            <li key={`${type}-${i}`}>{p}</li>
+          ))}
+        </ul>
+      </React.Fragment>
+    );
+  };
 
-    let writers = [];
-    writer.map((w) => writers.push(w.name));
-    setWriter([...new Set(writers)]);
+  useEffect(() => {
+    let directors = new Set();
+    if (director) {
+      director.map((d) => directors.add(d.name));
+      setDirector([...directors]);
+    }
+
+    let writers = new Set();
+    if (writer) {
+      writer.map((w) => writers.add(w.name));
+      setWriter([...writers]);
+    }
   }, [director, writer]);
 
+  if (!directorsList.length || !writerList.length) return <span />;
   return (
     <div className="details-sidebar--content">
-      <p className="title" id="directors">
-        Director{director.length > 1 ? 's' : ''}
-      </p>
-      <ul className="list" aria-labelledby="directors">
-        {directorsList &&
-          directorsList.map((d, i) => <li key={`director-${i}`}>{d}</li>)}
-      </ul>
-      <p className="title" id="writers">
-        Writer{writer.length > 1 ? 's' : ''}
-      </p>
-      <ul className="list" aria-labelledby="writers">
-        {writerList &&
-          writerList.map((w, i) => <li key={`writer-${i}`}>{w}</li>)}
-      </ul>
+      {directorsList.length && (
+        <SidebarList people={directorsList} type={'director'} />
+      )}
+      {writerList.length && <SidebarList people={writerList} type={'writer'} />}
     </div>
   );
 };

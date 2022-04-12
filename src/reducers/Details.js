@@ -51,7 +51,6 @@ export default function Details(state = initialState, action) {
       };
 
     case MOVIES_SET_PRODUCTS:
-      console.log('prods', action.data);
       return {
         ...state,
         products: [...action.data],

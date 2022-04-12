@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import Card from '../../../components/Cards/Card';
 
 const DetailsCast = ({ cast }) => {
+  if (!cast) return <div />;
+
   return (
-    <article className="details-cast">
+    <div className="details-cast">
       <h2>
         Cast <Link to="./credits">View Full Credits</Link>
       </h2>
-      <ul className="details-cast--list">
+      <div className="details-cast--list">
         {cast.map((c, i) => (
-          <Card cast={c} key={`cast-${i}`} />
+          <Card props={{ cast: c }} key={`cast-${i}`} />
         ))}
-      </ul>
-    </article>
+      </div>
+    </div>
   );
 };
 

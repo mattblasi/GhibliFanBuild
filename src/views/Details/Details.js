@@ -31,6 +31,7 @@ import MerchList from '../../components/MerchList';
 
 const Details = ({
   show,
+  isLoading,
   details,
   people,
   photos,
@@ -72,13 +73,15 @@ const Details = ({
     }
   }, [heroIndex, movie_id]);
 
+  if (isLoading) return <div />;
+
   return (
     <div className="details">
       <DetailsHero details={details} setHeroIndex={setHeroIndex} />
       <section className="details-page page">
         <div className="details-sidebar">
           <Poster src={poster} alt={title} />
-          <DetailsSidebar director={director} writer={writer} />
+          <DetailsSidebar director={people?.director} writer={people?.writer} />
         </div>
         <div className="details-content">
           <DetailsMeta details={details} />
@@ -93,7 +96,7 @@ const Details = ({
         {show === 'gallery' && <DetailsImages photos={photos} />}
         {show === 'default' && (
           <React.Fragment>
-            <DetailsCast cast={people.cast} />
+            <DetailsCast cast={cast} />
             <DetailsVideos />
             <DetailsImages photos={photos} show={12} title="Photos" />
           </React.Fragment>
@@ -105,8 +108,9 @@ const Details = ({
 };
 
 const mapStateToProps = ({
-  Details: { details, people, photos, products },
+  Details: { isLoading, details, people, photos, products },
 }) => ({
+  isLoading,
   details,
   people,
   photos,
