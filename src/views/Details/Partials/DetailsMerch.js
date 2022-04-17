@@ -12,7 +12,7 @@ const DetailsMerch = ({ products }) => {
   };
 
   return (
-    <div className="products">
+    <div className="products page">
       <div className="product-container">
         <h2>Merchandise</h2>
 

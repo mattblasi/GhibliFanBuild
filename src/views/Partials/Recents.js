@@ -18,7 +18,7 @@ const Recents = ({ recentlyViewed, movies }) => {
   if (recents.length < 1) return <span />;
   return (
     <div className="recents">
-      <div className="recents-content">
+      <div className="recents-content page">
         <h2>Recently Viewed</h2>
         {recents &&
           recents.map((r, i) => (

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../images/Studio_Ghibli_logo.svg';
 
+import apple from '../../images/appstores/appstore-apple.svg';
+import google from '../../images/appstores/appstore-google.svg';
+
 const Footer = () => {
   return (
     <footer className="site-footer">
@@ -31,6 +34,13 @@ const Footer = () => {
         <p>Made by Me ~ Matt Blasi &copy; {new Date().getFullYear()}</p>
       </div>
       <div className="site-footer--right">
+        <a href="#" className="app-bar--link" title="download for iOS">
+          <img src={apple} />
+        </a>
+        <a href="#" className="app-bar--link" title="download for Android">
+          <img src={google} />
+        </a>
+
         <img src={logo} className="recents-logo" />
       </div>
     </footer>

@@ -21,8 +21,10 @@
 
 .products {
   margin: 5rem auto 10rem;
-  max-width: 1000px;
-  padding: 1rem;
+
+  .product-container {
+    width: 100%;
+  }
 }
 
 .products-details {
@@ -45,13 +47,13 @@
   }
 }
 
-.product-list {
+.products-list {
   display: flex;
   font-size: 1.4rem;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  position: relative;
 
   a {
     text-decoration: none;
