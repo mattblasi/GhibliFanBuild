@@ -83,7 +83,7 @@
     font-size: 2.5rem;
     position: absolute;
     right: 0;
-    width: 65%;
+    width: 70%;
 
     .details-storyline--dots {
       display: flex;
@@ -135,7 +135,7 @@
     margin-top: -40vh;
     padding: 1.5rem;
     position: sticky;
-    width: 30%;
+    width: 25%;
     top: 6rem;
     z-index: 2;
 
@@ -179,7 +179,7 @@
    * Top Details Content
    */
   .details-content {
-    width: 70%;
+    width: 75%;
   }
 
   /*
@@ -395,10 +395,28 @@
       width: auto;
     }
   }
+
+  .details-section {
+    width: 100%;
+
+    h2 {
+      align-items: center;
+      display: flex;
+    }
+
+    h2 a {
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.025rem;
+      margin-left: auto;
+      padding: 0 0.5rem;
+    }
+  }
 }
 
 .page {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: 120rem;
   position: relative;
