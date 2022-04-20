@@ -8,7 +8,6 @@ import { siteSetting } from './actions/siteActions';
 import Footer from './views/Partials/Footer';
 import Header from './views/Partials/Header';
 import Recents from './views/Partials/Recents';
-import MobileApp from './views/Partials/MobileApps';
 import ScrollTop from './components/ScrollTop';
 
 const App = ({ movies, isLoading, getAllMovies, siteSetting }) => {
@@ -44,7 +43,6 @@ const App = ({ movies, isLoading, getAllMovies, siteSetting }) => {
       <main id="main" className="site-content">
         <Outlet />
         <Recents />
-        <MobileApp />
       </main>
       <Footer />
       <ScrollTop />
@@ -59,7 +57,7 @@ const mapStateToProps = ({ Movies: { isLoading, movies } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllMovies: () => dispatch(getAllMovies()),
-  siteSetting: () => dispatch(siteSetting())
+  siteSetting: () => dispatch(siteSetting()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
