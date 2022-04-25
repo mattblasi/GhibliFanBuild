@@ -7,7 +7,7 @@ const DetailsCast = ({ cast }) => {
   if (!cast) return <div />;
 
   return (
-    <div className="details-cast">
+    <div className="details-section details-cast">
       <h2>
         Cast <Link to="./credits">View Full Credits</Link>
       </h2>

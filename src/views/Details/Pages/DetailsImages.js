@@ -12,7 +12,7 @@ const DetailsImages = ({ photos, show, title }) => {
   }, [photos]);
 
   return (
-    <div className="detail-images">
+    <div className="details-section detail-images">
       {title && (
         <h2>
           {title}

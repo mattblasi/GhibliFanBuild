@@ -396,6 +396,32 @@
     }
   }
 
+  /*
+   * Details Cast Slider
+   */
+  .details-cast {
+    overflow: hidden;
+
+    .details-cast--list {
+      display: flex;
+      overflow: auto;
+    }
+
+    .card .cast {
+      text-align: center;
+      width: 15rem;
+
+      p {
+        font-size: 1.2rem;
+        letter-spacing: .0;
+      }
+
+      p:first-of-type {
+        font-weight: bold;
+      }
+    }
+  }
+
   .details-section {
     width: 100%;
 

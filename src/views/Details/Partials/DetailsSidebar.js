@@ -12,7 +12,7 @@ const DetailsSidebar = ({ director, writer }) => {
           {title}
         </p>
         <ul className="list" aria-labelledby={type}>
-          {people.ma((p, i) => (
+          {people.map((p, i) => (
             <li key={`${type}-${i}`}>{p}</li>
           ))}
         </ul>
