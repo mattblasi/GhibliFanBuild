@@ -80,7 +80,7 @@ const Details = ({
       <DetailsHero details={details} setHeroIndex={setHeroIndex} />
       <section className="details-page page">
         <div className="details-sidebar">
-          <Poster src={poster} alt={title} />
+          <Poster src={poster} alt={title} /> 
           <DetailsSidebar director={people?.director} writer={people?.writer} />
         </div>
         <div className="details-content">
