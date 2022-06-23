@@ -13,7 +13,8 @@
     background-size: cover;
     color: #fff;
     display: block;
-    height: 80vh;
+    // height: 80vh;
+    height: 70rem;
     max-width: 100%;
     position: relative;
     width: 100vw;
@@ -49,6 +50,10 @@
       display: block;
       height: 100%;
       z-index: 3;
+
+      @include mq($md) {
+        left: 1rem;
+      }
     }
   }
 
@@ -132,7 +137,7 @@
   .details-sidebar {
     align-self: flex-start;
     background-color: #fff;
-    margin-top: -40vh;
+    margin-top: -30rem;
     padding: 1.5rem;
     position: sticky;
     width: 25%;
@@ -194,6 +199,21 @@
     padding: 0;
     text-align: right;
     width: 100%;
+
+    @include mq($sm) {
+      font-size: 1.2rem;
+      padding-right: 1rem;
+    }
+
+    @include mq($md) {
+      font-size: 1.4rem;
+      padding-right: 1.5rem;
+    }
+
+    @include mq($lg) {
+      font-size: 1.4rem;
+      padding-right: 2rem;
+    }
   }
 
   /*
@@ -208,9 +228,33 @@
       margin-left: 4.5rem;
       padding: 2rem 0;
       transition: all 0.25s;
+      vertical-align: middle;
 
       &:hover {
         filter: grayscale(0);
+      }
+
+      @include mq($sm) {
+        background-size: 2.25rem;
+        background-position: 0.75rem 1rem;
+        padding-left: 1.15rem;
+        padding-right: 1rem;
+        text-indent: 2.25rem;
+      }
+
+      @include mq($md) {
+        background-size: 2.5rem;
+        background-position: 1.5rem 1.5rem;
+        padding-left: 2.5rem;
+        padding-right: 0.5rem;
+        text-indent: 2rem;
+      }
+
+      @include mq($lg) {
+        background-size: 2.5rem;
+        margin-left: 2.5rem;
+        padding: 1.5rem 0;
+        padding-left: 3.5rem;
       }
     }
 
@@ -220,6 +264,19 @@
       background-size: 5.5rem;
       background-position: center left;
       padding-left: 6.25rem;
+
+      @include mq($sm) {
+        background-size: 4.75rem;
+      }
+
+      @include mq($md) {
+        background-size: 4.75rem;
+      }
+
+      @include mq($lg) {
+        background-size: 4.75rem;
+        padding-left: 5.5;
+      }
     }
 
     // Rotten Tomatos
@@ -260,6 +317,19 @@
       border-radius: 5px;
       height: auto;
       padding: 0.25rem 1rem;
+    }
+
+    // Run text-combine-upright:
+    .details-meta--runtime {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 160px;
+      height: 1.2em;
+      white-space: nowrap;
+
+      @include mq($sm) {
+        display: none;
+      }
     }
   }
 
@@ -447,4 +517,12 @@
   max-width: 120rem;
   position: relative;
   width: 100%;
+
+  @include mq($lg) {
+    max-width: 90rem;
+  }
+
+  @include mq($md) {
+    max-width: 90rem;
+  }
 }
